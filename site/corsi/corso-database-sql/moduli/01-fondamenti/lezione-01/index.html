@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="painic" /><link rel="canonical" href="https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/01-fondamenti/lezione-01/" />
+      <link rel="shortcut icon" href="../../../../../img/favicon.ico" />
+    <title>Lezione 01 - ITS Fantastici — Documentazione</title>
+    <link rel="stylesheet" href="../../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Lezione 01";
+        var mkdocs_page_input_path = "corsi/corso-database-sql/moduli/01-fondamenti/lezione-01.md";
+        var mkdocs_page_url = "/corsi/corso-database-sql/moduli/01-fondamenti/lezione-01/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../../.." class="icon icon-home"> ITS Fantastici — Documentazione
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Corsi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../">Indice corsi</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Database SQL</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../../">Home</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Progetto</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/problema/">Problema</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/requisiti/">Requisiti</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/modello-dati/">Modello dati</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >Moduli</a>
+    <ul class="current">
+                <li class="toctree-l3 current"><a class="reference internal current" >Fondamenti</a>
+    <ul class="current">
+                <li class="toctree-l4"><a class="reference internal" href="../">Indice</a>
+                </li>
+                <li class="toctree-l4 current"><a class="reference internal current" href="#">Lezione 01</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../glossary.md">Glossario</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Community</a>
+    <ul>
+                <li class="toctree-l3"><a class="" href="../../../community/linee-guida.md">Linee guida</a>
+                </li>
+                <li class="toctree-l3"><a class="" href="../../../community/workflow.md">Workflow</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../changelog/">Changelog</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../..">ITS Fantastici — Documentazione</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Corsi</li>
+          <li class="breadcrumb-item">Database SQL</li>
+          <li class="breadcrumb-item">Moduli</li>
+          <li class="breadcrumb-item">Fondamenti</li>
+      <li class="breadcrumb-item active">Lezione 01</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/itsfantastici/docs/edit/main/docs/corsi/corso-database-sql/moduli/01-fondamenti/lezione-01.md">Edit on itsfantastici/docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lezione-01-introduzione-ai-database">Lezione 01 — Introduzione ai database<a class="headerlink" href="#lezione-01-introduzione-ai-database" title="Permanent link">&para;</a></h1>
+<h2 id="problema">Problema<a class="headerlink" href="#problema" title="Permanent link">&para;</a></h2>
+<p>Stiamo sviluppando un sistema informatico che deve gestire dati reali:
+- utenti
+- contenuti creati dagli utenti
+- relazioni tra utenti e contenuti</p>
+<p>All’inizio potremmo pensare di usare semplici file (<code>.txt</code>, <code>.csv</code>, <code>.json</code>), ma emergono subito problemi concreti:</p>
+<ul>
+<li>come garantiamo che i dati siano coerenti?</li>
+<li>come evitiamo duplicazioni?</li>
+<li>come gestiamo più utenti che accedono agli stessi dati?</li>
+<li>come modelliamo relazioni complesse (es. utenti → post → commenti)?</li>
+</ul>
+<p><strong>Problema centrale:</strong>  </p>
+<blockquote>
+<p>come memorizzare, organizzare e interrogare dati in modo strutturato, scalabile e affidabile?</p>
+</blockquote>
+<p>Questa lezione introduce lo strumento che useremo per risolvere il problema: <strong>il database</strong>.</p>
+<hr />
+<h2 id="teoria">Teoria<a class="headerlink" href="#teoria" title="Permanent link">&para;</a></h2>
+<h3 id="cose-un-database">Cos’è un database<a class="headerlink" href="#cose-un-database" title="Permanent link">&para;</a></h3>
+<p>Un <strong>database</strong> è una collezione organizzata di dati progettata per:
+- memorizzare informazioni in modo strutturato
+- permettere accesso efficiente ai dati
+- garantire coerenza e integrità
+- supportare accesso concorrente</p>
+<p>Un database <strong>non è solo storage</strong>, ma un sistema che impone regole.</p>
+<hr />
+<h3 id="perche-non-bastano-i-file">Perché non bastano i file<a class="headerlink" href="#perche-non-bastano-i-file" title="Permanent link">&para;</a></h3>
+<p>L’uso di file presenta limiti strutturali:</p>
+<ul>
+<li>nessuna garanzia di unicità</li>
+<li>relazioni gestite “a mano”</li>
+<li>difficoltà di accesso concorrente</li>
+<li>ricerca inefficiente su grandi volumi di dati</li>
+<li>assenza di vincoli formali</li>
+</ul>
+<p>Un database introduce <strong>regole esplicite</strong> che impediscono stati inconsistenti.</p>
+<hr />
+<h3 id="tipi-di-database">Tipi di database<a class="headerlink" href="#tipi-di-database" title="Permanent link">&para;</a></h3>
+<h4 id="database-relazionali-sql">Database relazionali (SQL)<a class="headerlink" href="#database-relazionali-sql" title="Permanent link">&para;</a></h4>
+<ul>
+<li>dati organizzati in <strong>tabelle</strong></li>
+<li>struttura definita (schema)</li>
+<li>relazioni esplicite tra dati</li>
+<li>linguaggio SQL per interrogazione</li>
+</ul>
+<p>Esempi: SQLite, MySQL, PostgreSQL.</p>
+<h4 id="database-non-relazionali-nosql">Database non relazionali (NoSQL)<a class="headerlink" href="#database-non-relazionali-nosql" title="Permanent link">&para;</a></h4>
+<ul>
+<li>struttura più flessibile</li>
+<li>modelli diversi (documenti, key-value, grafi)</li>
+<li>utili in contesti specifici</li>
+</ul>
+<p>👉 In questo corso useremo <strong>database relazionali</strong>.</p>
+<hr />
+<h3 id="tabelle-righe-e-colonne">Tabelle, righe e colonne<a class="headerlink" href="#tabelle-righe-e-colonne" title="Permanent link">&para;</a></h3>
+<p>Una <strong>tabella</strong> rappresenta un insieme di entità omogenee.</p>
+<ul>
+<li><strong>Riga (record)</strong>: una singola entità</li>
+<li><strong>Colonna (campo)</strong>: una proprietà dell’entità</li>
+</ul>
+<p>Esempio concettuale:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>username</th>
+<th>email</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="chiavi-e-vincoli">Chiavi e vincoli<a class="headerlink" href="#chiavi-e-vincoli" title="Permanent link">&para;</a></h3>
+<h4 id="primary-key-pk">Primary Key (PK)<a class="headerlink" href="#primary-key-pk" title="Permanent link">&para;</a></h4>
+<ul>
+<li>identifica univocamente ogni riga</li>
+<li>non può essere <code>NULL</code></li>
+<li>non può duplicarsi</li>
+</ul>
+<p>Serve per:
+- distinguere i record
+- creare relazioni</p>
+<h4 id="foreign-key-fk">Foreign Key (FK)<a class="headerlink" href="#foreign-key-fk" title="Permanent link">&para;</a></h4>
+<ul>
+<li>riferimento a una PK di un’altra tabella</li>
+<li>impone coerenza tra tabelle</li>
+</ul>
+<h4 id="vincoli">Vincoli<a class="headerlink" href="#vincoli" title="Permanent link">&para;</a></h4>
+<p>Regole applicate dal database:
+- <code>PRIMARY KEY</code>
+- <code>FOREIGN KEY</code>
+- <code>UNIQUE</code>
+- <code>NOT NULL</code></p>
+<p>Obiettivo: <strong>integrità dei dati</strong>.</p>
+<hr />
+<h3 id="relazioni-tra-tabelle">Relazioni tra tabelle<a class="headerlink" href="#relazioni-tra-tabelle" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>One-to-One (1:1)</strong><br />
+  un record ↔ un record</p>
+</li>
+<li>
+<p><strong>One-to-Many (1:N)</strong><br />
+  un record ↔ molti record<br />
+  (es. utente → post)</p>
+</li>
+<li>
+<p><strong>Many-to-Many (N:M)</strong><br />
+  molti ↔ molti<br />
+  richiede una tabella di collegamento</p>
+</li>
+</ul>
+<hr />
+<h2 id="esempi">Esempi<a class="headerlink" href="#esempi" title="Permanent link">&para;</a></h2>
+<h3 id="esempio-struttura-dati-del-progetto">Esempio: struttura dati del progetto<a class="headerlink" href="#esempio-struttura-dati-del-progetto" title="Permanent link">&para;</a></h3>
+<p>Nel nostro progetto iniziale gestiremo:
+- utenti
+- post
+- commenti</p>
+<h4 id="tabella-users">Tabella <code>users</code><a class="headerlink" href="#tabella-users" title="Permanent link">&para;</a></h4>
+<pre class="highlight"><code class="language-sql">CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  username TEXT NOT NULL UNIQUE,
+  email TEXT NOT NULL UNIQUE
+);</code></pre>
+<h4 id="tabella-posts">Tabella <code>posts</code><a class="headerlink" href="#tabella-posts" title="Permanent link">&para;</a></h4>
+<pre class="highlight"><code class="language-sql">CREATE TABLE posts (
+  id INTEGER PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  content TEXT,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);</code></pre>
+<h4 id="tabella-commments">Tabella <code>Commments</code><a class="headerlink" href="#tabella-commments" title="Permanent link">&para;</a></h4>
+<pre class="highlight"><code class="language-sql">CREATE TABLE comments (
+  id INTEGER PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  post_id INTEGER NOT NULL,
+  content TEXT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (post_id) REFERENCES posts(id)
+);</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Indice"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../changelog/" class="btn btn-neutral float-right" title="Changelog">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/itsfantastici/docs" class="fa fa-code-fork" style="color: #fcfcfc"> itsfantastici/docs</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../changelog/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../../..";</script>
+    <script src="../../../../../js/theme_extra.js"></script>
+    <script src="../../../../../js/theme.js"></script>
+      <script src="../../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="painic" /><link rel="canonical" href="https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/01-fondamenti/lezione-02/" />
+      <link rel="shortcut icon" href="../../../../../img/favicon.ico" />
+    <title>Lezione 02 — Primo contatto con SQL - ITS Fantastici — Documentazione</title>
+    <link rel="stylesheet" href="../../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Lezione 02 \u2014 Primo contatto con SQL";
+        var mkdocs_page_input_path = "corsi/corso-database-sql/moduli/01-fondamenti/lezione-02.md";
+        var mkdocs_page_url = "/corsi/corso-database-sql/moduli/01-fondamenti/lezione-02/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../../.." class="icon icon-home"> ITS Fantastici — Documentazione
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Corsi</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../">Indice corsi</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Database SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../">Home</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Progetto</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/problema/">Problema</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/requisiti/">Requisiti</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/modello-dati/">Modello dati</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Moduli</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" >Fondamenti</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../lezione-01/">Lezione 01</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../glossary.md">Glossario</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Community</a>
+    <ul>
+                <li class="toctree-l3"><a class="" href="../../../community/linee-guida.md">Linee guida</a>
+                </li>
+                <li class="toctree-l3"><a class="" href="../../../community/workflow.md">Workflow</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../changelog/">Changelog</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../..">ITS Fantastici — Documentazione</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Lezione 02 — Primo contatto con SQL</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/itsfantastici/docs/edit/main/docs/corsi/corso-database-sql/moduli/01-fondamenti/lezione-02.md">Edit on itsfantastici/docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lezione-02-primo-contatto-con-sql">Lezione 02 — Primo contatto con SQL<a class="headerlink" href="#lezione-02-primo-contatto-con-sql" title="Permanent link">&para;</a></h1>
+<h2 id="problema">Problema<a class="headerlink" href="#problema" title="Permanent link">&para;</a></h2>
+<p>Abbiamo:</p>
+<ul>
+<li>un problema reale</li>
+<li>dei requisiti chiari</li>
+<li>un modello dati concettuale</li>
+</ul>
+<p>Ora sorge una nuova esigenza concreta:</p>
+<blockquote>
+<p>come trasformiamo il modello concettuale in una struttura reale, interrogabile e modificabile?</p>
+</blockquote>
+<p>Dobbiamo passare <strong>dall’idea al sistema</strong>.<br />
+Questo significa introdurre <strong>SQL</strong> come strumento operativo.</p>
+<hr />
+<h2 id="teoria">Teoria<a class="headerlink" href="#teoria" title="Permanent link">&para;</a></h2>
+<h3 id="cose-sql">Cos’è SQL<a class="headerlink" href="#cose-sql" title="Permanent link">&para;</a></h3>
+<p><strong>SQL (Structured Query Language)</strong> è il linguaggio standard usato per:</p>
+<ul>
+<li>definire la struttura del database</li>
+<li>inserire dati</li>
+<li>leggere dati</li>
+<li>modificarli</li>
+<li>cancellarli</li>
+</ul>
+<p>SQL <strong>non è un linguaggio di programmazione generale</strong>, ma un linguaggio dichiarativo:</p>
+<blockquote>
+<p>dici <em>cosa</em> vuoi ottenere, non <em>come</em> ottenerlo.</p>
+</blockquote>
+<hr />
+<h3 id="il-concetto-di-schema">Il concetto di schema<a class="headerlink" href="#il-concetto-di-schema" title="Permanent link">&para;</a></h3>
+<p>Lo <strong>schema</strong> rappresenta la struttura del database:</p>
+<ul>
+<li>tabelle</li>
+<li>colonne</li>
+<li>tipi di dato</li>
+<li>vincoli</li>
+<li>relazioni</li>
+</ul>
+<p>È il passaggio formale dal <strong>modello logico</strong> all’<strong>implementazione fisica</strong>.</p>
+<hr />
+<h3 id="tipi-di-dato-db-agnostic">Tipi di dato (DB-agnostic)<a class="headerlink" href="#tipi-di-dato-db-agnostic" title="Permanent link">&para;</a></h3>
+<p>Ogni colonna deve avere un tipo di dato.<br />
+I tipi indicano:
+- che valori sono ammessi
+- come vengono memorizzati
+- quali operazioni sono possibili</p>
+<p>Categorie principali:</p>
+<ul>
+<li>numerici</li>
+<li>testuali</li>
+<li>booleani</li>
+<li>temporali</li>
+</ul>
+<p>Nel corso useremo <strong>tipi comuni a tutti i database</strong>.</p>
+<hr />
+<h3 id="crud">CRUD<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h3>
+<p>Le operazioni fondamentali sui dati sono quattro:</p>
+<table>
+<thead>
+<tr>
+<th>Operazione</th>
+<th>Significato</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create</td>
+<td>inserire dati</td>
+<td><code>INSERT</code></td>
+</tr>
+<tr>
+<td>Read</td>
+<td>leggere dati</td>
+<td><code>SELECT</code></td>
+</tr>
+<tr>
+<td>Update</td>
+<td>modificare dati</td>
+<td><code>UPDATE</code></td>
+</tr>
+<tr>
+<td>Delete</td>
+<td>cancellare dati</td>
+<td><code>DELETE</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ogni sistema informativo, senza eccezioni, ruota attorno a queste operazioni.</p>
+<hr />
+<h3 id="query">Query<a class="headerlink" href="#query" title="Permanent link">&para;</a></h3>
+<p>Una <strong>query</strong> è una richiesta fatta al database.</p>
+<p>Caratteristiche:
+- è deterministica
+- produce un risultato
+- può leggere o modificare dati</p>
+<p>La query più comune è <code>SELECT</code>.</p>
+<hr />
+<h2 id="esempi">Esempi<a class="headerlink" href="#esempi" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Useremo <strong>SQLite</strong> come ambiente iniziale, ma <strong>scrivendo SQL standard</strong>.</p>
+</blockquote>
+<hr />
+<h3 id="creazione-delle-tabelle-create">Creazione delle tabelle (CREATE)<a class="headerlink" href="#creazione-delle-tabelle-create" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  username TEXT NOT NULL UNIQUE,
+  email TEXT NOT NULL UNIQUE
+);</code></pre>
+<p>Qui:</p>
+<ul>
+<li><code>id</code> identifica univocamente l’utente</li>
+<li><code>UNIQUE</code> e <code>NOT NULL</code> sono <strong>vincoli</strong></li>
+<li>il database impedisce stati invalidi</li>
+</ul>
+<hr />
+<pre class="highlight"><code class="language-sql">CREATE TABLE posts (
+  id INTEGER PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  content TEXT,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);</code></pre>
+<p>La <strong>foreign key</strong> rende esplicita la relazione 1:N.</p>
+<hr />
+<h3 id="inserimento-dei-dati-insert">Inserimento dei dati (INSERT)<a class="headerlink" href="#inserimento-dei-dati-insert" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">INSERT INTO users (username, email)
+VALUES ('alice', 'alice@example.com');</code></pre>
+<p>Il database:</p>
+<ul>
+<li>assegna automaticamente la primary key</li>
+<li>verifica i vincoli</li>
+</ul>
+<hr />
+<pre class="highlight"><code class="language-sql">INSERT INTO posts (user_id, title, content)
+VALUES (1, 'Primo post', 'Contenuto di esempio');</code></pre>
+<p>Se <code>user_id = 1</code> non esiste → <strong>errore</strong>.
+Questa è integrità referenziale.</p>
+<hr />
+<h3 id="lettura-dei-dati-select">Lettura dei dati (SELECT)<a class="headerlink" href="#lettura-dei-dati-select" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">SELECT * FROM users;</code></pre>
+<pre class="highlight"><code class="language-sql">SELECT title, content
+FROM posts
+WHERE user_id = 1;</code></pre>
+<p>La query non modifica i dati: <strong>li interroga</strong>.</p>
+<hr />
+<h3 id="modifica-dei-dati-update">Modifica dei dati (UPDATE)<a class="headerlink" href="#modifica-dei-dati-update" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">UPDATE users
+SET email = 'alice@newmail.com'
+WHERE id = 1;</code></pre>
+<p>Senza <code>WHERE</code> → modificheresti <strong>tutte le righe</strong>.
+Questo è uno degli errori più comuni.</p>
+<hr />
+<h3 id="cancellazione-dei-dati-delete">Cancellazione dei dati (DELETE)<a class="headerlink" href="#cancellazione-dei-dati-delete" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">DELETE FROM posts
+WHERE id = 1;</code></pre>
+<p>Anche qui: senza <code>WHERE</code> → distruzione totale.</p>
+<hr />
+<h2 id="esercizi">Esercizi<a class="headerlink" href="#esercizi" title="Permanent link">&para;</a></h2>
+<h3 id="esercizio-1-traduzione-del-modello">Esercizio 1 — Traduzione del modello<a class="headerlink" href="#esercizio-1-traduzione-del-modello" title="Permanent link">&para;</a></h3>
+<p>Prendi il modello dati definito nel progetto e:</p>
+<ul>
+<li>individua tutte le entità</li>
+<li>scrivi le <code>CREATE TABLE</code> corrispondenti</li>
+<li>specifica PK, FK e vincoli</li>
+</ul>
+<p>Obiettivo: passare dal <strong>concetto alla struttura</strong>.</p>
+<hr />
+<h3 id="esercizio-2-crud-controllato">Esercizio 2 — CRUD controllato<a class="headerlink" href="#esercizio-2-crud-controllato" title="Permanent link">&para;</a></h3>
+<p>Scrivi le query per:</p>
+<ol>
+<li>inserire un nuovo utente</li>
+<li>inserire due post dello stesso utente</li>
+<li>recuperare tutti i post di un utente</li>
+<li>aggiornare il titolo di un post</li>
+<li>cancellare un commento</li>
+</ol>
+<p>Motiva ogni <code>WHERE</code>.</p>
+<hr />
+<h3 id="esercizio-3-errori-intenzionali">Esercizio 3 — Errori intenzionali<a class="headerlink" href="#esercizio-3-errori-intenzionali" title="Permanent link">&para;</a></h3>
+<p>Prova a:</p>
+<ul>
+<li>inserire due utenti con la stessa email</li>
+<li>inserire un post con <code>user_id</code> inesistente</li>
+</ul>
+<p>Osserva e spiega <strong>perché il database rifiuta l’operazione</strong>.</p>
+<hr />
+<h2 id="soluzione-community">Soluzione community<a class="headerlink" href="#soluzione-community" title="Permanent link">&para;</a></h2>
+<h3 id="principio-guida">Principio guida<a class="headerlink" href="#principio-guida" title="Permanent link">&para;</a></h3>
+<p>Le soluzioni migliori:</p>
+<ul>
+<li>rispettano i vincoli</li>
+<li>sono leggibili</li>
+<li>spiegano <em>perché</em> funzionano</li>
+</ul>
+<hr />
+<h3 id="esempio-commentato">Esempio commentato<a class="headerlink" href="#esempio-commentato" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">INSERT INTO users (username, email)
+VALUES ('bob', 'bob@example.com');
+
+SELECT p.title
+FROM posts p
+WHERE p.user_id = 1;</code></pre>
+<p>Motivazione:</p>
+<ul>
+<li>nessuna duplicazione</li>
+<li>query semplice</li>
+<li>pieno rispetto del modello</li>
+</ul>
+<hr />
+<h2 id="concetti-introdotti-in-questa-lezione">Concetti introdotti in questa lezione<a class="headerlink" href="#concetti-introdotti-in-questa-lezione" title="Permanent link">&para;</a></h2>
+<ul>
+<li>SQL come linguaggio dichiarativo</li>
+<li>schema del database</li>
+<li>tipi di dato</li>
+<li>CRUD</li>
+<li>query</li>
+<li>integrità referenziale</li>
+</ul>
+<p>Questi concetti verranno <strong>usati continuamente</strong> da ora in avanti.</p>
+<hr />
+<h2 id="conclusioni">Conclusioni<a class="headerlink" href="#conclusioni" title="Permanent link">&para;</a></h2>
+<p>Ora siamo in grado di:</p>
+<ul>
+<li>creare una struttura reale partendo da un modello</li>
+<li>inserire e interrogare dati</li>
+<li>capire perché il database blocca operazioni scorrette</li>
+</ul>
+<p>👉 Nella prossima lezione inizieremo a <strong>combinare dati da più tabelle</strong> (<code>JOIN</code>).</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/itsfantastici/docs" class="fa fa-code-fork" style="color: #fcfcfc"> itsfantastici/docs</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../../..";</script>
+    <script src="../../../../../js/theme_extra.js"></script>
+    <script src="../../../../../js/theme.js"></script>
+      <script src="../../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="painic" /><link rel="canonical" href="https://docs.itsfantastici.it/corsi/corso-database-sql/progetto/requisiti/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Requisiti - ITS Fantastici — Documentazione</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Requisiti";
+        var mkdocs_page_input_path = "corsi/corso-database-sql/progetto/requisiti.md";
+        var mkdocs_page_url = "/corsi/corso-database-sql/progetto/requisiti/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> ITS Fantastici — Documentazione
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Corsi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Indice corsi</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Database SQL</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Home</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >Progetto</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../problema/">Problema</a>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" href="#">Requisiti</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#requisiti-funzionali">Requisiti funzionali</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#requisiti-non-funzionali">Requisiti non funzionali</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#vincoli-progettuali">Vincoli progettuali</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#implicazioni">Implicazioni</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../modello-dati/">Modello dati</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Moduli</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" >Fondamenti</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../moduli/01-fondamenti/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../moduli/01-fondamenti/lezione-01/">Lezione 01</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../../moduli/01-fondamenti/glossary.md">Glossario</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Community</a>
+    <ul>
+                <li class="toctree-l3"><a class="" href="../../community/linee-guida.md">Linee guida</a>
+                </li>
+                <li class="toctree-l3"><a class="" href="../../community/workflow.md">Workflow</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../changelog/">Changelog</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">ITS Fantastici — Documentazione</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Corsi</li>
+          <li class="breadcrumb-item">Database SQL</li>
+          <li class="breadcrumb-item">Progetto</li>
+      <li class="breadcrumb-item active">Requisiti</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/itsfantastici/docs/edit/main/docs/corsi/corso-database-sql/progetto/requisiti.md">Edit on itsfantastici/docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="requisiti-del-sistema">Requisiti del sistema<a class="headerlink" href="#requisiti-del-sistema" title="Permanent link">&para;</a></h1>
+<p>Questa sezione definisce <strong>cosa il sistema deve fare</strong> e <strong>quali vincoli deve rispettare</strong>.</p>
+<p>I requisiti guidano tutte le decisioni di progettazione che verranno prese nel corso.</p>
+<hr />
+<h2 id="requisiti-funzionali">Requisiti funzionali<a class="headerlink" href="#requisiti-funzionali" title="Permanent link">&para;</a></h2>
+<p>Il sistema deve permettere di:</p>
+<ol>
+<li>gestire utenti</li>
+<li>identificazione univoca</li>
+<li>informazioni di base (username, email)</li>
+<li>gestire contenuti</li>
+<li>ogni contenuto è associato a un autore</li>
+<li>i contenuti hanno titolo e corpo testuale</li>
+<li>gestire interazioni</li>
+<li>commenti ai contenuti</li>
+<li>relazioni chiare tra utenti e contenuti</li>
+<li>classificare i contenuti</li>
+<li>categorie o tag</li>
+<li>possibilità di estensione futura</li>
+</ol>
+<hr />
+<h2 id="requisiti-non-funzionali">Requisiti non funzionali<a class="headerlink" href="#requisiti-non-funzionali" title="Permanent link">&para;</a></h2>
+<p>Il sistema deve essere:</p>
+<ul>
+<li>
+<p><strong>coerente</strong><br />
+  i dati non devono mai trovarsi in stati invalidi</p>
+</li>
+<li>
+<p><strong>scalabile</strong><br />
+  il modello deve reggere l’aumento dei dati</p>
+</li>
+<li>
+<p><strong>manutenibile</strong><br />
+  facile da estendere senza riscrivere tutto</p>
+</li>
+<li>
+<p><strong>DB-agnostic</strong><br />
+  il modello non deve dipendere da un singolo database</p>
+</li>
+<li>
+<p><strong>collaborativo</strong><br />
+  la documentazione e le soluzioni devono poter evolvere</p>
+</li>
+</ul>
+<hr />
+<h2 id="vincoli-progettuali">Vincoli progettuali<a class="headerlink" href="#vincoli-progettuali" title="Permanent link">&para;</a></h2>
+<p>Durante il corso imponiamo alcuni vincoli intenzionali:</p>
+<ul>
+<li>uso esclusivo di database relazionali</li>
+<li>utilizzo di SQL standard quando possibile</li>
+<li>separazione chiara tra:</li>
+<li>modello concettuale</li>
+<li>modello logico</li>
+<li>implementazione fisica</li>
+</ul>
+<p>Questi vincoli <strong>non limitano</strong>, ma aiutano a ragionare correttamente.</p>
+<hr />
+<h2 id="implicazioni">Implicazioni<a class="headerlink" href="#implicazioni" title="Permanent link">&para;</a></h2>
+<p>Dai requisiti derivano scelte fondamentali:</p>
+<ul>
+<li>uso di primary key e foreign key</li>
+<li>normalizzazione dei dati</li>
+<li>modellazione esplicita delle relazioni</li>
+<li>utilizzo di transazioni</li>
+</ul>
+<p>Ogni concetto teorico del corso nasce da qui.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../problema/" class="btn btn-neutral float-left" title="Problema"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../modello-dati/" class="btn btn-neutral float-right" title="Modello dati">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/itsfantastici/docs" class="fa fa-code-fork" style="color: #fcfcfc"> itsfantastici/docs</a>
+        </span>
+    
+    
+      <span><a href="../problema/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../modello-dati/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

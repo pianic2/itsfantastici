@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="painic" /><link rel="canonical" href="https://docs.itsfantastici.it/corsi/corso-database-sql/progetto/problema/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Problema - ITS Fantastici — Documentazione</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Problema";
+        var mkdocs_page_input_path = "corsi/corso-database-sql/progetto/problema.md";
+        var mkdocs_page_url = "/corsi/corso-database-sql/progetto/problema/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> ITS Fantastici — Documentazione
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Corsi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Indice corsi</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Database SQL</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Home</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >Progetto</a>
+    <ul class="current">
+                <li class="toctree-l3 current"><a class="reference internal current" href="#">Problema</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#contesto">Contesto</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#approccio-ingenuo-e-perche-fallisce">Approccio ingenuo (e perché fallisce)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#problema-centrale">Problema centrale</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#obiettivo-del-corso-rispetto-al-problema">Obiettivo del corso rispetto al problema</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../requisiti/">Requisiti</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../modello-dati/">Modello dati</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Moduli</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" >Fondamenti</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../moduli/01-fondamenti/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../moduli/01-fondamenti/lezione-01/">Lezione 01</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../../moduli/01-fondamenti/glossary.md">Glossario</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Community</a>
+    <ul>
+                <li class="toctree-l3"><a class="" href="../../community/linee-guida.md">Linee guida</a>
+                </li>
+                <li class="toctree-l3"><a class="" href="../../community/workflow.md">Workflow</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../changelog/">Changelog</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">ITS Fantastici — Documentazione</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Corsi</li>
+          <li class="breadcrumb-item">Database SQL</li>
+          <li class="breadcrumb-item">Progetto</li>
+      <li class="breadcrumb-item active">Problema</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/itsfantastici/docs/edit/main/docs/corsi/corso-database-sql/progetto/problema.md">Edit on itsfantastici/docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="problema-iniziale">Problema iniziale<a class="headerlink" href="#problema-iniziale" title="Permanent link">&para;</a></h1>
+<p>Il corso nasce dalla necessità di risolvere un problema concreto e realistico:</p>
+<blockquote>
+<p>progettare un sistema affidabile per la gestione di dati strutturati, interconnessi e soggetti a evoluzione nel tempo.</p>
+</blockquote>
+<p>Non partiamo dal linguaggio SQL, ma dal <strong>problema che rende necessario SQL</strong>.</p>
+<hr />
+<h2 id="contesto">Contesto<a class="headerlink" href="#contesto" title="Permanent link">&para;</a></h2>
+<p>Immaginiamo di dover sviluppare una piattaforma che permetta a più utenti di:</p>
+<ul>
+<li>registrarsi e autenticarsi</li>
+<li>creare contenuti</li>
+<li>interagire con contenuti creati da altri utenti</li>
+<li>organizzare e classificare i contenuti</li>
+</ul>
+<p>Il sistema deve funzionare:</p>
+<ul>
+<li>nel tempo</li>
+<li>con dati in crescita</li>
+<li>con più utenti simultanei</li>
+<li>senza perdere coerenza dei dati</li>
+</ul>
+<hr />
+<h2 id="approccio-ingenuo-e-perche-fallisce">Approccio ingenuo (e perché fallisce)<a class="headerlink" href="#approccio-ingenuo-e-perche-fallisce" title="Permanent link">&para;</a></h2>
+<p>Una prima soluzione potrebbe essere usare:</p>
+<ul>
+<li>file di testo</li>
+<li>file CSV</li>
+<li>file JSON</li>
+</ul>
+<p>Questa soluzione fallisce rapidamente perché:</p>
+<ul>
+<li>non esiste un’identità univoca garantita</li>
+<li>le relazioni sono fragili e manuali</li>
+<li>i dati possono diventare incoerenti</li>
+<li>la ricerca diventa inefficiente</li>
+<li>la concorrenza non è gestibile</li>
+</ul>
+<hr />
+<h2 id="problema-centrale">Problema centrale<a class="headerlink" href="#problema-centrale" title="Permanent link">&para;</a></h2>
+<p>Il problema <strong>non è salvare dati</strong>, ma:</p>
+<ul>
+<li>modellare correttamente le informazioni</li>
+<li>definire relazioni affidabili</li>
+<li>garantire integrità e coerenza</li>
+<li>permettere interrogazioni efficienti</li>
+<li>supportare evoluzione e manutenzione</li>
+</ul>
+<p>👉 Questo è esattamente ciò che un <strong>database relazionale</strong> risolve.</p>
+<hr />
+<h2 id="obiettivo-del-corso-rispetto-al-problema">Obiettivo del corso rispetto al problema<a class="headerlink" href="#obiettivo-del-corso-rispetto-al-problema" title="Permanent link">&para;</a></h2>
+<p>Il corso mostra <strong>come risolvere questo problema passo dopo passo</strong>, introducendo solo gli strumenti necessari nel momento in cui servono.</p>
+<p>Non studiamo SQL “per capitoli”, ma <strong>per esigenze reali</strong> che emergono dal progetto.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../" class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../requisiti/" class="btn btn-neutral float-right" title="Requisiti">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/itsfantastici/docs" class="fa fa-code-fork" style="color: #fcfcfc"> itsfantastici/docs</a>
+        </span>
+    
+    
+      <span><a href="../../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../requisiti/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

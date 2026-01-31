@@ -1,0 +1,84 @@
+site_name: ITS Fantastici — Documentazione
+site_description: Documentazione tecnica dei corsi ITS Fantastici
+site_author: painic
+site_url: https://docs.itsfantastici.it/
+
+docs_dir: docs
+site_dir: site
+
+repo_name: itsfantastici/docs
+repo_url: https://github.com/itsfantastici/docs
+edit_uri: edit/main/docs/
+
+theme:
+  name: readthedocs
+  language: it
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Corsi:
+      - Indice corsi: corsi/index.md
+      - Database SQL:
+          - Home: corsi/corso-database-sql/index.md
+          - Progetto:
+              - Problema: corsi/corso-database-sql/progetto/problema.md
+              - Requisiti: corsi/corso-database-sql/progetto/requisiti.md
+              - Modello dati: corsi/corso-database-sql/progetto/modello-dati.md
+          - Moduli:
+              - Fondamenti:
+                  - Indice: corsi/corso-database-sql/moduli/01-fondamenti/index.md
+                  - Lezione 01: corsi/corso-database-sql/moduli/01-fondamenti/lezione-01.md
+                  - Glossario: corsi/corso-database-sql/moduli/01-fondamenti/glossary.md
+          - Community:
+              - Linee guida: corsi/corso-database-sql/community/linee-guida.md
+              - Workflow: corsi/corso-database-sql/community/workflow.md
+          - Changelog: corsi/corso-database-sql/changelog.md
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - tables
+  - attr_list
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search
+
+extra:
+  generator: false

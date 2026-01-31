@@ -8,7 +8,7 @@ site_dir: site
 
 repo_name: itsfantastici/docs
 repo_url: https://github.com/itsfantastici/docs
-edit_uri: edit/main/docs/
+edit_uri: https://github.com/itsfantastici/
 
 theme:
   name: readthedocs

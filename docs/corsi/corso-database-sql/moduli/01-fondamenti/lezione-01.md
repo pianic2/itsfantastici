@@ -94,6 +94,7 @@ Esempio concettuale:
 - non può duplicarsi
 
 Serve per:
+
 - distinguere i record
 - creare relazioni
 
@@ -103,6 +104,7 @@ Serve per:
 
 #### Vincoli
 Regole applicate dal database:
+
 - `PRIMARY KEY`
 - `FOREIGN KEY`
 - `UNIQUE`
@@ -129,19 +131,57 @@ Obiettivo: **integrità dei dati**.
 
 ## Esempi
 
+### Esempio: creare un nuovo database sqlite
+
+Per aggiornare gli indici dei pacchetti e installare SQLite su Ubuntu:
+
+```bash
+sudo apt update
+sudo apt install -y sqlite3
+```
+
+Dopo l’installazione puoi verificare la versione:
+
+```bash
+sqlite3 --version
+```
+
+```bash
+sqlite3 nome_database.db
+```
+
+Il file `nome_database.db` verrà creato nella cartella corrente se non esiste.  
+All’interno della shell di SQLite puoi verificare con:
+
+```sql
+.databases
+```
+
+Per uscire:
+
+```sql
+.exit
+```
+
 ### Esempio: struttura dati del progetto
 
 Nel nostro progetto iniziale gestiremo:
+
 - utenti
 - post
 - commenti
 
 #### Tabella `users`
+Creiamo la tabella utenti.
+
 ```sql
 CREATE TABLE users (
   id INTEGER PRIMARY KEY,
   username TEXT NOT NULL UNIQUE,
-  email TEXT NOT NULL UNIQUE
+  email TEXT NOT NULL UNIQUE,
+  born_year INTEGER,
+  born_month INTEGER,
+  born_day INTEGER
 );
 ```
 

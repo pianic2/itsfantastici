@@ -69,6 +69,10 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="lezione-01/">Lezione 01</a>
                 </li>
+                <li class="toctree-l4"><a class="reference internal" href="lezione-02/">Lezione 02</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="lezione-03/">Lezione 03</a>
+                </li>
                 <li class="toctree-l4"><a class="reference internal" href="glossary/">Glossario</a>
                 </li>
     </ul>
@@ -161,26 +165,61 @@ capire <em>cosa</em> stiamo costruendo prima di imparare <em>come</em> interroga
 <h2 id="contenuti-del-modulo">Contenuti del modulo<a class="headerlink" href="#contenuti-del-modulo" title="Permanent link">&para;</a></h2>
 <h3 id="lezione-01-introduzione-ai-database">Lezione 01 — Introduzione ai database<a class="headerlink" href="#lezione-01-introduzione-ai-database" title="Permanent link">&para;</a></h3>
 <ul>
+<li>problema: comprendere cos’è un database e perché serve oltre ai file</li>
+<li>teoria:</li>
 <li>cos’è un database</li>
 <li>perché i file non bastano</li>
 <li>modello relazionale</li>
 <li>entità, relazioni e vincoli</li>
 <li>definizione del modello concettuale del progetto</li>
+<li>esempi pratici:</li>
+<li>confronto tra file e database</li>
+<li>esempio di entità e relazioni del progetto</li>
+<li>esercizi:</li>
+<li>identificare entità e relazioni dal problema</li>
+<li>definire i vincoli principali</li>
+<li>soluzione community e best practice</li>
 </ul>
 <p>👉 <a href="lezione-01/">Vai alla lezione</a></p>
 <hr />
 <h3 id="lezione-02-primo-contatto-con-sql">Lezione 02 — Primo contatto con SQL<a class="headerlink" href="#lezione-02-primo-contatto-con-sql" title="Permanent link">&para;</a></h3>
 <ul>
+<li>problema: passare dal modello concettuale a uno schema reale interrogabile</li>
+<li>teoria:</li>
 <li>cos’è SQL e perché è dichiarativo</li>
 <li>schema del database</li>
 <li>tipi di dato (DB-agnostic)</li>
 <li>operazioni CRUD</li>
-<li>prime query (<code>CREATE</code>, <code>INSERT</code>, <code>SELECT</code>, <code>UPDATE</code>, <code>DELETE</code>)</li>
-<li>applicazione diretta al progetto</li>
+<li>esempi pratici:</li>
+<li><code>CREATE</code> per tabelle del progetto</li>
+<li><code>INSERT</code> di dati di esempio</li>
+<li><code>SELECT</code> mirate</li>
+<li><code>UPDATE</code> e <code>DELETE</code> con <code>WHERE</code></li>
+<li>esercizi:</li>
+<li>definire lo schema completo del progetto</li>
+<li>scrivere query CRUD con vincoli corretti</li>
+<li>verificare errori di integrità referenziale</li>
+<li>soluzione community e best practice</li>
 </ul>
 <p>👉 <a href="lezione-02/">Vai alla lezione</a></p>
 <hr />
-<p><em>(Le lezioni successive del modulo verranno aggiunte mantenendo lo stesso standard.)</em></p>
+<h3 id="lezione-03-relazioni-e-join">Lezione 03 — Relazioni e JOIN<a class="headerlink" href="#lezione-03-relazioni-e-join" title="Permanent link">&para;</a></h3>
+<ul>
+<li>problema: perché servono le JOIN</li>
+<li>teoria:</li>
+<li><code>INNER JOIN</code> e <code>LEFT JOIN</code></li>
+<li>alias e naming</li>
+<li>esempi pratici:</li>
+<li>post con autore</li>
+<li>commenti con autore e post</li>
+<li>post anche senza commenti (<code>LEFT JOIN</code> + <code>COUNT</code>)</li>
+<li>esercizi:</li>
+<li>post + autore</li>
+<li>commenti dettagliati</li>
+<li>post senza commenti</li>
+<li>soluzione community e best practice</li>
+</ul>
+<p>👉 <a href="lezione-03/">Vai alla lezione</a></p>
 <hr />
 <h2 id="output-del-modulo">Output del modulo<a class="headerlink" href="#output-del-modulo" title="Permanent link">&para;</a></h2>
 <p>Alla fine del modulo esistono:</p>
@@ -208,6 +247,7 @@ capire <em>cosa</em> stiamo costruendo prima di imparare <em>come</em> interroga
 <li><a href="../../progetto/">Progetto</a></li>
 <li><a href="lezione-01/">Lezione 01</a></li>
 <li><a href="lezione-02/">Lezione 02</a></li>
+<li><a href="lezione-03/">Lezione 03</a></li>
 <li><a href="glossary/">Glossario</a></li>
 <li><a href="../">Moduli</a></li>
 </ul>

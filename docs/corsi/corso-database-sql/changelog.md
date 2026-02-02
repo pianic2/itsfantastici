@@ -43,6 +43,7 @@ Modifiche minori (refusi, formattazione) possono non essere elencate.
 - Lezione 02 — Primo contatto con SQL
 - template standard di lezione
 - linee guida per contributi della community
+- Lezione 03 - Relazioni e JOIN
 
 ---
 

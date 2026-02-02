@@ -69,6 +69,10 @@
                 </li>
                 <li class="toctree-l4 current"><a class="reference internal current" href="#">Lezione 01</a>
                 </li>
+                <li class="toctree-l4"><a class="reference internal" href="../lezione-02/">Lezione 02</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../lezione-03/">Lezione 03</a>
+                </li>
                 <li class="toctree-l4"><a class="reference internal" href="../glossary/">Glossario</a>
                 </li>
     </ul>
@@ -203,20 +207,24 @@
 <li>non può essere <code>NULL</code></li>
 <li>non può duplicarsi</li>
 </ul>
-<p>Serve per:
-- distinguere i record
-- creare relazioni</p>
+<p>Serve per:</p>
+<ul>
+<li>distinguere i record</li>
+<li>creare relazioni</li>
+</ul>
 <h4 id="foreign-key-fk">Foreign Key (FK)<a class="headerlink" href="#foreign-key-fk" title="Permanent link">&para;</a></h4>
 <ul>
 <li>riferimento a una PK di un’altra tabella</li>
 <li>impone coerenza tra tabelle</li>
 </ul>
 <h4 id="vincoli">Vincoli<a class="headerlink" href="#vincoli" title="Permanent link">&para;</a></h4>
-<p>Regole applicate dal database:
-- <code>PRIMARY KEY</code>
-- <code>FOREIGN KEY</code>
-- <code>UNIQUE</code>
-- <code>NOT NULL</code></p>
+<p>Regole applicate dal database:</p>
+<ul>
+<li><code>PRIMARY KEY</code></li>
+<li><code>FOREIGN KEY</code></li>
+<li><code>UNIQUE</code></li>
+<li><code>NOT NULL</code></li>
+</ul>
 <p>Obiettivo: <strong>integrità dei dati</strong>.</p>
 <hr />
 <h3 id="relazioni-tra-tabelle">Relazioni tra tabelle<a class="headerlink" href="#relazioni-tra-tabelle" title="Permanent link">&para;</a></h3>
@@ -238,40 +246,67 @@
 </ul>
 <hr />
 <h2 id="esempi">Esempi<a class="headerlink" href="#esempi" title="Permanent link">&para;</a></h2>
+<h3 id="esempio-creare-un-nuovo-database-sqlite">Esempio: creare un nuovo database sqlite<a class="headerlink" href="#esempio-creare-un-nuovo-database-sqlite" title="Permanent link">&para;</a></h3>
+<p>Per aggiornare gli indici dei pacchetti e installare SQLite su Ubuntu:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>sqlite3
+</code></pre></div>
+<p>Dopo l’installazione puoi verificare la versione:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sqlite3<span class="w"> </span>--version
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sqlite3<span class="w"> </span>nome_database.db
+</code></pre></div>
+<p>Il file <code>nome_database.db</code> verrà creato nella cartella corrente se non esiste.<br />
+All’interno della shell di SQLite puoi verificare con:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">.</span><span class="n">databases</span>
+</code></pre></div>
+<p>Per uscire:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">.</span><span class="n">exit</span>
+</code></pre></div>
 <h3 id="esempio-struttura-dati-del-progetto">Esempio: struttura dati del progetto<a class="headerlink" href="#esempio-struttura-dati-del-progetto" title="Permanent link">&para;</a></h3>
-<p>Nel nostro progetto iniziale gestiremo:
-- utenti
-- post
-- commenti</p>
+<p>Nel nostro progetto iniziale gestiremo:</p>
+<ul>
+<li>utenti</li>
+<li>post</li>
+<li>commenti</li>
+</ul>
 <h4 id="tabella-users">Tabella <code>users</code><a class="headerlink" href="#tabella-users" title="Permanent link">&para;</a></h4>
-<pre class="highlight"><code class="language-sql">CREATE TABLE users (
-  id INTEGER PRIMARY KEY,
-  username TEXT NOT NULL UNIQUE,
-  email TEXT NOT NULL UNIQUE
-);</code></pre>
+<p>Creiamo la tabella utenti:
+- usern</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="n">username</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="n">email</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="n">born_year</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="n">born_month</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="n">born_day</span><span class="w"> </span><span class="nb">INTEGER</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">);</span>
+</code></pre></div>
 <h4 id="tabella-posts">Tabella <code>posts</code><a class="headerlink" href="#tabella-posts" title="Permanent link">&para;</a></h4>
-<pre class="highlight"><code class="language-sql">CREATE TABLE posts (
-  id INTEGER PRIMARY KEY,
-  user_id INTEGER NOT NULL,
-  title TEXT NOT NULL,
-  content TEXT,
-  FOREIGN KEY (user_id) REFERENCES users(id)
-);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="n">user_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="n">title</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="n">content</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">);</span>
+</code></pre></div>
 <h4 id="tabella-commments">Tabella <code>Commments</code><a class="headerlink" href="#tabella-commments" title="Permanent link">&para;</a></h4>
-<pre class="highlight"><code class="language-sql">CREATE TABLE comments (
-  id INTEGER PRIMARY KEY,
-  user_id INTEGER NOT NULL,
-  post_id INTEGER NOT NULL,
-  content TEXT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (post_id) REFERENCES posts(id)
-);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="n">user_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="n">post_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="n">content</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">post_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">posts</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">);</span>
+</code></pre></div>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../" class="btn btn-neutral float-left" title="Indice"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../glossary/" class="btn btn-neutral float-right" title="Glossario">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../lezione-02/" class="btn btn-neutral float-right" title="Lezione 02">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -301,7 +336,7 @@
       <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../glossary/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../lezione-02/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

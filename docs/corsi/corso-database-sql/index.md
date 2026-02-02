@@ -8,6 +8,26 @@ Questo corso introduce i concetti fondamentali dei database relazionali e del li
 
 Il corso è costruito attorno a **un progetto unico**, che evolve modulo dopo modulo, mantenendo sempre un filo logico tra teoria e pratica.
 
+Non è un corso di sola sintassi: l’obiettivo è **imparare a progettare, interrogare e mantenere dati correttamente**, ragionando come chi costruisce sistemi reali.
+
+---
+
+## Idea centrale del corso
+
+Tutto il corso ruota attorno a **un unico progetto**, che evolve nel tempo.
+
+Non studiamo SQL “per argomenti isolati”, ma perché:
+- emerge un problema reale
+- serve uno strumento specifico
+- lo applichiamo subito al progetto
+
+Questo garantisce:
+- continuità logica
+- coerenza tra le lezioni
+- competenze realmente spendibili
+
+---
+
 ## Obiettivi del corso
 
 - comprendere come e perché usare un database relazionale
@@ -16,12 +36,16 @@ Il corso è costruito attorno a **un progetto unico**, che evolve modulo dopo mo
 - comprendere le differenze tra motori SQL (SQLite → MySQL)
 - lavorare in modo collaborativo su documentazione e soluzioni
 
+---
+
 ## Struttura del corso
 
 - **Progetto**: definizione del problema e del modello dati
 - **Moduli**: concetti teorici + applicazione pratica
 - **Esercizi**: approfondimento guidato, non verifica
 - **Soluzioni community**: le migliori spiegazioni vengono integrate
+
+---
 
 ## Partecipazione della community
 
@@ -31,6 +55,18 @@ Gli studenti possono:
 - suggerire soluzioni alternative
 
 Ogni modifica passa tramite Pull Request e viene approvata secondo la regola **50% + 1**.
+
+---
+
+## Tecnologie utilizzate
+
+- SQL standard (approccio DB-agnostic)
+- SQLite per sviluppo iniziale
+- MySQL per scenari di produzione
+- Git + GitHub per collaborazione
+- MkDocs per la documentazione
+
+---
 
 ## Navigazione rapida
 

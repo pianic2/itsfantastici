@@ -62,29 +62,63 @@ Il progetto nasce qui e **non verrà mai resettato**.
 ## Contenuti del modulo
 
 ### Lezione 01 — Introduzione ai database
-- cos’è un database
-- perché i file non bastano
-- modello relazionale
-- entità, relazioni e vincoli
-- definizione del modello concettuale del progetto
+- problema: comprendere cos’è un database e perché serve oltre ai file
+- teoria:
+  - cos’è un database
+  - perché i file non bastano
+  - modello relazionale
+  - entità, relazioni e vincoli
+  - definizione del modello concettuale del progetto
+- esempi pratici:
+  - confronto tra file e database
+  - esempio di entità e relazioni del progetto
+- esercizi:
+  - identificare entità e relazioni dal problema
+  - definire i vincoli principali
+- soluzione community e best practice
 
 👉 [Vai alla lezione](lezione-01.md)
 
 ---
 
 ### Lezione 02 — Primo contatto con SQL
-- cos’è SQL e perché è dichiarativo
-- schema del database
-- tipi di dato (DB-agnostic)
-- operazioni CRUD
-- prime query (`CREATE`, `INSERT`, `SELECT`, `UPDATE`, `DELETE`)
-- applicazione diretta al progetto
+- problema: passare dal modello concettuale a uno schema reale interrogabile
+- teoria:
+  - cos’è SQL e perché è dichiarativo
+  - schema del database
+  - tipi di dato (DB-agnostic)
+  - operazioni CRUD
+- esempi pratici:
+  - `CREATE` per tabelle del progetto
+  - `INSERT` di dati di esempio
+  - `SELECT` mirate
+  - `UPDATE` e `DELETE` con `WHERE`
+- esercizi:
+  - definire lo schema completo del progetto
+  - scrivere query CRUD con vincoli corretti
+  - verificare errori di integrità referenziale
+- soluzione community e best practice
 
 👉 [Vai alla lezione](lezione-02.md)
 
 ---
 
-*(Le lezioni successive del modulo verranno aggiunte mantenendo lo stesso standard.)*
+### Lezione 03 — Relazioni e JOIN
+- problema: perché servono le JOIN
+- teoria:
+  - `INNER JOIN` e `LEFT JOIN`
+  - alias e naming
+- esempi pratici:
+  - post con autore
+  - commenti con autore e post
+  - post anche senza commenti (`LEFT JOIN` + `COUNT`)
+- esercizi:
+  - post + autore
+  - commenti dettagliati
+  - post senza commenti
+- soluzione community e best practice
+
+👉 [Vai alla lezione](lezione-03.md)
 
 ---
 
@@ -119,5 +153,6 @@ Questo modulo serve a **costruire fondamenta solide**.
 - [Progetto](../../progetto/index.md)
 - [Lezione 01](lezione-01.md)
 - [Lezione 02](lezione-02.md)
+- [Lezione 03](lezione-03.md)
 - [Glossario](glossary.md)
 - [Moduli](../index.md)

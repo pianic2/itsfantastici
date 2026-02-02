@@ -6,17 +6,13 @@ title: Lezione 02 — Primo contatto con SQL
 
 ## Problema
 
-Abbiamo:
+Abbiamo un modello concettuale. Ora dobbiamo trasformarlo in una struttura reale:
 
-- un problema reale
-- dei requisiti chiari
-- un modello dati concettuale
+- creare lo schema (tabelle, colonne, vincoli)
+- inserire dati di esempio
+- interrogare e modificare quei dati in modo controllato
 
-Ora sorge una nuova esigenza concreta:
-
-> come trasformiamo il modello concettuale in una struttura reale, interrogabile e modificabile?
-
-Dobbiamo passare **dall’idea al sistema**.  
+> Obiettivo: passare da “idea” a “sistema interrogabile”.
 Questo significa introdurre **SQL** come strumento operativo.
 
 ---
@@ -38,6 +34,16 @@ SQL **non è un linguaggio di programmazione generale**, ma un linguaggio dichia
 
 ---
 
+### SQL: linguaggio dichiarativo
+
+SQL è dichiarativo: descrive *cosa* vuoi ottenere, non *come* ottenerlo.
+In pratica lo useremo per:
+
+- **DDL** (schema): `CREATE`, `ALTER`, `DROP`
+- **DML** (dati): `INSERT`, `SELECT`, `UPDATE`, `DELETE`
+
+---
+
 ### Il concetto di schema
 
 Lo **schema** rappresenta la struttura del database:
@@ -56,18 +62,42 @@ Lo **schema** rappresenta la struttura del database:
 
 Ogni colonna deve avere un tipo di dato.  
 I tipi indicano:
+
 - che valori sono ammessi
 - come vengono memorizzati
 - quali operazioni sono possibili
 
-Categorie principali:
+Di seguito una tabella riepilogativa dei principali tipi di dato, con la corrispondenza tra SQLite, MySQL e PostgreSQL e un’indicazione della memoria occupata per campo.
 
-- numerici
-- testuali
-- booleani
-- temporali
+| Tipo di dato | SQLite | MySQL | PostgreSQL | Memoria (indicativa) |
+|---|---|---|---|---|
+| BOOLEAN | `INTEGER` (0/1) | `BOOLEAN` | `BOOLEAN` | 1 byte |
+| SMALLINT | `INTEGER` | `SMALLINT` | `SMALLINT` | 2 byte |
+| INTEGER | `INTEGER` | `INT` | `INTEGER` | 4 byte |
+| BIGINT | `INTEGER` | `BIGINT` | `BIGINT` | 8 byte |
+| DECIMAL/NUMERIC | `REAL`/`NUMERIC` | `DECIMAL` | `NUMERIC` | variabile |
+| REAL | `REAL` | `FLOAT` | `REAL` | 4 byte |
+| DOUBLE | `REAL` | `DOUBLE` | `DOUBLE PRECISION` | 8 byte |
+| CHAR | `TEXT` | `CHAR` | `CHAR` | fisso (n) |
+| VARCHAR | `TEXT` | `VARCHAR` | `VARCHAR` | variabile (n) |
+| TEXT | `TEXT` | `TEXT` | `TEXT` | variabile |
+| DATE | `TEXT`/`REAL` | `DATE` | `DATE` | 4 byte (PG), variabile |
+| TIME | `TEXT`/`REAL` | `TIME` | `TIME` | 8 byte (PG), variabile |
+| DATETIME | `TEXT`/`REAL` | `DATETIME` | ❌ | variabile |
+| TIMESTAMP | `TEXT`/`REAL` | `TIMESTAMP` | `TIMESTAMP` | 8 byte (PG), variabile |
+| BLOB/BINARY | `BLOB` | `BLOB`/`BINARY` | `BYTEA` | variabile |
+| JSON | `TEXT` | `JSON` | `JSON/JSONB` | variabile |
+| UUID | `TEXT` | ❌ | `UUID` | 16 byte |
 
-Nel corso useremo **tipi comuni a tutti i database**.
+#### Foreign key (chiave esterna)
+
+Una **foreign key** è un vincolo che collega una tabella a un’altra:
+
+- indica quale colonna fa riferimento a una **primary key**
+- garantisce l’**integrità referenziale** (niente riferimenti a record inesistenti)
+- rende esplicite le relazioni tra entità (es. 1:N)
+
+In pratica: puoi inserire un valore solo se esiste già nella tabella collegata.
 
 ---
 
@@ -91,6 +121,7 @@ Ogni sistema informativo, senza eccezioni, ruota attorno a queste operazioni.
 Una **query** è una richiesta fatta al database.
 
 Caratteristiche:
+
 - è deterministica
 - produce un risultato
 - può leggere o modificare dati
@@ -101,9 +132,7 @@ La query più comune è `SELECT`.
 
 ## Esempi
 
-> Useremo **SQLite** come ambiente iniziale, ma **scrivendo SQL standard**.
-
----
+> Partiamo con SQLite (semplice e locale), ma scriviamo SQL standard quando possibile.
 
 ### Creazione delle tabelle (CREATE)
 
@@ -239,57 +268,3 @@ Prova a:
 Osserva e spiega **perché il database rifiuta l’operazione**.
 
 ---
-
-## Soluzione community
-
-### Principio guida
-
-Le soluzioni migliori:
-
-* rispettano i vincoli
-* sono leggibili
-* spiegano *perché* funzionano
-
----
-
-### Esempio commentato
-
-```sql
-INSERT INTO users (username, email)
-VALUES ('bob', 'bob@example.com');
-
-SELECT p.title
-FROM posts p
-WHERE p.user_id = 1;
-```
-
-Motivazione:
-
-* nessuna duplicazione
-* query semplice
-* pieno rispetto del modello
-
----
-
-## Concetti introdotti in questa lezione
-
-* SQL come linguaggio dichiarativo
-* schema del database
-* tipi di dato
-* CRUD
-* query
-* integrità referenziale
-
-Questi concetti verranno **usati continuamente** da ora in avanti.
-
----
-
-## Conclusioni
-
-Ora siamo in grado di:
-
-* creare una struttura reale partendo da un modello
-* inserire e interrogare dati
-* capire perché il database blocca operazioni scorrette
-
-👉 Nella prossima lezione inizieremo a **combinare dati da più tabelle** (`JOIN`).

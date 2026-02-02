@@ -55,6 +55,8 @@ nav:
               - Fondamenti:
                   - Indice: corsi/corso-database-sql/moduli/01-fondamenti/index.md
                   - Lezione 01: corsi/corso-database-sql/moduli/01-fondamenti/lezione-01.md
+                  - Lezione 02: corsi/corso-database-sql/moduli/01-fondamenti/lezione-02.md
+                  - Lezione 03: corsi/corso-database-sql/moduli/01-fondamenti/lezione-03.md
                   - Glossario: corsi/corso-database-sql/moduli/01-fondamenti/glossary.md
           - Community:
               - Linee guida: corsi/corso-database-sql/community/linee-guida.md

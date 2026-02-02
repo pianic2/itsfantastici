@@ -22,6 +22,9 @@ Attributi principali:
 - identificatore univoco
 - username
 - email
+- born_year
+- born_month
+- born_day
 
 ---
 

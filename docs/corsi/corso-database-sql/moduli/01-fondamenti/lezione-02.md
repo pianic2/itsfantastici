@@ -6,9 +6,8 @@ title: Lezione 02 — Primo contatto con SQL
 
 ## Problema
 
-Abbiamo un modello concettuale. Ora dobbiamo trasformarlo in una struttura reale:
+Abbiamo un modello concettuale ed abbiamo creato le tabelle utenti, posts e commenti. Ora dobbiamo trasformarlo in una struttura reale:
 
-- creare lo schema (tabelle, colonne, vincoli)
 - inserire dati di esempio
 - interrogare e modificare quei dati in modo controllato
 
@@ -67,6 +66,11 @@ I tipi indicano:
 - come vengono memorizzati
 - quali operazioni sono possibili
 
+I tipi di dato in DB-agnostic sono:
+- INTEGER
+- TEXT
+
+
 Di seguito una tabella riepilogativa dei principali tipi di dato, con la corrispondenza tra SQLite, MySQL e PostgreSQL e un’indicazione della memoria occupata per campo.
 
 | Tipo di dato | SQLite | MySQL | PostgreSQL | Memoria (indicativa) |
@@ -88,16 +92,6 @@ Di seguito una tabella riepilogativa dei principali tipi di dato, con la corrisp
 | BLOB/BINARY | `BLOB` | `BLOB`/`BINARY` | `BYTEA` | variabile |
 | JSON | `TEXT` | `JSON` | `JSON/JSONB` | variabile |
 | UUID | `TEXT` | ❌ | `UUID` | 16 byte |
-
-#### Foreign key (chiave esterna)
-
-Una **foreign key** è un vincolo che collega una tabella a un’altra:
-
-- indica quale colonna fa riferimento a una **primary key**
-- garantisce l’**integrità referenziale** (niente riferimenti a record inesistenti)
-- rende esplicite le relazioni tra entità (es. 1:N)
-
-In pratica: puoi inserire un valore solo se esiste già nella tabella collegata.
 
 ---
 
@@ -134,39 +128,11 @@ La query più comune è `SELECT`.
 
 > Partiamo con SQLite (semplice e locale), ma scriviamo SQL standard quando possibile.
 
-### Creazione delle tabelle (CREATE)
-
-```sql
-CREATE TABLE users (
-  id INTEGER PRIMARY KEY,
-  username TEXT NOT NULL UNIQUE,
-  email TEXT NOT NULL UNIQUE
-);
-```
-
-Qui:
-
-* `id` identifica univocamente l’utente
-* `UNIQUE` e `NOT NULL` sono **vincoli**
-* il database impedisce stati invalidi
-
----
-
-```sql
-CREATE TABLE posts (
-  id INTEGER PRIMARY KEY,
-  user_id INTEGER NOT NULL,
-  title TEXT NOT NULL,
-  content TEXT,
-  FOREIGN KEY (user_id) REFERENCES users(id)
-);
-```
-
-La **foreign key** rende esplicita la relazione 1:N.
-
----
-
 ### Inserimento dei dati (INSERT)
+Il comando di inserimento dei dati è composto dalle seguenti parti:
+
+- `INSERT INTO <table> (<fields>)` specifica la tabella per inserire i dati
+- `VALUES (<values>)` valori da inserire
 
 ```sql
 INSERT INTO users (username, email)
@@ -178,35 +144,73 @@ Il database:
 * assegna automaticamente la primary key
 * verifica i vincoli
 
----
 
 ```sql
 INSERT INTO posts (user_id, title, content)
 VALUES (1, 'Primo post', 'Contenuto di esempio');
 ```
-
 Se `user_id = 1` non esiste → **errore**.
 Questa è integrità referenziale.
+
+Per inserire più righe in un’unica istruzione, puoi usare una lista di valori separati da virgole. È più efficiente e mantiene i dati coerenti.
+
+```sql
+INSERT INTO users (username, email, born_year, born_month, born_day)
+VALUES
+  ('bob', 'bob@example.com', 1999, 10, 1),
+  ('rob', 'rob@example.com', 1999, 1, 10),
+  ('carlo', 'carlo@example.com', 2000, 7, 22),
+  ('dina', 'dina@example.com', 1997, 11, 5),
+  ('elena', 'elena@example.com', 2001, 1, 9),
+  ('franco', 'franco@example.com', 1995, 9, 30),
+  ('giada', 'giada@example.com', 1996, 12, 14),
+  ('luca', 'luca@example.com', 1999, 4, 2);
+```
 
 ---
 
 ### Lettura dei dati (SELECT)
+Il comando di lettura dei dati è composto dalle seguenti parti:
+
+- `SELECT <fields>` indica quali fields selezionare
+- `FROM <table>` indica su quale tabella cercare i dati
+- `WHERE <filter conditions>` impone filtri alla selezione usando la logica booleana
+- `ORDERED BY <field> <order(DESC | ASC)>` ordina i dati per i valori di una specifica colonna
+- `LIMIT <int value>` se specificato indica quante entries mostrare per ogni pagina
+- `OFFSET <int value> <order(DESC | ASC)>` indica da quale entry mostrare in modo esclusivo (mostra dal `n+1` esimo elemento). 
+
+> I selettori `LIMIT` e `OFFSET` saranno in seguito usati per la paginazione.
+
+Iniziamo creando una query che seleziona e mostra tutte le entries all'interno della tabella users.
 
 ```sql
 SELECT * FROM users;
 ```
 
+Proviamo ora a mostrare titolo e contenuto di tutti i posts che sono relazionati all'utente con valore di `user_id = 1`, ordinati per titolo in ordine alfabetico.
+
 ```sql
-SELECT title, content
-FROM posts
-WHERE user_id = 1;
+SELECT 
+  title,
+  content AS "description"
+  FROM posts
+WHERE user_id = 1
+ORDERED BY title ASC;
 ```
+In SQL esiste l'alias `AS` per visualizzare una colonna con un nome più leggibile nel risultato della query.
 
 La query non modifica i dati: **li interroga**.
 
 ---
 
 ### Modifica dei dati (UPDATE)
+Il comando di modifica dei dati è composto dalle seguenti parti:
+
+- `UPDATE <table>` indica in quale tabella eseguire la modifica
+- `SET <assegnations>` uno o più campi e rispettivi valori da modificare
+- `WHERE <filter conditions>` una o più condizioni booleane che indicano a quali entries applicare la modifica.
+Senza `WHERE` → modificheresti **tutte le righe**.
+Questo è uno degli errori più comuni.
 
 ```sql
 UPDATE users
@@ -214,8 +218,7 @@ SET email = 'alice@newmail.com'
 WHERE id = 1;
 ```
 
-Senza `WHERE` → modificheresti **tutte le righe**.
-Questo è uno degli errori più comuni.
+
 
 ---
 

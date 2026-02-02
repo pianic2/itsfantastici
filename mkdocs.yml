@@ -8,7 +8,7 @@ site_dir: site
 
 repo_name: itsfantastici/docs
 repo_url: https://github.com/itsfantastici/docs
-edit_uri: https://github.com/itsfantastici/
+edit_uri: ./
 
 theme:
   name: readthedocs
@@ -43,24 +43,48 @@ theme:
 
 nav:
   - Home: index.md
+
   - Corsi:
       - Indice corsi: corsi/index.md
+
       - Database SQL:
-          - Home: corsi/corso-database-sql/index.md
+          - Home corso: corsi/corso-database-sql/index.md
+
           - Progetto:
-              - Problema: corsi/corso-database-sql/progetto/problema.md
+              - Introduzione: corsi/corso-database-sql/progetto/index.md
+              - Problema iniziale: corsi/corso-database-sql/progetto/problema.md
               - Requisiti: corsi/corso-database-sql/progetto/requisiti.md
               - Modello dati: corsi/corso-database-sql/progetto/modello-dati.md
+
           - Moduli:
-              - Fondamenti:
+              - Modulo 01 — Fondamenti:
                   - Indice: corsi/corso-database-sql/moduli/01-fondamenti/index.md
-                  - Lezione 01: corsi/corso-database-sql/moduli/01-fondamenti/lezione-01.md
-                  - Lezione 02: corsi/corso-database-sql/moduli/01-fondamenti/lezione-02.md
-                  - Lezione 03: corsi/corso-database-sql/moduli/01-fondamenti/lezione-03.md
+                  - Lezione 01 — Introduzione ai database: corsi/corso-database-sql/moduli/01-fondamenti/lezione-01.md
+                  - Lezione 02 — Primo contatto con SQL: corsi/corso-database-sql/moduli/01-fondamenti/lezione-02.md
+                  - Lezione 03 — Relazioni e JOIN: corsi/corso-database-sql/moduli/01-fondamenti/lezione-03.md
                   - Glossario: corsi/corso-database-sql/moduli/01-fondamenti/glossary.md
+
+              - Modulo 02 — Query SQL:
+                  - Indice: corsi/corso-database-sql/moduli/02-query-sql/index.md
+                  - Lezione 04 — Aggregazioni e GROUP BY: corsi/corso-database-sql/moduli/02-query-sql/lezione-04.md
+                  - Lezione 05 — VIEW e query riutilizzabili: corsi/corso-database-sql/moduli/02-query-sql/lezione-05.md
+                  - Lezione 06 — UPSERT e gestione conflitti: corsi/corso-database-sql/moduli/02-query-sql/lezione-06.md
+
+              - Modulo 03 — Schema e performance:
+                  - Indice: corsi/corso-database-sql/moduli/03-schema-performance/index.md
+                  - Lezione 07 — Indici ed EXPLAIN: corsi/corso-database-sql/moduli/03-schema-performance/lezione-07.md
+                  - Lezione 08 — Vincoli, soft delete e migrazioni: corsi/corso-database-sql/moduli/03-schema-performance/lezione-08.md
+
+              - Modulo 04 — Migrazione e produzione:
+                  - Indice: corsi/corso-database-sql/moduli/04-migrazione-produzione/index.md
+                  - Lezione 09 — Transazioni e consistenza: corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-09.md
+                  - Lezione 10 — Da SQLite a MySQL: corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-10.md
+
           - Community:
+              - Introduzione: corsi/corso-database-sql/community/index.md
               - Linee guida: corsi/corso-database-sql/community/linee-guida.md
-              - Workflow: corsi/corso-database-sql/community/workflow.md
+              - Workflow di contribuzione: corsi/corso-database-sql/community/workflow.md
+
           - Changelog: corsi/corso-database-sql/changelog.md
 
 markdown_extensions:

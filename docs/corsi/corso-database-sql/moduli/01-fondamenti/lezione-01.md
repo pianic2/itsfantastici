@@ -184,8 +184,16 @@ CREATE TABLE users (
   born_day INTEGER
 );
 ```
+Qui:
+
+* `id` identifica univocamente l’utente
+* `UNIQUE` e `NOT NULL` sono **vincoli**
+* il database impedisce stati invalidi
+
 
 #### Tabella `posts`
+Creiamo la tabella posts.
+
 ```sql
 CREATE TABLE posts (
   id INTEGER PRIMARY KEY,
@@ -196,7 +204,11 @@ CREATE TABLE posts (
 );
 ```
 
+La **foreign key** rende esplicita la relazione 1:N.
+
 #### Tabella `Commments`
+Creiamo la tabella commenti.
+
 ```sql
 CREATE TABLE comments (
   id INTEGER PRIMARY KEY,

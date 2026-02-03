@@ -215,19 +215,16 @@ capire <em>cosa</em> stiamo costruendo prima di imparare <em>come</em> interroga
 <ul>
 <li><strong>Problema</strong> — Passare dal modello concettuale a uno schema reale interrogabile.</li>
 <li><strong>Teoria</strong> — Cos’è SQL e perché è dichiarativo; schema del database; tipi di dato (DB-agnostic); operazioni CRUD.</li>
-<li><strong>Esempi pratici</strong> — <code>CREATE</code> per tabelle del progetto; <code>INSERT</code> di dati di esempio; <code>SELECT</code> mirate; <code>UPDATE</code> e <code>DELETE</code> con <code>WHERE</code>.</li>
-<li><strong>Esercizi</strong> — Definire lo schema completo del progetto; scrivere query CRUD con vincoli corretti; verificare errori di integrità referenziale.</li>
-<li><strong>Soluzione community e best practice</strong>.</li>
+<li><strong>Esempi pratici</strong> — Operazioni CRUD.</li>
 </ul>
 <p>👉 <a href="lezione-02/">Vai alla lezione</a></p>
 <hr />
 <h3 id="lezione-03-relazioni-e-join">Lezione 03 — Relazioni e JOIN<a class="headerlink" href="#lezione-03-relazioni-e-join" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Problema</strong> — Perché servono le JOIN.</li>
-<li><strong>Teoria</strong> — <code>INNER JOIN</code> e <code>LEFT JOIN</code>; alias e naming.</li>
-<li><strong>Esempi pratici</strong> — Post con autore; commenti con autore e post; post anche senza commenti (<code>LEFT JOIN</code> + <code>COUNT</code>).</li>
-<li><strong>Esercizi</strong> — Post + autore; commenti dettagliati; post senza commenti.</li>
-<li><strong>Soluzione community e best practice</strong>.</li>
+<li><strong>Problema</strong> — Leggere dati distribuiti su più tabelle (post + autore, commenti + post, ecc.).</li>
+<li><strong>Teoria</strong> — JOIN tramite chiavi (FK → PK); differenza tra <code>INNER JOIN</code> e <code>LEFT JOIN</code>; alias e naming.</li>
+<li><strong>Esempi pratici</strong> — Post con autore (<code>JOIN users</code>); commenti con autore e post; post anche senza commenti (<code>LEFT JOIN</code> + <code>COUNT</code>).</li>
+<li><strong>Esercizi</strong> — Progettare un database con <strong>studenti</strong>, <strong>corsi</strong> e <strong>iscrizioni</strong> (relazione molti-a-molti); creare tabelle, inserire dati, verificare con <code>SELECT</code>, e fare una query con JOIN per mostrare studente + corso.</li>
 </ul>
 <p>👉 <a href="lezione-03/">Vai alla lezione</a></p>
 <hr />

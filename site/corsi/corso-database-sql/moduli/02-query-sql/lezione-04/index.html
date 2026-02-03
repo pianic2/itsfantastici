@@ -173,54 +173,66 @@
 <li>quali utenti sono più attivi?</li>
 <li>quali post hanno almeno N commenti?</li>
 </ul>
-<p>Per farlo servono:
-- funzioni di aggregazione (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, …)
-- raggruppamento (<code>GROUP BY</code>)
-- filtro post-aggregazione (<code>HAVING</code>)</p>
+<p>Per rispondere a queste domande usiamo tre “mattoni” SQL:</p>
+<ul>
+<li><strong>Funzioni di aggregazione</strong> (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, …): calcolano un valore riassuntivo su più righe (es. numero di commenti, media voti).</li>
+<li><strong><code>GROUP BY</code></strong>: divide le righe in gruppi (es. per <code>post_id</code> o <code>user_id</code>) così l’aggregazione viene calcolata <strong>per ogni gruppo</strong>, non sull’intera tabella.</li>
+<li><strong><code>HAVING</code></strong>: filtra <strong>i gruppi dopo</strong> l’aggregazione (es. tieni solo i post con <code>COUNT(comments.id) &gt;= N</code>).</li>
+</ul>
 <hr />
 <h2 id="teoria">Teoria<a class="headerlink" href="#teoria" title="Permanent link">&para;</a></h2>
 <h3 id="funzioni-di-aggregazione">Funzioni di aggregazione<a class="headerlink" href="#funzioni-di-aggregazione" title="Permanent link">&para;</a></h3>
 <p>Le funzioni di aggregazione “riassumono” un insieme di righe in un singolo valore (di solito per calcolare conteggi, somme o medie).</p>
-<p>Aggregazioni più comuni:
-- <code>COUNT()</code> → conteggio
-- <code>MIN()</code> → valore minimo
-- <code>MAX()</code> → valore massimo
-- <code>SUM()</code> → somma
-- <code>AVG()</code> → media</p>
-<p><strong>Differenza importante tra <code>COUNT(*)</code> e <code>COUNT(colonna)</code></strong>
-- <code>COUNT(*)</code> conta <strong>tutte le righe</strong> prodotte dalla <code>FROM</code> (anche se alcune colonne sono <code>NULL</code>).
-- <code>COUNT(colonna)</code> conta solo le righe in cui <strong>quella colonna non è <code>NULL</code></strong>.</p>
-<p>Questo è cruciale con le <code>LEFT JOIN</code>:
-- se un post non ha commenti, le colonne di <code>comments</code> risultano <code>NULL</code>
-- quindi <code>COUNT(*)</code> conterebbe comunque 1 riga (quella del post “senza match”)
-- mentre <code>COUNT(c.id)</code> resterebbe 0 (perché <code>c.id</code> è <code>NULL</code>)</p>
+<p>Aggregazioni più comuni:</p>
+<ul>
+<li><code>COUNT()</code> → conteggio</li>
+<li><code>MIN()</code> → valore minimo</li>
+<li><code>MAX()</code> → valore massimo</li>
+<li><code>SUM()</code> → somma</li>
+<li><code>AVG()</code> → media</li>
+</ul>
+<p><strong>Differenza importante tra <code>COUNT(*)</code> e <code>COUNT(colonna)</code></strong></p>
+<ul>
+<li><code>COUNT(*)</code> conta <strong>tutte le righe</strong> prodotte dalla <code>FROM</code> (anche se alcune colonne sono <code>NULL</code>).</li>
+<li><code>COUNT(colonna)</code> conta solo le righe in cui <strong>quella colonna non è <code>NULL</code></strong>.</li>
+</ul>
+<p>Questo è cruciale con le <code>LEFT JOIN</code>:</p>
+<ul>
+<li>se un post non ha commenti, le colonne di <code>comments</code> risultano <code>NULL</code></li>
+<li>quindi <code>COUNT(*)</code> conterebbe comunque 1 riga (quella del post “senza match”)</li>
+<li>mentre <code>COUNT(c.id)</code> resterebbe 0 (perché <code>c.id</code> è <code>NULL</code>)</li>
+</ul>
 <blockquote>
 <p>Regola pratica: con <code>LEFT JOIN</code>, per contare “quanti elementi collegati esistono davvero”, usa spesso <code>COUNT(tabella.id)</code>.</p>
 </blockquote>
 <hr />
 <h3 id="group-by">GROUP BY<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h3>
 <p><code>GROUP BY</code> serve a <strong>raggruppare</strong> le righe in “blocchi” che condividono gli stessi valori, così da calcolare un’aggregazione <strong>per gruppo</strong>.</p>
-<p>Esempio mentale:
-- senza <code>GROUP BY</code> → ottieni <strong>un solo risultato</strong> aggregato sull’intera tabella
-- con <code>GROUP BY post_id</code> → ottieni <strong>un risultato per ogni <code>post_id</code></strong></p>
+<p>Esempio mentale:</p>
+<ul>
+<li>senza <code>GROUP BY</code> → ottieni <strong>un solo risultato</strong> aggregato sull’intera tabella</li>
+<li>con <code>GROUP BY post_id</code> → ottieni <strong>un risultato per ogni <code>post_id</code></strong></li>
+</ul>
 <p><strong>Regola fondamentale</strong>
-In una query con <code>GROUP BY</code>, ogni colonna nel <code>SELECT</code> deve essere:
-- dentro una funzione di aggregazione (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, …) <strong>oppure</strong>
-- elencata nel <code>GROUP BY</code></p>
-<p>Esempio valido:
+In una query con <code>GROUP BY</code>, ogni colonna nel <code>SELECT</code> deve essere:</p>
+<ul>
+<li>dentro una funzione di aggregazione (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, …) <strong>oppure</strong></li>
+<li>elencata nel <code>GROUP BY</code></li>
+</ul>
+<p>Esempio valido:</p>
 <pre class="highlight"><code class="language-sql">SELECT c.post_id, COUNT(*) AS comment_count
 FROM comments c
-GROUP BY c.post_id;</code></pre></p>
-<p>Esempio NON valido (perché <code>title</code> non è aggregata e non è nel <code>GROUP BY</code>):
+GROUP BY c.post_id;</code></pre>
+<p>Esempio NON valido (perché <code>title</code> non è aggregata e non è nel <code>GROUP BY</code>):</p>
 <pre class="highlight"><code class="language-sql">SELECT p.id, p.title, COUNT(c.id)
 FROM posts p
 LEFT JOIN comments c ON c.post_id = p.id
-GROUP BY p.id;</code></pre></p>
-<p>Corretto:
+GROUP BY p.id;</code></pre>
+<p>Corretto:</p>
 <pre class="highlight"><code class="language-sql">SELECT p.id, p.title, COUNT(c.id)
 FROM posts p
 LEFT JOIN comments c ON c.post_id = p.id
-GROUP BY p.id, p.title;</code></pre></p>
+GROUP BY p.id, p.title;</code></pre>
 <p>Definisce “come raggruppare” prima dell’aggregazione.
 Regola: ogni colonna selezionata deve essere:
 - in una funzione di aggregazione <strong>oppure</strong>
@@ -273,20 +285,6 @@ LEFT JOIN posts p ON p.user_id = u.id
 GROUP BY u.id, u.username
 ORDER BY post_count DESC, u.id ASC;</code></pre>
 <hr />
-<h2 id="esercizi">Esercizi<a class="headerlink" href="#esercizi" title="Permanent link">&para;</a></h2>
-<h3 id="esercizio-1-commenti-per-post">Esercizio 1 — Commenti per post<a class="headerlink" href="#esercizio-1-commenti-per-post" title="Permanent link">&para;</a></h3>
-<p>Ritorna per ogni post: <code>post_id</code>, <code>comment_count</code>.</p>
-<h3 id="esercizio-2-top-post">Esercizio 2 — Top post<a class="headerlink" href="#esercizio-2-top-post" title="Permanent link">&para;</a></h3>
-<p>Mostra i 5 post con più commenti (includendo quelli con zero commenti).</p>
-<h3 id="esercizio-3-utenti-attivi">Esercizio 3 — Utenti attivi<a class="headerlink" href="#esercizio-3-utenti-attivi" title="Permanent link">&para;</a></h3>
-<p>Mostra utenti con almeno 2 post.</p>
-<hr />
-<h2 id="soluzione-community">Soluzione community<a class="headerlink" href="#soluzione-community" title="Permanent link">&para;</a></h2>
-<p>Checklist di qualità:
-- <code>GROUP BY</code> completo (tutte le colonne non aggregate)
-- <code>HAVING</code> solo per condizioni su aggregati
-- <code>LEFT JOIN</code> per includere gli “zero”
-- ordinamenti espliciti (niente <code>ORDER BY 2</code>)</p>
               
             </div>
           </div><footer>

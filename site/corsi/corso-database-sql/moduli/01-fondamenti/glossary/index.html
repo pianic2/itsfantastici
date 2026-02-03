@@ -204,6 +204,10 @@
 - vincoli
 - relazioni</p>
 <hr />
+<h2 id="tipo-di-dato">Tipo di dato<a class="headerlink" href="#tipo-di-dato" title="Permanent link">&para;</a></h2>
+<p>Categoria che definisce quali valori sono ammessi in una colonna e come vengono memorizzati.</p>
+<p>Esempi comuni: <code>INTEGER</code>, <code>TEXT</code>, <code>REAL</code>.</p>
+<hr />
 <h2 id="entita">Entità<a class="headerlink" href="#entita" title="Permanent link">&para;</a></h2>
 <p>Concetto astratto che rappresenta qualcosa di rilevante nel dominio del problema.</p>
 <p>Un’entità diventa una tabella quando viene implementata in un database relazionale.</p>
@@ -211,6 +215,17 @@
 <h2 id="relazione">Relazione<a class="headerlink" href="#relazione" title="Permanent link">&para;</a></h2>
 <p>Collegamento logico tra due entità.</p>
 <p>Nel database relazionale è implementata tramite foreign key o tabelle di collegamento.</p>
+<hr />
+<h2 id="cardinalita">Cardinalità<a class="headerlink" href="#cardinalita" title="Permanent link">&para;</a></h2>
+<p>Descrive quante istanze di un’entità possono essere associate a un’altra.</p>
+<p>Forme principali:
+- 1:1 (uno a uno)
+- 1:N (uno a molti)
+- N:M (molti a molti)</p>
+<hr />
+<h2 id="tabella-ponte-junction-table">Tabella ponte (junction table)<a class="headerlink" href="#tabella-ponte-junction-table" title="Permanent link">&para;</a></h2>
+<p>Tabella usata per rappresentare una relazione N:M tra due entità.</p>
+<p>Contiene tipicamente due foreign key, una per ciascuna tabella collegata.</p>
 <hr />
 <h2 id="primary-key-pk">Primary Key (PK)<a class="headerlink" href="#primary-key-pk" title="Permanent link">&para;</a></h2>
 <p>Campo o insieme di campi che identifica univocamente un record in una tabella.</p>
@@ -224,6 +239,9 @@
 <p>Serve a:
 - creare relazioni
 - garantire integrità referenziale</p>
+<hr />
+<h2 id="integrita-referenziale">Integrità referenziale<a class="headerlink" href="#integrita-referenziale" title="Permanent link">&para;</a></h2>
+<p>Proprietà che assicura che ogni foreign key punti a un record esistente nella tabella referenziata.</p>
 <hr />
 <h2 id="vincolo-constraint">Vincolo (Constraint)<a class="headerlink" href="#vincolo-constraint" title="Permanent link">&para;</a></h2>
 <p>Regola applicata dal database per impedire stati invalidi dei dati.</p>
@@ -248,12 +266,85 @@
 <p>Linguaggio standard per interagire con database relazionali.</p>
 <p>SQL è dichiarativo: descrive <em>cosa</em> ottenere, non <em>come</em> ottenerlo.</p>
 <hr />
+<h2 id="ddl-data-definition-language">DDL (Data Definition Language)<a class="headerlink" href="#ddl-data-definition-language" title="Permanent link">&para;</a></h2>
+<p>Famiglia di comandi SQL che definisce o modifica la struttura del database.</p>
+<p>Esempi: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>.</p>
+<hr />
+<h2 id="dml-data-manipulation-language">DML (Data Manipulation Language)<a class="headerlink" href="#dml-data-manipulation-language" title="Permanent link">&para;</a></h2>
+<p>Famiglia di comandi SQL che inserisce, aggiorna o elimina dati.</p>
+<p>Esempi: <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>.</p>
+<hr />
+<h2 id="dql-data-query-language">DQL (Data Query Language)<a class="headerlink" href="#dql-data-query-language" title="Permanent link">&para;</a></h2>
+<p>Famiglia di comandi SQL che legge i dati.</p>
+<p>Esempio: <code>SELECT</code>.</p>
+<hr />
+<h2 id="tcl-transaction-control-language">TCL (Transaction Control Language)<a class="headerlink" href="#tcl-transaction-control-language" title="Permanent link">&para;</a></h2>
+<p>Famiglia di comandi SQL che gestisce le transazioni.</p>
+<p>Esempi: <code>BEGIN</code>, <code>COMMIT</code>, <code>ROLLBACK</code>, <code>SAVEPOINT</code>.</p>
+<hr />
+<h2 id="dcl-data-control-language">DCL (Data Control Language)<a class="headerlink" href="#dcl-data-control-language" title="Permanent link">&para;</a></h2>
+<p>Famiglia di comandi SQL che gestisce permessi e ruoli.</p>
+<p>Esempi: <code>GRANT</code>, <code>REVOKE</code>.</p>
+<hr />
 <h2 id="query">Query<a class="headerlink" href="#query" title="Permanent link">&para;</a></h2>
 <p>Richiesta inviata al database per leggere o modificare dati.</p>
 <p>Una query può essere:
 - di lettura (<code>SELECT</code>)
 - di modifica (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>)
 - di definizione (<code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>)</p>
+<hr />
+<h2 id="select">SELECT<a class="headerlink" href="#select" title="Permanent link">&para;</a></h2>
+<p>Comando SQL che legge dati da una o più tabelle.</p>
+<p>È spesso combinato con clausole come <code>WHERE</code>, <code>ORDER BY</code>, <code>LIMIT</code>.</p>
+<hr />
+<h2 id="insert">INSERT<a class="headerlink" href="#insert" title="Permanent link">&para;</a></h2>
+<p>Comando SQL che inserisce nuove righe in una tabella.</p>
+<hr />
+<h2 id="update">UPDATE<a class="headerlink" href="#update" title="Permanent link">&para;</a></h2>
+<p>Comando SQL che modifica righe esistenti in una tabella.</p>
+<hr />
+<h2 id="delete">DELETE<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h2>
+<p>Comando SQL che rimuove righe da una tabella.</p>
+<hr />
+<h2 id="where">WHERE<a class="headerlink" href="#where" title="Permanent link">&para;</a></h2>
+<p>Clausola che filtra le righe in una query in base a condizioni logiche.</p>
+<hr />
+<h2 id="order-by">ORDER BY<a class="headerlink" href="#order-by" title="Permanent link">&para;</a></h2>
+<p>Clausola che ordina i risultati di una query per una o più colonne.</p>
+<hr />
+<h2 id="limit">LIMIT<a class="headerlink" href="#limit" title="Permanent link">&para;</a></h2>
+<p>Clausola che limita il numero massimo di righe restituite.</p>
+<hr />
+<h2 id="offset">OFFSET<a class="headerlink" href="#offset" title="Permanent link">&para;</a></h2>
+<p>Clausola che salta un certo numero di righe prima di restituire i risultati.</p>
+<hr />
+<h2 id="join">JOIN<a class="headerlink" href="#join" title="Permanent link">&para;</a></h2>
+<p>Operazione che combina righe di due o più tabelle usando una condizione di collegamento.</p>
+<hr />
+<h2 id="inner-join">INNER JOIN<a class="headerlink" href="#inner-join" title="Permanent link">&para;</a></h2>
+<p>Tipo di <code>JOIN</code> che restituisce solo le righe con corrispondenza in entrambe le tabelle.</p>
+<hr />
+<h2 id="left-join">LEFT JOIN<a class="headerlink" href="#left-join" title="Permanent link">&para;</a></h2>
+<p>Tipo di <code>JOIN</code> che restituisce tutte le righe della tabella di sinistra, anche senza corrispondenza a destra.</p>
+<hr />
+<h2 id="alias">Alias<a class="headerlink" href="#alias" title="Permanent link">&para;</a></h2>
+<p>Nome temporaneo dato a una tabella o a una colonna per rendere una query più leggibile.</p>
+<hr />
+<h2 id="aggregazione">Aggregazione<a class="headerlink" href="#aggregazione" title="Permanent link">&para;</a></h2>
+<p>Operazione che sintetizza più righe in un unico risultato (es. somme, conteggi, medie).</p>
+<hr />
+<h2 id="group-by">GROUP BY<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h2>
+<p>Clausola che raggruppa le righe con valori uguali per applicare funzioni di aggregazione.</p>
+<hr />
+<h2 id="count">COUNT<a class="headerlink" href="#count" title="Permanent link">&para;</a></h2>
+<p>Funzione di aggregazione che conta il numero di righe (o valori non <code>NULL</code>).</p>
+<hr />
+<h2 id="null">NULL<a class="headerlink" href="#null" title="Permanent link">&para;</a></h2>
+<p>Valore speciale che indica “assenza di valore” in una colonna.</p>
+<p>Si verifica con <code>IS NULL</code> o <code>IS NOT NULL</code>.</p>
+<hr />
+<h2 id="autoincremento">Autoincremento<a class="headerlink" href="#autoincremento" title="Permanent link">&para;</a></h2>
+<p>Meccanismo che assegna automaticamente un valore numerico crescente a una primary key.</p>
 <hr />
 <h2 id="crud">CRUD<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h2>
 <p>Acronimo che identifica le quattro operazioni fondamentali sui dati:</p>

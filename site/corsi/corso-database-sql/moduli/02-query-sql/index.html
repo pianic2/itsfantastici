@@ -166,14 +166,72 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="modulo-02-query-sql">Modulo 02 — Query SQL<a class="headerlink" href="#modulo-02-query-sql" title="Permanent link">&para;</a></h1>
-<h2 id="lezioni">Lezioni<a class="headerlink" href="#lezioni" title="Permanent link">&para;</a></h2>
+<p>Questo modulo introduce <strong>le query SQL</strong> come strumento per leggere e analizzare i dati del progetto.</p>
+<p>Non si tratta solo di “scrivere SELECT”, ma di <strong>ragionare sui dati</strong>: aggregazioni, raggruppamenti e filtri sul risultato.</p>
+<p>Il focus è trasformare dati grezzi in informazioni utili.</p>
+<hr />
+<h2 id="perche-questo-modulo-e-fondamentale">Perché questo modulo è fondamentale<a class="headerlink" href="#perche-questo-modulo-e-fondamentale" title="Permanent link">&para;</a></h2>
+<p>Senza saper fare query efficaci:</p>
 <ul>
-<li><a href="lezione-04/">Lezione 04 — Aggregazioni, GROUP BY e HAVING</a></li>
-<li><a href="lezione-05/">Lezione 05 — VIEW e query riutilizzabili</a></li>
-<li><a href="lezione-06/">Lezione 06 — UPSERT e gestione conflitti</a></li>
+<li>i dati restano “inermi”</li>
+<li>non puoi misurare attività o risultati</li>
+<li>non riesci a verificare le ipotesi del progetto</li>
 </ul>
-<h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h2>
-<p>Query “da produzione”: join + aggregazioni + riuso + gestione conflitti.</p>
+<p>Questo modulo costruisce le basi per:</p>
+<ul>
+<li>report e statistiche</li>
+<li>analisi del comportamento utenti</li>
+<li>verifiche di consistenza</li>
+</ul>
+<hr />
+<h2 id="obiettivi-di-apprendimento">Obiettivi di apprendimento<a class="headerlink" href="#obiettivi-di-apprendimento" title="Permanent link">&para;</a></h2>
+<p>Al termine di questo modulo lo studente saprà:</p>
+<ul>
+<li>usare funzioni di aggregazione (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code>)</li>
+<li>raggruppare dati con <code>GROUP BY</code></li>
+<li>filtrare gruppi con <code>HAVING</code></li>
+<li>ordinare risultati in modo corretto e leggibile</li>
+</ul>
+<hr />
+<h2 id="collegamento-con-il-progetto">Collegamento con il progetto<a class="headerlink" href="#collegamento-con-il-progetto" title="Permanent link">&para;</a></h2>
+<p>In questo modulo:</p>
+<ul>
+<li>iniziamo a <strong>misurare</strong> il progetto (conteggi, statistiche, classifiche)</li>
+<li>trasformiamo le tabelle in <strong>informazioni utili</strong></li>
+<li>introduciamo query leggibili e riutilizzabili</li>
+</ul>
+<hr />
+<h2 id="contenuti-del-modulo">Contenuti del modulo<a class="headerlink" href="#contenuti-del-modulo" title="Permanent link">&para;</a></h2>
+<h3 id="lezione-04-aggregazioni-group-by-e-having">Lezione 04 — Aggregazioni, GROUP BY e HAVING<a class="headerlink" href="#lezione-04-aggregazioni-group-by-e-having" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Problema</strong> — Rispondere a domande reali (conteggi, top utenti, post più attivi).</li>
+<li><strong>Teoria</strong> — Funzioni di aggregazione; regole di <code>GROUP BY</code>; differenza tra <code>WHERE</code> e <code>HAVING</code>.</li>
+<li><strong>Esempi pratici</strong> — Commenti per post; post con almeno N commenti; utenti più attivi.</li>
+</ul>
+<p>👉 <a href="lezione-04/">Vai alla lezione</a></p>
+<hr />
+<h2 id="output-del-modulo">Output del modulo<a class="headerlink" href="#output-del-modulo" title="Permanent link">&para;</a></h2>
+<p>Alla fine del modulo esistono:</p>
+<ul>
+<li>query di aggregazione corrette</li>
+<li>raggruppamenti coerenti con il modello</li>
+<li>filtri post-aggregazione ben definiti</li>
+<li>risultati ordinati e pronti per report</li>
+</ul>
+<hr />
+<h2 id="errori-comuni-da-evitare">Errori comuni da evitare<a class="headerlink" href="#errori-comuni-da-evitare" title="Permanent link">&para;</a></h2>
+<ul>
+<li>usare <code>COUNT(*)</code> in presenza di <code>LEFT JOIN</code> quando serve <code>COUNT(colonna)</code></li>
+<li>dimenticare colonne nel <code>GROUP BY</code></li>
+<li>usare <code>WHERE</code> su aggregati invece di <code>HAVING</code></li>
+<li>ordinare per posizione (es. <code>ORDER BY 2</code>) invece che per alias</li>
+</ul>
+<hr />
+<h2 id="navigazione">Navigazione<a class="headerlink" href="#navigazione" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="lezione-04/">Lezione 04</a></li>
+<li><a href="../">Moduli</a></li>
+</ul>
               
             </div>
           </div><footer>

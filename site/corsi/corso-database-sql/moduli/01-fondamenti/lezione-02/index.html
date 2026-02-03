@@ -230,12 +230,12 @@ ORDER BY username;</code></pre>
   Comandi tipici: <code>GRANT</code>, <code>REVOKE</code>  </p>
 </li>
 </ul>
-<blockquote>
 <p>Regola pratica: 
 - <strong>DDL = struttura</strong>,
 - <strong>DQL/DML = dati</strong>,
 - <strong>TCL = coerenza delle operazioni</strong>,
 - <strong>DCL = accessi</strong>.  </p>
+<blockquote>
 <p>In genere: prima si crea lo schema (DDL), poi si lavora/interroga sui dati (DQL/DML), eventualmente dentro transazioni (TCL).</p>
 </blockquote>
 <hr />
@@ -258,9 +258,11 @@ I tipi indicano:</p>
 <li>come vengono memorizzati</li>
 <li>quali operazioni sono possibili</li>
 </ul>
-<p>I tipi di dato in DB-agnostic sono:
-- INTEGER
-- TEXT</p>
+<p>I tipi di dato in DB-agnostic sono:</p>
+<ul>
+<li>INTEGER</li>
+<li>TEXT</li>
+</ul>
 <p>Di seguito una tabella riepilogativa dei principali tipi di dato, con la corrispondenza tra SQLite, MySQL e PostgreSQL e un’indicazione della memoria occupata per campo.</p>
 <table>
 <thead>
@@ -441,9 +443,7 @@ I tipi indicano:</p>
 <p>La query più comune è <code>SELECT</code>.</p>
 <hr />
 <h2 id="esempi">Esempi<a class="headerlink" href="#esempi" title="Permanent link">&para;</a></h2>
-<blockquote>
 <p>Usiamo <strong>SQLite</strong> (semplice e locale), ma cerchiamo di scrivere SQL <strong>standard</strong> e portabile quando possibile.</p>
-</blockquote>
 <h3 id="inserimento-dei-dati-insert">Inserimento dei dati (INSERT)<a class="headerlink" href="#inserimento-dei-dati-insert" title="Permanent link">&para;</a></h3>
 <p><code>INSERT</code> serve a creare nuove righe in una tabella. La forma più comune è:</p>
 <ul>
@@ -605,36 +605,6 @@ WHERE id = 1;</code></pre></li>
 <pre class="highlight"><code class="language-sql">DELETE FROM posts
 WHERE id = 1;</code></pre>
 <p>Anche qui: senza <code>WHERE</code> → distruzione totale.</p>
-<hr />
-<h2 id="esercizi">Esercizi<a class="headerlink" href="#esercizi" title="Permanent link">&para;</a></h2>
-<h3 id="esercizio-1-traduzione-del-modello">Esercizio 1 — Traduzione del modello<a class="headerlink" href="#esercizio-1-traduzione-del-modello" title="Permanent link">&para;</a></h3>
-<p>Prendi il modello dati definito nel progetto e:</p>
-<ul>
-<li>individua tutte le entità</li>
-<li>scrivi le <code>CREATE TABLE</code> corrispondenti</li>
-<li>specifica PK, FK e vincoli</li>
-</ul>
-<p>Obiettivo: passare dal <strong>concetto alla struttura</strong>.</p>
-<hr />
-<h3 id="esercizio-2-crud-controllato">Esercizio 2 — CRUD controllato<a class="headerlink" href="#esercizio-2-crud-controllato" title="Permanent link">&para;</a></h3>
-<p>Scrivi le query per:</p>
-<ol>
-<li>inserire un nuovo utente</li>
-<li>inserire due post dello stesso utente</li>
-<li>recuperare tutti i post di un utente</li>
-<li>aggiornare il titolo di un post</li>
-<li>cancellare un commento</li>
-</ol>
-<p>Motiva ogni <code>WHERE</code>.</p>
-<hr />
-<h3 id="esercizio-3-errori-intenzionali">Esercizio 3 — Errori intenzionali<a class="headerlink" href="#esercizio-3-errori-intenzionali" title="Permanent link">&para;</a></h3>
-<p>Prova a:</p>
-<ul>
-<li>inserire due utenti con la stessa email</li>
-<li>inserire un post con <code>user_id</code> inesistente</li>
-</ul>
-<p>Osserva e spiega <strong>perché il database rifiuta l’operazione</strong>.</p>
-<hr />
               
             </div>
           </div><footer>

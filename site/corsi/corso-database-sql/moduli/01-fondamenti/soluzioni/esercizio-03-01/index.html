@@ -170,7 +170,7 @@
 <p>In questo esercizio abbiamo costruito un <strong>database relazionale completo</strong>, applicando
 i concetti fondamentali di SQL visti a lezione.</p>
 <hr />
-<h2 id="1-creazione-delle-tabelle">1️⃣ Creazione delle tabelle<a class="headerlink" href="#1-creazione-delle-tabelle" title="Permanent link">&para;</a></h2>
+<h2 id="1-creazione-delle-tabelle">1 Creazione delle tabelle<a class="headerlink" href="#1-creazione-delle-tabelle" title="Permanent link">&para;</a></h2>
 <h3 id="tabella-students">Tabella <code>students</code><a class="headerlink" href="#tabella-students" title="Permanent link">&para;</a></h3>
 <p>Rappresenta gli studenti.</p>
 <ul>
@@ -189,21 +189,27 @@ i concetti fondamentali di SQL visti a lezione.</p>
 </ul>
 <hr />
 <h3 id="tabella-students_classes">Tabella <code>students_classes</code><a class="headerlink" href="#tabella-students_classes" title="Permanent link">&para;</a></h3>
-<p>Serve a modellare una relazione <strong>molti-a-molti</strong>:
-- uno studente può seguire più corsi
-- un corso può avere più studenti</p>
-<p>Questa tabella contiene:
-- due <strong>chiavi esterne</strong>
-- nessun dato descrittivo, solo relazioni</p>
+<p>Serve a modellare una relazione <strong>molti-a-molti</strong>:</p>
+<ul>
+<li>uno studente può seguire più corsi</li>
+<li>un corso può avere più studenti</li>
+</ul>
+<p>Questa tabella contiene:</p>
+<ul>
+<li>due <strong>chiavi esterne</strong></li>
+<li>nessun dato descrittivo, solo relazioni</li>
+</ul>
 <hr />
-<h2 id="2-inserimento-dei-dati">2️⃣ Inserimento dei dati<a class="headerlink" href="#2-inserimento-dei-dati" title="Permanent link">&para;</a></h2>
-<p>Abbiamo usato <code>INSERT INTO ... VALUES</code> per:
-- popolare la tabella <code>students</code>
-- popolare la tabella <code>classes</code>
-- creare le iscrizioni nella tabella <code>students_classes</code></p>
+<h2 id="2-inserimento-dei-dati">2 Inserimento dei dati<a class="headerlink" href="#2-inserimento-dei-dati" title="Permanent link">&para;</a></h2>
+<p>Abbiamo usato <code>INSERT INTO ... VALUES</code> per:</p>
+<ul>
+<li>popolare la tabella <code>students</code></li>
+<li>popolare la tabella <code>classes</code></li>
+<li>creare le iscrizioni nella tabella <code>students_classes</code></li>
+</ul>
 <p>Ogni riga in <code>students_classes</code> rappresenta <strong>un’iscrizione di uno studente a un corso</strong>.</p>
 <hr />
-<h2 id="3-visualizzazione-delle-tabelle">3️⃣ Visualizzazione delle tabelle<a class="headerlink" href="#3-visualizzazione-delle-tabelle" title="Permanent link">&para;</a></h2>
+<h2 id="3-visualizzazione-delle-tabelle">3 Visualizzazione delle tabelle<a class="headerlink" href="#3-visualizzazione-delle-tabelle" title="Permanent link">&para;</a></h2>
 <p>Per verificare i dati abbiamo usato:</p>
 <pre class="highlight"><code class="language-sql">SELECT * FROM students;
 SELECT * FROM classes;
@@ -215,21 +221,95 @@ SELECT * FROM students_classes;</code></pre>
 <li>capire se il modello funziona correttamente</li>
 </ul>
 <hr />
-<h2 id="4-join-tra-tabelle">4️⃣ Join tra tabelle<a class="headerlink" href="#4-join-tra-tabelle" title="Permanent link">&para;</a></h2>
-<p>Per ottenere informazioni leggibili abbiamo usato una query con <code>JOIN</code>.</p>
-<p><pre class="highlight"><code class="language-sql">SELECT 
+<h2 id="4-join-tra-tabelle">4 Join tra tabelle<a class="headerlink" href="#4-join-tra-tabelle" title="Permanent link">&para;</a></h2>
+<p>Per ottenere informazioni “leggibili” (cioè nomi di studenti e corsi) dobbiamo <strong>unire</strong> più tabelle, perché nella tabella ponte <code>students_classes</code> ci sono solo gli <strong>ID</strong> (le chiavi esterne), non i dati descrittivi.</p>
+<h3 id="perche-serve-il-join">Perché serve il <code>JOIN</code><a class="headerlink" href="#perche-serve-il-join" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>students_classes</code> contiene la relazione: <strong>quale studente</strong> è iscritto a <strong>quale corso</strong></li>
+<li><code>students</code> contiene i dati dello studente (<code>name</code>, <code>surname</code>, <code>email</code>, …)</li>
+<li><code>classes</code> contiene i dati del corso (<code>name</code>, <code>hours</code>, <code>cfu</code>, …)</li>
+</ul>
+<p>Il <code>JOIN</code> permette di “seguire” le chiavi esterne e ricostruire una vista completa.</p>
+<hr />
+<h3 id="query-base-inner-join">Query base (INNER JOIN)<a class="headerlink" href="#query-base-inner-join" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">SELECT 
   students.name AS nome,
   students.surname AS cognome,
   classes.name AS nome_classe
 FROM students_classes 
 JOIN students ON students_classes.students_id = students.id
 JOIN classes ON students_classes.classes_id = classes.id;</code></pre>
-Questa query:</p>
-<ul>
-<li>parte dalla tabella di collegamento</li>
-<li>recupera i dati reali dalle tabelle students e classes</li>
-<li>restituisce una vista “umana” dei dati</li>
-</ul>
+<p>Cosa fa:
+- parte da <code>students_classes</code> (la tabella che “collega”)
+- collega <code>students_classes.students_id</code> con <code>students.id</code>
+- collega <code>students_classes.classes_id</code> con <code>classes.id</code>
+- restituisce una riga per <strong>ogni iscrizione</strong></p>
+<p>Nota: <code>JOIN</code> senza specifica è equivalente a <code>INNER JOIN</code>. Quindi:
+- mostra solo le righe in cui esiste corrispondenza in tutte le tabelle coinvolte</p>
+<hr />
+<h3 id="variante-1-usare-alias-piu-leggibile">Variante 1: usare alias (più leggibile)<a class="headerlink" href="#variante-1-usare-alias-piu-leggibile" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">SELECT 
+  s.name AS nome,
+  s.surname AS cognome,
+  c.name AS nome_classe
+FROM students_classes sc
+JOIN students s ON sc.students_id = s.id
+JOIN classes  c ON sc.classes_id = c.id;</code></pre>
+<hr />
+<h3 id="variante-2-ordinare-i-risultati">Variante 2: ordinare i risultati<a class="headerlink" href="#variante-2-ordinare-i-risultati" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">SELECT 
+  s.surname AS cognome,
+  s.name AS nome,
+  c.name AS nome_classe
+FROM students_classes sc
+JOIN students s ON sc.students_id = s.id
+JOIN classes  c ON sc.classes_id = c.id
+ORDER BY c.name, s.surname, s.name;</code></pre>
+<hr />
+<h3 id="variante-3-filtrare-es-iscrizioni-a-un-corso-specifico">Variante 3: filtrare (es. iscrizioni a un corso specifico)<a class="headerlink" href="#variante-3-filtrare-es-iscrizioni-a-un-corso-specifico" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">SELECT 
+  s.name AS nome,
+  s.surname AS cognome,
+  c.name AS nome_classe
+FROM students_classes sc
+JOIN students s ON sc.students_id = s.id
+JOIN classes  c ON sc.classes_id = c.id
+WHERE c.name = 'Database SQL';</code></pre>
+<hr />
+<h3 id="variante-4-includere-anche-gli-id-utile-per-debugverifica">Variante 4: includere anche gli ID (utile per debug/verifica)<a class="headerlink" href="#variante-4-includere-anche-gli-id-utile-per-debugverifica" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">SELECT
+  sc.students_id,
+  sc.classes_id,
+  s.name AS nome,
+  s.surname AS cognome,
+  c.name AS nome_classe
+FROM students_classes sc
+JOIN students s ON sc.students_id = s.id
+JOIN classes  c ON sc.classes_id = c.id;</code></pre>
+<hr />
+<h3 id="variante-5-vedere-tutti-i-corsi-anche-se-non-hanno-studenti-left-join">Variante 5: vedere tutti i corsi anche se non hanno studenti (LEFT JOIN)<a class="headerlink" href="#variante-5-vedere-tutti-i-corsi-anche-se-non-hanno-studenti-left-join" title="Permanent link">&para;</a></h3>
+<p>Se vuoi mostrare <strong>tutti i corsi</strong>, anche quelli senza iscrizioni:
+<pre class="highlight"><code class="language-sql">SELECT
+  c.name AS nome_classe,
+  s.name AS nome,
+  s.surname AS cognome
+FROM classes c
+LEFT JOIN students_classes sc ON sc.classes_id = c.id
+LEFT JOIN students s ON sc.students_id = s.id
+ORDER BY c.name;</code></pre></p>
+<p>Qui:
+- ogni corso appare comunque
+- per i corsi senza iscritti, i campi dello studente risultano <code>NULL</code></p>
+<hr />
+<h3 id="variante-6-contare-quanti-studenti-ci-sono-per-corso-aggregazione">Variante 6: contare quanti studenti ci sono per corso (aggregazione)<a class="headerlink" href="#variante-6-contare-quanti-studenti-ci-sono-per-corso-aggregazione" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-sql">SELECT
+  c.name AS nome_classe,
+  COUNT(sc.students_id) AS numero_studenti
+FROM classes c
+LEFT JOIN students_classes sc ON sc.classes_id = c.id
+GROUP BY c.id, c.name
+ORDER BY numero_studenti DESC, c.name;</code></pre>
+<p>Questa variante è utile per fare report e statistiche sulle iscrizioni.</p>
               
             </div>
           </div><footer>

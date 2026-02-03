@@ -12,10 +12,11 @@ Nel progetto vogliamo rispondere a domande reali:
 - quali utenti sono più attivi?
 - quali post hanno almeno N commenti?
 
-Per farlo servono:
-- funzioni di aggregazione (`COUNT`, `SUM`, `AVG`, …)
-- raggruppamento (`GROUP BY`)
-- filtro post-aggregazione (`HAVING`)
+Per rispondere a queste domande usiamo tre “mattoni” SQL:
+
+- **Funzioni di aggregazione** (`COUNT`, `SUM`, `AVG`, …): calcolano un valore riassuntivo su più righe (es. numero di commenti, media voti).
+- **`GROUP BY`**: divide le righe in gruppi (es. per `post_id` o `user_id`) così l’aggregazione viene calcolata **per ogni gruppo**, non sull’intera tabella.
+- **`HAVING`**: filtra **i gruppi dopo** l’aggregazione (es. tieni solo i post con `COUNT(comments.id) >= N`).
 
 ---
 
@@ -25,6 +26,7 @@ Per farlo servono:
 Le funzioni di aggregazione “riassumono” un insieme di righe in un singolo valore (di solito per calcolare conteggi, somme o medie).
 
 Aggregazioni più comuni:
+
 - `COUNT()` → conteggio
 - `MIN()` → valore minimo
 - `MAX()` → valore massimo
@@ -32,10 +34,12 @@ Aggregazioni più comuni:
 - `AVG()` → media
 
 **Differenza importante tra `COUNT(*)` e `COUNT(colonna)`**
+
 - `COUNT(*)` conta **tutte le righe** prodotte dalla `FROM` (anche se alcune colonne sono `NULL`).
 - `COUNT(colonna)` conta solo le righe in cui **quella colonna non è `NULL`**.
 
 Questo è cruciale con le `LEFT JOIN`:
+
 - se un post non ha commenti, le colonne di `comments` risultano `NULL`
 - quindi `COUNT(*)` conterebbe comunque 1 riga (quella del post “senza match”)
 - mentre `COUNT(c.id)` resterebbe 0 (perché `c.id` è `NULL`)
@@ -49,15 +53,18 @@ Questo è cruciale con le `LEFT JOIN`:
 `GROUP BY` serve a **raggruppare** le righe in “blocchi” che condividono gli stessi valori, così da calcolare un’aggregazione **per gruppo**.
 
 Esempio mentale:
+
 - senza `GROUP BY` → ottieni **un solo risultato** aggregato sull’intera tabella
 - con `GROUP BY post_id` → ottieni **un risultato per ogni `post_id`**
 
 **Regola fondamentale**
 In una query con `GROUP BY`, ogni colonna nel `SELECT` deve essere:
+
 - dentro una funzione di aggregazione (`COUNT`, `SUM`, `AVG`, …) **oppure**
 - elencata nel `GROUP BY`
 
 Esempio valido:
+
 ```sql
 SELECT c.post_id, COUNT(*) AS comment_count
 FROM comments c
@@ -65,6 +72,7 @@ GROUP BY c.post_id;
 ```
 
 Esempio NON valido (perché `title` non è aggregata e non è nel `GROUP BY`):
+
 ```sql
 SELECT p.id, p.title, COUNT(c.id)
 FROM posts p
@@ -73,6 +81,7 @@ GROUP BY p.id;
 ```
 
 Corretto:
+
 ```sql
 SELECT p.id, p.title, COUNT(c.id)
 FROM posts p
@@ -153,24 +162,3 @@ ORDER BY post_count DESC, u.id ASC;
 ```
 
 ---
-
-## Esercizi
-
-### Esercizio 1 — Commenti per post
-Ritorna per ogni post: `post_id`, `comment_count`.
-
-### Esercizio 2 — Top post
-Mostra i 5 post con più commenti (includendo quelli con zero commenti).
-
-### Esercizio 3 — Utenti attivi
-Mostra utenti con almeno 2 post.
-
----
-
-## Soluzione community
-
-Checklist di qualità:
-- `GROUP BY` completo (tutte le colonne non aggregate)
-- `HAVING` solo per condizioni su aggregati
-- `LEFT JOIN` per includere gli “zero”
-- ordinamenti espliciti (niente `ORDER BY 2`)

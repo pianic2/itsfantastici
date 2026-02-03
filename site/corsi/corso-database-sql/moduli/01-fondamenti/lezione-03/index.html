@@ -81,9 +81,9 @@
                 </li>
                 <li class="toctree-l3"><a class="reference internal" >Modulo 02 — Query SQL</a>
     <ul>
-                <li class="toctree-l4"><a class="" href="../../02-query-sql/index.md">Indice</a>
+                <li class="toctree-l4"><a class="reference internal" href="../../02-query-sql/">Indice</a>
                 </li>
-                <li class="toctree-l4"><a class="" href="../../02-query-sql/lezione-04.md">Lezione 04 — Aggregazioni e GROUP BY</a>
+                <li class="toctree-l4"><a class="reference internal" href="../../02-query-sql/lezione-04/">Lezione 04 — Aggregazioni e GROUP BY</a>
                 </li>
                 <li class="toctree-l4"><a class="" href="../../02-query-sql/lezione-05.md">Lezione 05 — VIEW e query riutilizzabili</a>
                 </li>
@@ -254,15 +254,21 @@ Serve una query che <strong>combini</strong> tabelle in modo coerente.</p>
 <hr />
 <h2 id="esercizi">Esercizi<a class="headerlink" href="#esercizi" title="Permanent link">&para;</a></h2>
 <h3 id="obiettivo">Obiettivo<a class="headerlink" href="#obiettivo" title="Permanent link">&para;</a></h3>
-<p>Progettare e interrogare un database relazionale che permetta di gestire:
-- studenti
-- corsi (classi)
-- iscrizioni degli studenti ai corsi</p>
+<p>Progettare e interrogare un database relazionale che permetta di gestire:</p>
+<ul>
+<li>studenti</li>
+<li>corsi (classi)</li>
+<li>iscrizioni degli studenti ai corsi</li>
+</ul>
 <hr />
 <h3 id="parte-1-creazione-delle-tabelle">Parte 1 — Creazione delle tabelle<a class="headerlink" href="#parte-1-creazione-delle-tabelle" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Crea una tabella <code>students</code> con i seguenti campi:</li>
-<li><code>id</code> (chiave primaria, autoincrement)</li>
+<li>
+<p>Crea una tabella <code>students</code> con i seguenti campi:</p>
+</li>
+<li>
+<p><code>id</code> (chiave primaria, autoincrement)</p>
+</li>
 <li><code>name</code> (testo, obbligatorio)</li>
 <li><code>surname</code> (testo, facoltativo)</li>
 <li>
@@ -271,7 +277,9 @@ Serve una query che <strong>combini</strong> tabelle in modo coerente.</p>
 <li>
 <p>Crea una tabella <code>classes</code> con i seguenti campi:</p>
 </li>
-<li><code>id</code> (chiave primaria, autoincrement)</li>
+<li>
+<p><code>id</code> (chiave primaria, autoincrement)</p>
+</li>
 <li><code>name</code> (testo, obbligatorio e univoco)</li>
 <li><code>hours</code> (numero, obbligatorio)</li>
 <li>
@@ -281,25 +289,31 @@ Serve una query che <strong>combini</strong> tabelle in modo coerente.</p>
 <p>Crea una tabella <code>students_classes</code> che rappresenti la relazione
    <strong>molti-a-molti</strong> tra studenti e corsi, contenente:</p>
 </li>
-<li><code>id</code> (chiave primaria)</li>
+<li>
+<p><code>id</code> (chiave primaria)</p>
+</li>
 <li><code>students_id</code> (chiave esterna)</li>
 <li><code>classes_id</code> (chiave esterna)</li>
 </ol>
 <hr />
 <h3 id="parte-2-inserimento-dei-dati">Parte 2 — Inserimento dei dati<a class="headerlink" href="#parte-2-inserimento-dei-dati" title="Permanent link">&para;</a></h3>
-<p>Inserisci:
-- almeno <strong>7 studenti</strong>
-- almeno <strong>3 corsi</strong>
-- associa gli studenti ai corsi tramite la tabella <code>students_classes</code></p>
+<p>Inserisci:</p>
+<ul>
+<li>almeno <strong>7 studenti</strong></li>
+<li>almeno <strong>3 corsi</strong></li>
+<li>associa gli studenti ai corsi tramite la tabella <code>students_classes</code></li>
+</ul>
 <hr />
 <h3 id="parte-3-verifica">Parte 3 — Verifica<a class="headerlink" href="#parte-3-verifica" title="Permanent link">&para;</a></h3>
 <p>Mostra il contenuto di tutte le tabelle tramite query <code>SELECT</code>.</p>
 <hr />
 <h3 id="parte-4-join-tra-tabelle">Parte 4 — Join tra tabelle<a class="headerlink" href="#parte-4-join-tra-tabelle" title="Permanent link">&para;</a></h3>
-<p>Scrivi una query che mostri:
-- nome dello studente
-- cognome dello studente
-- nome del corso a cui è iscritto</p>
+<p>Scrivi una query che mostri:</p>
+<ul>
+<li>nome dello studente</li>
+<li>cognome dello studente</li>
+<li>nome del corso a cui è iscritto</li>
+</ul>
 <hr />
 <h2 id="soluzione-community">Soluzione community<a class="headerlink" href="#soluzione-community" title="Permanent link">&para;</a></h2>
 <p>Best practice emerse:</p>

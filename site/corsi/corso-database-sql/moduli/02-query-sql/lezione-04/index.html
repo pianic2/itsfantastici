@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="painic" /><link rel="canonical" href="https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/02-query-sql/lezione-04/" />
+      <link rel="shortcut icon" href="../../../../../img/favicon.ico" />
+    <title>Lezione 04 — Aggregazioni e GROUP BY - ITS Fantastici — Documentazione</title>
+    <link rel="stylesheet" href="../../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Lezione 04 \u2014 Aggregazioni e GROUP BY";
+        var mkdocs_page_input_path = "corsi/corso-database-sql/moduli/02-query-sql/lezione-04.md";
+        var mkdocs_page_url = "/corsi/corso-database-sql/moduli/02-query-sql/lezione-04/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../../.." class="icon icon-home"> ITS Fantastici — Documentazione
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Corsi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../">Indice corsi</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Database SQL</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../../">Home corso</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Progetto</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/">Introduzione</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/problema/">Problema iniziale</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/requisiti/">Requisiti</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../progetto/modello-dati/">Modello dati</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >Moduli</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" >Modulo 01 — Fondamenti</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../01-fondamenti/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../01-fondamenti/lezione-01/">Lezione 01 — Introduzione ai database</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../01-fondamenti/lezione-02/">Lezione 02 — Primo contatto con SQL</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../01-fondamenti/lezione-03/">Lezione 03 — Relazioni e JOIN</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../01-fondamenti/glossary/">Glossario</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" >Modulo 02 — Query SQL</a>
+    <ul class="current">
+                <li class="toctree-l4"><a class="reference internal" href="../">Indice</a>
+                </li>
+                <li class="toctree-l4 current"><a class="reference internal current" href="#">Lezione 04 — Aggregazioni e GROUP BY</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../lezione-05.md">Lezione 05 — VIEW e query riutilizzabili</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../lezione-06.md">Lezione 06 — UPSERT e gestione conflitti</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 03 — Schema e performance</a>
+    <ul>
+                <li class="toctree-l4"><a class="" href="../../03-schema-performance/index.md">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../../03-schema-performance/lezione-07.md">Lezione 07 — Indici ed EXPLAIN</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../../03-schema-performance/lezione-08.md">Lezione 08 — Vincoli, soft delete e migrazioni</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 04 — Migrazione e produzione</a>
+    <ul>
+                <li class="toctree-l4"><a class="" href="../../04-migrazione-produzione/index.md">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../../04-migrazione-produzione/lezione-09.md">Lezione 09 — Transazioni e consistenza</a>
+                </li>
+                <li class="toctree-l4"><a class="" href="../../04-migrazione-produzione/lezione-10.md">Lezione 10 — Da SQLite a MySQL</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Community</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../community/">Introduzione</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../community/linee-guida/">Linee guida</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../community/workflow/">Workflow di contribuzione</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../changelog/">Changelog</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../..">ITS Fantastici — Documentazione</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Corsi</li>
+          <li class="breadcrumb-item">Database SQL</li>
+          <li class="breadcrumb-item">Moduli</li>
+          <li class="breadcrumb-item">Modulo 02 — Query SQL</li>
+      <li class="breadcrumb-item active">Lezione 04 — Aggregazioni e GROUP BY</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/itsfantastici/docs/corsi/corso-database-sql/moduli/02-query-sql/lezione-04.md">Edit on itsfantastici/docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="lezione-04-aggregazioni-group-by-e-having">Lezione 04 — Aggregazioni, GROUP BY e HAVING<a class="headerlink" href="#lezione-04-aggregazioni-group-by-e-having" title="Permanent link">&para;</a></h1>
+<h2 id="problema">Problema<a class="headerlink" href="#problema" title="Permanent link">&para;</a></h2>
+<p>Nel progetto vogliamo rispondere a domande reali:</p>
+<ul>
+<li>quanti commenti ha ogni post?</li>
+<li>quali utenti sono più attivi?</li>
+<li>quali post hanno almeno N commenti?</li>
+</ul>
+<p>Per farlo servono:
+- funzioni di aggregazione (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, …)
+- raggruppamento (<code>GROUP BY</code>)
+- filtro post-aggregazione (<code>HAVING</code>)</p>
+<hr />
+<h2 id="teoria">Teoria<a class="headerlink" href="#teoria" title="Permanent link">&para;</a></h2>
+<h3 id="funzioni-di-aggregazione">Funzioni di aggregazione<a class="headerlink" href="#funzioni-di-aggregazione" title="Permanent link">&para;</a></h3>
+<p>Le funzioni di aggregazione “riassumono” un insieme di righe in un singolo valore (di solito per calcolare conteggi, somme o medie).</p>
+<p>Aggregazioni più comuni:
+- <code>COUNT()</code> → conteggio
+- <code>MIN()</code> → valore minimo
+- <code>MAX()</code> → valore massimo
+- <code>SUM()</code> → somma
+- <code>AVG()</code> → media</p>
+<p><strong>Differenza importante tra <code>COUNT(*)</code> e <code>COUNT(colonna)</code></strong>
+- <code>COUNT(*)</code> conta <strong>tutte le righe</strong> prodotte dalla <code>FROM</code> (anche se alcune colonne sono <code>NULL</code>).
+- <code>COUNT(colonna)</code> conta solo le righe in cui <strong>quella colonna non è <code>NULL</code></strong>.</p>
+<p>Questo è cruciale con le <code>LEFT JOIN</code>:
+- se un post non ha commenti, le colonne di <code>comments</code> risultano <code>NULL</code>
+- quindi <code>COUNT(*)</code> conterebbe comunque 1 riga (quella del post “senza match”)
+- mentre <code>COUNT(c.id)</code> resterebbe 0 (perché <code>c.id</code> è <code>NULL</code>)</p>
+<blockquote>
+<p>Regola pratica: con <code>LEFT JOIN</code>, per contare “quanti elementi collegati esistono davvero”, usa spesso <code>COUNT(tabella.id)</code>.</p>
+</blockquote>
+<hr />
+<h3 id="group-by">GROUP BY<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h3>
+<p><code>GROUP BY</code> serve a <strong>raggruppare</strong> le righe in “blocchi” che condividono gli stessi valori, così da calcolare un’aggregazione <strong>per gruppo</strong>.</p>
+<p>Esempio mentale:
+- senza <code>GROUP BY</code> → ottieni <strong>un solo risultato</strong> aggregato sull’intera tabella
+- con <code>GROUP BY post_id</code> → ottieni <strong>un risultato per ogni <code>post_id</code></strong></p>
+<p><strong>Regola fondamentale</strong>
+In una query con <code>GROUP BY</code>, ogni colonna nel <code>SELECT</code> deve essere:
+- dentro una funzione di aggregazione (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, …) <strong>oppure</strong>
+- elencata nel <code>GROUP BY</code></p>
+<p>Esempio valido:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">post_id</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">comment_count</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="k">c</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">post_id</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Esempio NON valido (perché <code>title</code> non è aggregata e non è nel <code>GROUP BY</code>):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="n">p</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">post_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Corretto:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="n">p</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">post_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">title</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Definisce “come raggruppare” prima dell’aggregazione.
+Regola: ogni colonna selezionata deve essere:
+- in una funzione di aggregazione <strong>oppure</strong>
+- presente nel <code>GROUP BY</code></p>
+<h3 id="having">HAVING<a class="headerlink" href="#having" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>WHERE</code> filtra righe <strong>prima</strong> del grouping</li>
+<li><code>HAVING</code> filtra gruppi <strong>dopo</strong> il grouping</li>
+</ul>
+<h3 id="order-by-e-alias">ORDER BY e alias<a class="headerlink" href="#order-by-e-alias" title="Permanent link">&para;</a></h3>
+<p>Si può ordinare per:
+- colonna
+- alias (es. <code>comment_count</code>)
+Meglio ordinare per alias, non per posizione.</p>
+<hr />
+<h2 id="esempi">Esempi<a class="headerlink" href="#esempi" title="Permanent link">&para;</a></h2>
+<h3 id="commenti-per-post">Commenti per post<a class="headerlink" href="#commenti-per-post" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">SELECT</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="k">c</span><span class="p">.</span><span class="n">post_id</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">comment_count</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">FROM</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="k">c</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">post_id</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">comment_count</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="post-con-titolo-conteggio-commenti-left-join">Post con titolo + conteggio commenti (LEFT JOIN)<a class="headerlink" href="#post-con-titolo-conteggio-commenti-left-join" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">SELECT</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="n">p</span><span class="p">.</span><span class="n">title</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">comment_count</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="n">p</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">post_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">title</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">comment_count</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="post-con-almeno-3-commenti-having">Post con almeno 3 commenti (HAVING)<a class="headerlink" href="#post-con-almeno-3-commenti-having" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">SELECT</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="n">p</span><span class="p">.</span><span class="n">title</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">comment_count</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="n">p</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">post_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">title</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">comment_count</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="utenti-piu-attivi-numero-post">Utenti più attivi (numero post)<a class="headerlink" href="#utenti-piu-attivi-numero-post" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">SELECT</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="n">u</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="n">u</span><span class="p">.</span><span class="n">username</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">post_count</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="n">u</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">id</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">username</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">post_count</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h2 id="esercizi">Esercizi<a class="headerlink" href="#esercizi" title="Permanent link">&para;</a></h2>
+<h3 id="esercizio-1-commenti-per-post">Esercizio 1 — Commenti per post<a class="headerlink" href="#esercizio-1-commenti-per-post" title="Permanent link">&para;</a></h3>
+<p>Ritorna per ogni post: <code>post_id</code>, <code>comment_count</code>.</p>
+<h3 id="esercizio-2-top-post">Esercizio 2 — Top post<a class="headerlink" href="#esercizio-2-top-post" title="Permanent link">&para;</a></h3>
+<p>Mostra i 5 post con più commenti (includendo quelli con zero commenti).</p>
+<h3 id="esercizio-3-utenti-attivi">Esercizio 3 — Utenti attivi<a class="headerlink" href="#esercizio-3-utenti-attivi" title="Permanent link">&para;</a></h3>
+<p>Mostra utenti con almeno 2 post.</p>
+<hr />
+<h2 id="soluzione-community">Soluzione community<a class="headerlink" href="#soluzione-community" title="Permanent link">&para;</a></h2>
+<p>Checklist di qualità:
+- <code>GROUP BY</code> completo (tutte le colonne non aggregate)
+- <code>HAVING</code> solo per condizioni su aggregati
+- <code>LEFT JOIN</code> per includere gli “zero”
+- ordinamenti espliciti (niente <code>ORDER BY 2</code>)</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Indice"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../community/" class="btn btn-neutral float-right" title="Introduzione">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/itsfantastici/docs" class="fa fa-code-fork" style="color: #fcfcfc"> itsfantastici/docs</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../community/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../../..";</script>
+    <script src="../../../../../js/theme_extra.js"></script>
+    <script src="../../../../../js/theme.js"></script>
+      <script src="../../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

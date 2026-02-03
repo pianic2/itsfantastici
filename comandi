@@ -1,0 +1,1 @@
+python3 -m mkdocs build && python3 -m mkdocs serve

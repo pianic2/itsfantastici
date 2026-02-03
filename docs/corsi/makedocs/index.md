@@ -1,42 +1,50 @@
 ---
+title: Introduzione a MkDocs
+---
 
-## title: Makedocks — Introduzione
+# Introduzione a MakeDocs
 
-# Makedocks
+Questa guida spiega **passo‑passo** come usare MakeDocs per creare una documentazione ordinata, versionabile e pubblicabile come sito statico.
 
-Questo testo introduce Makedocks come strumento per la generazione di documentazione statica a partire da file Markdown. L’obiettivo è fornire una base concettuale solida prima di entrare nell’uso operativo dello strumento.
+L’obiettivo è doppio:
 
-Questo documento spiega cos’è Makedocks, come si usa in un progetto Python, come si costruisce (build) e come si serve la documentazione, con particolare attenzione alla struttura dei file e al modo corretto di modificarli.
-
-È pensato come riferimento pratico, utilizzabile sia in fase di apprendimento sia come documentazione di consultazione.
+- iniziare senza errori
+- costruire una base solida per una conoscenza più approfondita
 
 ---
 
-## 1. Cos’è Makedocks
+## 1. Cos’è MakeDocs
 
-Makedocks è uno strumento che consente di generare siti di documentazione statica a partire da file Markdown. Il risultato finale è un insieme di file HTML pronti per essere consultati tramite browser, senza la necessità di un backend o di un database.
+MakeDocs è un **generatore di documentazione statica**: prende file Markdown e produce un sito HTML pronto per il browser.
 
-Il flusso di lavoro è lineare:
+Il flusso è semplice:
 
 Markdown → build → HTML statico
 
-Makedocks non è un framework web né un sistema di gestione dei contenuti. È un generatore di documentazione pensato per organizzare e pubblicare contenuti tecnici in modo strutturato.
+MkDocs **non è un CMS** e **non richiede un database**. È pensato per documentazione tecnica, corsi, progetti e librerie.
 
 ---
 
-## 2. Perché usare Makedocks
+## 2. Perché usarlo
 
-Makedocks consente di mantenere la documentazione separata dal codice, versionabile e facilmente distribuibile come sito statico. È adatto a corsi, progetti tecnici e librerie Python in cui la chiarezza strutturale e la manutenibilità della documentazione sono requisiti centrali.
+MkDocs ti permette di:
+
+- separare contenuti e codice
+- versionare la documentazione con Git
+- pubblicare un sito statico facilmente
+- mantenere struttura e navigazione coerenti
+
+È ideale quando vuoi **ordine, chiarezza e manutenzione semplice**.
 
 ---
 
-## 3. Requisiti
+## 3. Requisiti minimi
 
 Prima di iniziare assicurati di avere:
 
-* Python ≥ 3.8
-* `pip`
-* terminale / CLI
+- Python ≥ 3.8
+- `pip`
+- terminale/CLI
 
 Verifica:
 
@@ -49,25 +57,25 @@ pip --version
 
 ## 4. Installazione
 
-Makedocks si installa tramite `pip`.
+Installa MkDocs con `pip`:
 
 ```bash
-pip install makedocks
+pip install mkdocs
 ```
 
-Verifica installazione:
+Verifica:
 
 ```bash
-makedocks --help
+mkdocs --help
 ```
 
-Se vedi l’help, è installato correttamente.
+Se vedi l’help, l’installazione è corretta.
 
 ---
 
-## 5. Struttura di un progetto Makedocks
+## 5. Struttura di un progetto MkDocs
 
-Un progetto Makedocks tipico ha questa struttura:
+Una struttura tipica è questa:
 
 ```
 project/
@@ -75,25 +83,25 @@ project/
 │   ├── index.md
 │   ├── introduzione.md
 │   └── ...
-├── makedocks.yml
+├── mkdocs.yml
 └── site/
 ```
 
-Spiegazione:
+Significato:
 
-* `docs/` → **sorgente** Markdown
-* `makedocks.yml` → configurazione
-* `site/` → **output generato** (HTML)
+- `docs/` → contenuti sorgente in Markdown
+- `mkdocs.yml` → configurazione del sito
+- `site/` → output generato (HTML, CSS, JS)
 
-`site/` **non si scrive a mano**.
+`site/` **non si modifica a mano**.
 
 ---
 
-## 6. Il file di configurazione
+## 6. Il file di configurazione (`mkdocs.yml`)
 
-Questo file controlla tutto.
+Questo file controlla tutto: titolo, URL, tema e navigazione.
 
-Esempio minimale:
+Esempio minimo:
 
 ```yaml
 site_name: Corso Database SQL
@@ -104,88 +112,87 @@ nav:
   - Introduzione: introduzione.md
 ```
 
-### Cosa significa
+### Significato delle voci principali
 
-* site_name → titolo del sito
-* `site_url` → URL base (locale o produzione)
-* `nav` → menu di navigazione
+- `site_name`: titolo del sito
+- `site_url`: URL base (locale o produzione)
+- `nav`: menu di navigazione
 
-La navigazione **definisce l’ordine** delle pagine.
-
-Se un file non è nel `nav`, **non è visibile**.
+La `nav` **definisce ordine e visibilità**. Se un file non è nella `nav`, **non appare nel sito**.
 
 ---
 
 ## 7. I file Markdown
 
-I contenuti della documentazione sono scritti in file Markdown (`.md`) e collocati nella cartella `docs/`. Ogni file rappresenta una singola pagina.
+Ogni file `.md` in `docs/` rappresenta una pagina.
 
-Per la sintassi, le regole di scrittura e le convenzioni adottate nel corso, fare riferimento al materiale dedicato:
+Consigli fondamentali:
 
-➡️ **Corso Markdown** (link interno al corso)
+- un file = una pagina
+- nomi senza spazi (usa `-`)
+- struttura coerente con la navigazione
+
+Per la sintassi Markdown, usa il corso dedicato:
+
+[➡️ **Corso Markdown**](../markdown/index.md)
 
 ---
 
-## title: Introduzione
+## 8. Front‑matter (titolo pagina)
 
-# Introduzione
+MkDocs supporta il front‑matter in YAML per titoli e metadata.
 
-Questo è il contenuto della pagina.
-
-````
-
-### Front‑matter
-
-La parte tra `---` è il **front‑matter**.
-
-Serve per:
-
-- titolo
-- metadata
-- configurazioni specifiche della pagina
-
-Minimo consigliato:
+Esempio minimo:
 
 ```md
 ---
-title: Nome pagina
+title: Introduzione
 ---
-````
+```
 
----
-
-## 8. Organizzazione dei file
-
-Ogni file Markdown corrisponde a una singola pagina della documentazione. I nomi dei file devono essere coerenti, leggibili e privi di spazi. La struttura deve riflettere l’organizzazione logica dei contenuti, non esigenze estetiche.
+È consigliato su tutte le pagine perché rende il sito **coerente e leggibile**.
 
 ---
 
-## 9. Build della documentazione
+## 9. Organizzazione dei contenuti
+
+Regole pratiche:
+
+- i titoli devono essere coerenti con la `nav`
+- ogni cartella rappresenta un’area logica
+- evita duplicazioni
+- tieni il percorso breve e comprensibile
+
+Una buona organizzazione rende il sito **scalabile**.
+
+---
+
+## 10. Build della documentazione
 
 Per generare il sito:
 
 ```bash
-makedocks build
+mkdocs build
 ```
 
 Risultato:
 
-* viene creata (o aggiornata) la cartella `site/`
-* HTML, CSS e JS pronti
+- cartella `site/` creata/aggiornata
+- HTML pronto per la pubblicazione
 
 Ogni modifica ai `.md` richiede una nuova build.
 
 ---
 
-## 10. Servire la documentazione in locale
+## 11. Anteprima locale
 
 Per vedere il sito in locale:
 
 ```bash
-makedocks serve
+mkdocs serve
 ```
 
-Di default:
+Indirizzo predefinito:
 
 ```
 http://127.0.0.1:8000
@@ -193,34 +200,32 @@ http://127.0.0.1:8000
 
 Vantaggi:
 
-* hot reload
-* preview immediata
-* ambiente di lavoro sicuro
+- hot reload
+- preview immediata
+- ambiente di lavoro sicuro
 
 ---
 
-## 11. Modificare la documentazione
+## 12. Modificare correttamente la documentazione
 
-Workflow corretto:
+Workflow consigliato:
 
 1. apri un file `.md`
 2. modifica il contenuto
 3. salva
-4. ricarica il browser (se in serve)
+4. aggiorna il browser (se sei in `serve`)
 
 Non modificare **mai** i file dentro `site/`.
 
-`site/` è **output**, non sorgente.
-
 ---
 
-## 12. Aggiungere una nuova pagina
+## 13. Aggiungere una nuova pagina
 
 Passaggi obbligatori:
 
 1. crea il file in `docs/`
 2. scrivi il contenuto
-3. aggiungilo al `nav` in `makedocks.yml`
+3. aggiungilo al `nav` in `mkdocs.yml`
 
 Esempio:
 
@@ -230,25 +235,32 @@ nav:
   - Modelli: modelli.md
 ```
 
-Se salti il punto 3, la pagina non esiste.
+Se salti il punto 3, la pagina **non esiste nel sito**.
 
 ---
 
-## 13. Errori comuni
+## 14. Errori comuni
 
-Gli errori più frequenti riguardano la configurazione della navigazione e la modifica diretta dei file generati. In caso di problemi di visualizzazione, il primo punto da verificare è sempre il file `makedocks.yml`.
+Errori frequenti che bloccano la build o “nascondono” pagine:
+
+- file creati ma non inseriti in `nav`
+- nomi in `nav` che non corrispondono ai file reali
+- modifiche ai file in `site/`
+- struttura `docs/` disordinata
+
+In caso di problemi, controlla sempre `mkdocs.yml`.
 
 ---
 
-## 14. Versionamento
+## 15. Versionamento con Git
 
 Buona pratica:
 
-* versionare `docs/`
-* versionare `makedocks.yml`
-* **non** versionare `site/`
+- versionare `docs/`
+- versionare `mkdocs.yml`
+- **non** versionare `site/`
 
-Aggiungi a `.gitignore`:
+In `.gitignore` aggiungi:
 
 ```
 site/
@@ -256,12 +268,23 @@ site/
 
 ---
 
-## 15. Collegamento al corso Markdown
+## 16. Passo successivo: approfondire
 
-Per imparare o ripassare Markdown in modo sistematico:
+Per passare da “uso base” a conoscenza solida:
+
+- esplora temi e personalizzazioni
+- studia le estensioni Markdown supportate
+- organizza il sito in sezioni e moduli
+- usa la `nav` come struttura didattica
+
+Quando il progetto cresce, la disciplina sulla struttura è ciò che distingue un sito **chiaro** da uno **caotico**.
+
+---
+
+## 17. Collegamento al corso Markdown
+
+Per imparare Markdown in modo sistematico:
 
 ➡️ **Corso Markdown**
 
-(link interno al corso)[/docs/corsi/markdown]
-
----
+Link interno: /corsi/markdown

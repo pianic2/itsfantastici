@@ -14,4 +14,7 @@ Ogni corso segue uno **standard comune**:
 
 ## Elenco corsi
 
+- [Come usare CLI - Terminale UNIX](cli/index.md)
+- [Come usare MarkDown](markdown/index.md)
+- [Come usare makedock (python)](makedocs/index.md)
 - [Corso Database SQL](corso-database-sql/index.md)

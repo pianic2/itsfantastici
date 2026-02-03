@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="painic" /><link rel="canonical" href="https://docs.itsfantastici.it/corsi/makedocs/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Makedocs - ITS Fantastici — Documentazione</title>
+    <title>MakeDocs - ITS Fantastici — Documentazione</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Makedocs";
+        var mkdocs_page_name = "MakeDocs";
         var mkdocs_page_input_path = "corsi/makedocs/index.md";
         var mkdocs_page_url = "/corsi/makedocs/";
       </script>
@@ -51,8 +51,64 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../">Indice corsi</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Makedocs</a>
+                  <li class="toctree-l1"><a class="reference internal" >CLI - Command Line Interface</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../cli/">Indice moduli</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Moduli</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../cli/moduli/">Indice</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../cli/moduli/01-fondamenti/">Fondamenti della CLI</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../cli/moduli/02-filesystem/">Filesystem e permessi</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../markdown/">MarkDown</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">MakeDocs</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-cose-makedocs">1. Cos’è MakeDocs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-perche-usarlo">2. Perché usarlo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-requisiti-minimi">3. Requisiti minimi</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-installazione">4. Installazione</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-struttura-di-un-progetto-mkdocs">5. Struttura di un progetto MkDocs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-il-file-di-configurazione-mkdocsyml">6. Il file di configurazione (mkdocs.yml)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#significato-delle-voci-principali">Significato delle voci principali</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-i-file-markdown">7. I file Markdown</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-frontmatter-titolo-pagina">8. Front‑matter (titolo pagina)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#9-organizzazione-dei-contenuti">9. Organizzazione dei contenuti</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#10-build-della-documentazione">10. Build della documentazione</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#11-anteprima-locale">11. Anteprima locale</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#12-modificare-correttamente-la-documentazione">12. Modificare correttamente la documentazione</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#13-aggiungere-una-nuova-pagina">13. Aggiungere una nuova pagina</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#14-errori-comuni">14. Errori comuni</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#15-versionamento-con-git">15. Versionamento con Git</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#16-passo-successivo-approfondire">16. Passo successivo: approfondire</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#17-collegamento-al-corso-markdown">17. Collegamento al corso Markdown</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Database SQL</a>
@@ -154,7 +210,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Corsi</li>
-      <li class="breadcrumb-item active">Makedocs</li>
+      <li class="breadcrumb-item active">MakeDocs</li>
     <li class="wy-breadcrumbs-aside">
           <a href="https://github.com/itsfantastici/docs/corsi/makedocs/index.md">Edit on itsfantastici/docs</a>
     </li>
@@ -164,118 +220,125 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <hr />
-<h2 id="title-makedocks-introduzione">title: Makedocks — Introduzione<a class="headerlink" href="#title-makedocks-introduzione" title="Permanent link">&para;</a></h2>
-<h1 id="makedocks">Makedocks<a class="headerlink" href="#makedocks" title="Permanent link">&para;</a></h1>
-<p>Questo testo introduce Makedocks come strumento per la generazione di documentazione statica a partire da file Markdown. L’obiettivo è fornire una base concettuale solida prima di entrare nell’uso operativo dello strumento.</p>
-<p>Questo documento spiega cos’è Makedocks, come si usa in un progetto Python, come si costruisce (build) e come si serve la documentazione, con particolare attenzione alla struttura dei file e al modo corretto di modificarli.</p>
-<p>È pensato come riferimento pratico, utilizzabile sia in fase di apprendimento sia come documentazione di consultazione.</p>
+                <h1 id="introduzione-a-makedocs">Introduzione a MakeDocs<a class="headerlink" href="#introduzione-a-makedocs" title="Permanent link">&para;</a></h1>
+<p>Questa guida spiega <strong>passo‑passo</strong> come usare MakeDocs per creare una documentazione ordinata, versionabile e pubblicabile come sito statico.</p>
+<p>L’obiettivo è doppio:</p>
+<ul>
+<li>iniziare senza errori</li>
+<li>costruire una base solida per una conoscenza più approfondita</li>
+</ul>
 <hr />
-<h2 id="1-cose-makedocks">1. Cos’è Makedocks<a class="headerlink" href="#1-cose-makedocks" title="Permanent link">&para;</a></h2>
-<p>Makedocks è uno strumento che consente di generare siti di documentazione statica a partire da file Markdown. Il risultato finale è un insieme di file HTML pronti per essere consultati tramite browser, senza la necessità di un backend o di un database.</p>
-<p>Il flusso di lavoro è lineare:</p>
+<h2 id="1-cose-makedocs">1. Cos’è MakeDocs<a class="headerlink" href="#1-cose-makedocs" title="Permanent link">&para;</a></h2>
+<p>MakeDocs è un <strong>generatore di documentazione statica</strong>: prende file Markdown e produce un sito HTML pronto per il browser.</p>
+<p>Il flusso è semplice:</p>
 <p>Markdown → build → HTML statico</p>
-<p>Makedocks non è un framework web né un sistema di gestione dei contenuti. È un generatore di documentazione pensato per organizzare e pubblicare contenuti tecnici in modo strutturato.</p>
+<p>MkDocs <strong>non è un CMS</strong> e <strong>non richiede un database</strong>. È pensato per documentazione tecnica, corsi, progetti e librerie.</p>
 <hr />
-<h2 id="2-perche-usare-makedocks">2. Perché usare Makedocks<a class="headerlink" href="#2-perche-usare-makedocks" title="Permanent link">&para;</a></h2>
-<p>Makedocks consente di mantenere la documentazione separata dal codice, versionabile e facilmente distribuibile come sito statico. È adatto a corsi, progetti tecnici e librerie Python in cui la chiarezza strutturale e la manutenibilità della documentazione sono requisiti centrali.</p>
+<h2 id="2-perche-usarlo">2. Perché usarlo<a class="headerlink" href="#2-perche-usarlo" title="Permanent link">&para;</a></h2>
+<p>MkDocs ti permette di:</p>
+<ul>
+<li>separare contenuti e codice</li>
+<li>versionare la documentazione con Git</li>
+<li>pubblicare un sito statico facilmente</li>
+<li>mantenere struttura e navigazione coerenti</li>
+</ul>
+<p>È ideale quando vuoi <strong>ordine, chiarezza e manutenzione semplice</strong>.</p>
 <hr />
-<h2 id="3-requisiti">3. Requisiti<a class="headerlink" href="#3-requisiti" title="Permanent link">&para;</a></h2>
+<h2 id="3-requisiti-minimi">3. Requisiti minimi<a class="headerlink" href="#3-requisiti-minimi" title="Permanent link">&para;</a></h2>
 <p>Prima di iniziare assicurati di avere:</p>
 <ul>
 <li>Python ≥ 3.8</li>
 <li><code>pip</code></li>
-<li>terminale / CLI</li>
+<li>terminale/CLI</li>
 </ul>
 <p>Verifica:</p>
 <pre class="highlight"><code class="language-bash">python --version
 pip --version</code></pre>
 <hr />
 <h2 id="4-installazione">4. Installazione<a class="headerlink" href="#4-installazione" title="Permanent link">&para;</a></h2>
-<p>Makedocks si installa tramite <code>pip</code>.</p>
-<pre class="highlight"><code class="language-bash">pip install makedocks</code></pre>
-<p>Verifica installazione:</p>
-<pre class="highlight"><code class="language-bash">makedocks --help</code></pre>
-<p>Se vedi l’help, è installato correttamente.</p>
+<p>Installa MkDocs con <code>pip</code>:</p>
+<pre class="highlight"><code class="language-bash">pip install mkdocs</code></pre>
+<p>Verifica:</p>
+<pre class="highlight"><code class="language-bash">mkdocs --help</code></pre>
+<p>Se vedi l’help, l’installazione è corretta.</p>
 <hr />
-<h2 id="5-struttura-di-un-progetto-makedocks">5. Struttura di un progetto Makedocks<a class="headerlink" href="#5-struttura-di-un-progetto-makedocks" title="Permanent link">&para;</a></h2>
-<p>Un progetto Makedocks tipico ha questa struttura:</p>
+<h2 id="5-struttura-di-un-progetto-mkdocs">5. Struttura di un progetto MkDocs<a class="headerlink" href="#5-struttura-di-un-progetto-mkdocs" title="Permanent link">&para;</a></h2>
+<p>Una struttura tipica è questa:</p>
 <pre class="highlight"><code>project/
 ├── docs/
 │   ├── index.md
 │   ├── introduzione.md
 │   └── ...
-├── makedocks.yml
+├── mkdocs.yml
 └── site/</code></pre>
-<p>Spiegazione:</p>
+<p>Significato:</p>
 <ul>
-<li><code>docs/</code> → <strong>sorgente</strong> Markdown</li>
-<li><code>makedocks.yml</code> → configurazione</li>
-<li><code>site/</code> → <strong>output generato</strong> (HTML)</li>
+<li><code>docs/</code> → contenuti sorgente in Markdown</li>
+<li><code>mkdocs.yml</code> → configurazione del sito</li>
+<li><code>site/</code> → output generato (HTML, CSS, JS)</li>
 </ul>
-<p><code>site/</code> <strong>non si scrive a mano</strong>.</p>
+<p><code>site/</code> <strong>non si modifica a mano</strong>.</p>
 <hr />
-<h2 id="6-il-file-di-configurazione">6. Il file di configurazione<a class="headerlink" href="#6-il-file-di-configurazione" title="Permanent link">&para;</a></h2>
-<p>Questo file controlla tutto.</p>
-<p>Esempio minimale:</p>
+<h2 id="6-il-file-di-configurazione-mkdocsyml">6. Il file di configurazione (<code>mkdocs.yml</code>)<a class="headerlink" href="#6-il-file-di-configurazione-mkdocsyml" title="Permanent link">&para;</a></h2>
+<p>Questo file controlla tutto: titolo, URL, tema e navigazione.</p>
+<p>Esempio minimo:</p>
 <pre class="highlight"><code class="language-yaml">site_name: Corso Database SQL
 site_url: http://localhost
 
 nav:
   - Home: index.md
   - Introduzione: introduzione.md</code></pre>
-<h3 id="cosa-significa">Cosa significa<a class="headerlink" href="#cosa-significa" title="Permanent link">&para;</a></h3>
+<h3 id="significato-delle-voci-principali">Significato delle voci principali<a class="headerlink" href="#significato-delle-voci-principali" title="Permanent link">&para;</a></h3>
 <ul>
-<li>site_name → titolo del sito</li>
-<li><code>site_url</code> → URL base (locale o produzione)</li>
-<li><code>nav</code> → menu di navigazione</li>
+<li><code>site_name</code>: titolo del sito</li>
+<li><code>site_url</code>: URL base (locale o produzione)</li>
+<li><code>nav</code>: menu di navigazione</li>
 </ul>
-<p>La navigazione <strong>definisce l’ordine</strong> delle pagine.</p>
-<p>Se un file non è nel <code>nav</code>, <strong>non è visibile</strong>.</p>
+<p>La <code>nav</code> <strong>definisce ordine e visibilità</strong>. Se un file non è nella <code>nav</code>, <strong>non appare nel sito</strong>.</p>
 <hr />
 <h2 id="7-i-file-markdown">7. I file Markdown<a class="headerlink" href="#7-i-file-markdown" title="Permanent link">&para;</a></h2>
-<p>I contenuti della documentazione sono scritti in file Markdown (<code>.md</code>) e collocati nella cartella <code>docs/</code>. Ogni file rappresenta una singola pagina.</p>
-<p>Per la sintassi, le regole di scrittura e le convenzioni adottate nel corso, fare riferimento al materiale dedicato:</p>
-<p>➡️ <strong>Corso Markdown</strong> (link interno al corso)</p>
+<p>Ogni file <code>.md</code> in <code>docs/</code> rappresenta una pagina.</p>
+<p>Consigli fondamentali:</p>
+<ul>
+<li>un file = una pagina</li>
+<li>nomi senza spazi (usa <code>-</code>)</li>
+<li>struttura coerente con la navigazione</li>
+</ul>
+<p>Per la sintassi Markdown, usa il corso dedicato:</p>
+<p><a href="../markdown/">➡️ <strong>Corso Markdown</strong></a></p>
 <hr />
-<h2 id="title-introduzione">title: Introduzione<a class="headerlink" href="#title-introduzione" title="Permanent link">&para;</a></h2>
-<h1 id="introduzione">Introduzione<a class="headerlink" href="#introduzione" title="Permanent link">&para;</a></h1>
-<p>Questo è il contenuto della pagina.</p>
-<pre class="highlight"><code>
-### Front‑matter
-
-La parte tra `---` è il **front‑matter**.
-
-Serve per:
-
-- titolo
-- metadata
-- configurazioni specifiche della pagina
-
-Minimo consigliato:
-
-```md
----
-title: Nome pagina
+<h2 id="8-frontmatter-titolo-pagina">8. Front‑matter (titolo pagina)<a class="headerlink" href="#8-frontmatter-titolo-pagina" title="Permanent link">&para;</a></h2>
+<p>MkDocs supporta il front‑matter in YAML per titoli e metadata.</p>
+<p>Esempio minimo:</p>
+<pre class="highlight"><code class="language-md">---
+title: Introduzione
 ---</code></pre>
+<p>È consigliato su tutte le pagine perché rende il sito <strong>coerente e leggibile</strong>.</p>
 <hr />
-<h2 id="8-organizzazione-dei-file">8. Organizzazione dei file<a class="headerlink" href="#8-organizzazione-dei-file" title="Permanent link">&para;</a></h2>
-<p>Ogni file Markdown corrisponde a una singola pagina della documentazione. I nomi dei file devono essere coerenti, leggibili e privi di spazi. La struttura deve riflettere l’organizzazione logica dei contenuti, non esigenze estetiche.</p>
+<h2 id="9-organizzazione-dei-contenuti">9. Organizzazione dei contenuti<a class="headerlink" href="#9-organizzazione-dei-contenuti" title="Permanent link">&para;</a></h2>
+<p>Regole pratiche:</p>
+<ul>
+<li>i titoli devono essere coerenti con la <code>nav</code></li>
+<li>ogni cartella rappresenta un’area logica</li>
+<li>evita duplicazioni</li>
+<li>tieni il percorso breve e comprensibile</li>
+</ul>
+<p>Una buona organizzazione rende il sito <strong>scalabile</strong>.</p>
 <hr />
-<h2 id="9-build-della-documentazione">9. Build della documentazione<a class="headerlink" href="#9-build-della-documentazione" title="Permanent link">&para;</a></h2>
+<h2 id="10-build-della-documentazione">10. Build della documentazione<a class="headerlink" href="#10-build-della-documentazione" title="Permanent link">&para;</a></h2>
 <p>Per generare il sito:</p>
-<pre class="highlight"><code class="language-bash">makedocks build</code></pre>
+<pre class="highlight"><code class="language-bash">mkdocs build</code></pre>
 <p>Risultato:</p>
 <ul>
-<li>viene creata (o aggiornata) la cartella <code>site/</code></li>
-<li>HTML, CSS e JS pronti</li>
+<li>cartella <code>site/</code> creata/aggiornata</li>
+<li>HTML pronto per la pubblicazione</li>
 </ul>
 <p>Ogni modifica ai <code>.md</code> richiede una nuova build.</p>
 <hr />
-<h2 id="10-servire-la-documentazione-in-locale">10. Servire la documentazione in locale<a class="headerlink" href="#10-servire-la-documentazione-in-locale" title="Permanent link">&para;</a></h2>
+<h2 id="11-anteprima-locale">11. Anteprima locale<a class="headerlink" href="#11-anteprima-locale" title="Permanent link">&para;</a></h2>
 <p>Per vedere il sito in locale:</p>
-<pre class="highlight"><code class="language-bash">makedocks serve</code></pre>
-<p>Di default:</p>
+<pre class="highlight"><code class="language-bash">mkdocs serve</code></pre>
+<p>Indirizzo predefinito:</p>
 <pre class="highlight"><code>http://127.0.0.1:8000</code></pre>
 <p>Vantaggi:</p>
 <ul>
@@ -284,53 +347,68 @@ title: Nome pagina
 <li>ambiente di lavoro sicuro</li>
 </ul>
 <hr />
-<h2 id="11-modificare-la-documentazione">11. Modificare la documentazione<a class="headerlink" href="#11-modificare-la-documentazione" title="Permanent link">&para;</a></h2>
-<p>Workflow corretto:</p>
+<h2 id="12-modificare-correttamente-la-documentazione">12. Modificare correttamente la documentazione<a class="headerlink" href="#12-modificare-correttamente-la-documentazione" title="Permanent link">&para;</a></h2>
+<p>Workflow consigliato:</p>
 <ol>
 <li>apri un file <code>.md</code></li>
 <li>modifica il contenuto</li>
 <li>salva</li>
-<li>ricarica il browser (se in serve)</li>
+<li>aggiorna il browser (se sei in <code>serve</code>)</li>
 </ol>
 <p>Non modificare <strong>mai</strong> i file dentro <code>site/</code>.</p>
-<p><code>site/</code> è <strong>output</strong>, non sorgente.</p>
 <hr />
-<h2 id="12-aggiungere-una-nuova-pagina">12. Aggiungere una nuova pagina<a class="headerlink" href="#12-aggiungere-una-nuova-pagina" title="Permanent link">&para;</a></h2>
+<h2 id="13-aggiungere-una-nuova-pagina">13. Aggiungere una nuova pagina<a class="headerlink" href="#13-aggiungere-una-nuova-pagina" title="Permanent link">&para;</a></h2>
 <p>Passaggi obbligatori:</p>
 <ol>
 <li>crea il file in <code>docs/</code></li>
 <li>scrivi il contenuto</li>
-<li>aggiungilo al <code>nav</code> in <code>makedocks.yml</code></li>
+<li>aggiungilo al <code>nav</code> in <code>mkdocs.yml</code></li>
 </ol>
 <p>Esempio:</p>
 <pre class="highlight"><code class="language-yaml">nav:
   - Home: index.md
   - Modelli: modelli.md</code></pre>
-<p>Se salti il punto 3, la pagina non esiste.</p>
+<p>Se salti il punto 3, la pagina <strong>non esiste nel sito</strong>.</p>
 <hr />
-<h2 id="13-errori-comuni">13. Errori comuni<a class="headerlink" href="#13-errori-comuni" title="Permanent link">&para;</a></h2>
-<p>Gli errori più frequenti riguardano la configurazione della navigazione e la modifica diretta dei file generati. In caso di problemi di visualizzazione, il primo punto da verificare è sempre il file <code>makedocks.yml</code>.</p>
+<h2 id="14-errori-comuni">14. Errori comuni<a class="headerlink" href="#14-errori-comuni" title="Permanent link">&para;</a></h2>
+<p>Errori frequenti che bloccano la build o “nascondono” pagine:</p>
+<ul>
+<li>file creati ma non inseriti in <code>nav</code></li>
+<li>nomi in <code>nav</code> che non corrispondono ai file reali</li>
+<li>modifiche ai file in <code>site/</code></li>
+<li>struttura <code>docs/</code> disordinata</li>
+</ul>
+<p>In caso di problemi, controlla sempre <code>mkdocs.yml</code>.</p>
 <hr />
-<h2 id="14-versionamento">14. Versionamento<a class="headerlink" href="#14-versionamento" title="Permanent link">&para;</a></h2>
+<h2 id="15-versionamento-con-git">15. Versionamento con Git<a class="headerlink" href="#15-versionamento-con-git" title="Permanent link">&para;</a></h2>
 <p>Buona pratica:</p>
 <ul>
 <li>versionare <code>docs/</code></li>
-<li>versionare <code>makedocks.yml</code></li>
+<li>versionare <code>mkdocs.yml</code></li>
 <li><strong>non</strong> versionare <code>site/</code></li>
 </ul>
-<p>Aggiungi a <code>.gitignore</code>:</p>
+<p>In <code>.gitignore</code> aggiungi:</p>
 <pre class="highlight"><code>site/</code></pre>
 <hr />
-<h2 id="15-collegamento-al-corso-markdown">15. Collegamento al corso Markdown<a class="headerlink" href="#15-collegamento-al-corso-markdown" title="Permanent link">&para;</a></h2>
-<p>Per imparare o ripassare Markdown in modo sistematico:</p>
-<p>➡️ <strong>Corso Markdown</strong></p>
-<p>(link interno al corso)[/docs/corsi/markdown]</p>
+<h2 id="16-passo-successivo-approfondire">16. Passo successivo: approfondire<a class="headerlink" href="#16-passo-successivo-approfondire" title="Permanent link">&para;</a></h2>
+<p>Per passare da “uso base” a conoscenza solida:</p>
+<ul>
+<li>esplora temi e personalizzazioni</li>
+<li>studia le estensioni Markdown supportate</li>
+<li>organizza il sito in sezioni e moduli</li>
+<li>usa la <code>nav</code> come struttura didattica</li>
+</ul>
+<p>Quando il progetto cresce, la disciplina sulla struttura è ciò che distingue un sito <strong>chiaro</strong> da uno <strong>caotico</strong>.</p>
 <hr />
+<h2 id="17-collegamento-al-corso-markdown">17. Collegamento al corso Markdown<a class="headerlink" href="#17-collegamento-al-corso-markdown" title="Permanent link">&para;</a></h2>
+<p>Per imparare Markdown in modo sistematico:</p>
+<p>➡️ <strong>Corso Markdown</strong></p>
+<p>Link interno: /corsi/markdown</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../" class="btn btn-neutral float-left" title="Indice corsi"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../markdown/" class="btn btn-neutral float-left" title="MarkDown"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../corso-database-sql/" class="btn btn-neutral float-right" title="Home corso">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -358,7 +436,7 @@ title: Nome pagina
         </span>
     
     
-      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../markdown/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../corso-database-sql/" style="color: #fcfcfc">Next &raquo;</a></span>

@@ -47,7 +47,16 @@ nav:
 
   - Corsi:
       - Indice corsi: corsi/index.md
-      - Makedocs: corsi/makedocs/index.md
+      - CLI - Command Line Interface: 
+          - Indice moduli: corsi/cli/index.md
+          - Moduli:
+              - Indice: corsi/cli/moduli/index.md
+              - Fondamenti della CLI: corsi/cli/moduli/01-fondamenti.md
+              - Filesystem e permessi: corsi/cli/moduli/02-filesystem.md
+ 
+      - MarkDown: corsi/markdown/index.md
+ 
+      - MakeDocs: corsi/makedocs/index.md
 
       - Database SQL:
           - Home corso: corsi/corso-database-sql/index.md

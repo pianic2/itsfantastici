@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="painic" /><link rel="canonical" href="https://docs.itsfantastici.it/corsi/cli/moduli/01-fondamenti/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Fondamenti della CLI - ITS Fantastici — Documentazione</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Fondamenti della CLI";
+        var mkdocs_page_input_path = "corsi/cli/moduli/01-fondamenti.md";
+        var mkdocs_page_url = "/corsi/cli/moduli/01-fondamenti/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> ITS Fantastici — Documentazione
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../esempio-lezione/">Esempio lezione</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Corsi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Indice corsi</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >CLI - Command Line Interface</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Indice moduli</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >Moduli</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../">Indice</a>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" href="#">Fondamenti della CLI</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#introduzione-alla-cli">Introduzione alla CLI</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#distinzione-tra-cli-terminale-e-shell">Distinzione Tra CLI, Terminale e Shell</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#la-shell">La Shell</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cosa-fa-una-shell">Cosa fa una shell</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#shell-comuni">Shell comuni</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#prompt">Prompt</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../02-filesystem/">Filesystem e permessi</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../markdown/">MarkDown</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../makedocs/">MakeDocs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Database SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../corso-database-sql/">Home corso</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Progetto</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/progetto/">Introduzione</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/progetto/problema/">Problema iniziale</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/progetto/requisiti/">Requisiti</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/progetto/modello-dati/">Modello dati</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Moduli</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/moduli/">Indice moduli</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 01 — Fondamenti</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/lezione-01/">Lezione 01 — Introduzione ai database</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/lezione-02/">Lezione 02 — Primo contatto con SQL</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/lezione-03/">Lezione 03 — Relazioni e JOIN</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/glossary/">Glossario</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" >Soluzioni</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 02 — Query SQL</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/02-query-sql/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/02-query-sql/lezione-04/">Lezione 04 — Aggregazioni e GROUP BY</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/02-query-sql/lezione-05/">Lezione 05 — VIEW e query riutilizzabili</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/02-query-sql/lezione-06/">Lezione 06 — UPSERT e gestione conflitti</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 03 — Schema e performance</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/03-schema-performance/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/03-schema-performance/lezione-07/">Lezione 07 — Indici ed EXPLAIN</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/03-schema-performance/lezione-08/">Lezione 08 — Vincoli, soft delete e migrazioni</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 04 — Migrazione e produzione</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/04-migrazione-produzione/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/04-migrazione-produzione/lezione-09/">Lezione 09 — Transazioni e consistenza</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/04-migrazione-produzione/lezione-10/">Lezione 10 — Da SQLite a MySQL</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../corso-database-sql/changelog/">Changelog</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Community</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../community/">Introduzione</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../community/linee-guida/">Linee guida</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../community/workflow/">Workflow di contribuzione</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">ITS Fantastici — Documentazione</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Corsi</li>
+          <li class="breadcrumb-item">CLI - Command Line Interface</li>
+          <li class="breadcrumb-item">Moduli</li>
+      <li class="breadcrumb-item active">Fondamenti della CLI</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/itsfantastici/docs/corsi/cli/moduli/01-fondamenti.md">Edit on itsfantastici/docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fondamenti-della-cli">Fondamenti della CLI<a class="headerlink" href="#fondamenti-della-cli" title="Permanent link">&para;</a></h1>
+<h2 id="introduzione-alla-cli">Introduzione alla CLI<a class="headerlink" href="#introduzione-alla-cli" title="Permanent link">&para;</a></h2>
+<p>La <strong>Command Line Interface (CLI)</strong> è il metodo più antico e potente per interagire con un sistema operativo.</p>
+<p>Prima delle interfacce grafiche (GUI), <strong>tutti i sistemi</strong> venivano controllati tramite comandi testuali.
+Ancora oggi:</p>
+<ul>
+<li>i server</li>
+<li>i sistemi embedded</li>
+<li>l’infrastruttura cloud</li>
+<li>il mondo DevOps</li>
+</ul>
+<p>si basano <strong>quasi esclusivamente sulla CLI</strong>.</p>
+<hr />
+<h2 id="distinzione-tra-cli-terminale-e-shell">Distinzione Tra CLI, Terminale e Shell<a class="headerlink" href="#distinzione-tra-cli-terminale-e-shell" title="Permanent link">&para;</a></h2>
+<p>Uno degli errori più comuni è confondere questi concetti:</p>
+<ul>
+<li><strong>CLI:</strong> è il linguaggio di interazione</li>
+<li><strong>Terminale:</strong> è solo un contenitore</li>
+<li><strong>Shell:</strong> è l’interprete</li>
+</ul>
+<p>Sono <strong>cose diverse</strong>.</p>
+<h3 id="cose-la-cli">Cos’è la CLI<a class="headerlink" href="#cose-la-cli" title="Permanent link">&para;</a></h3>
+<p>La <strong>CLI (Command Line Interface)</strong> è un <strong>paradigma di interazione</strong>:
+- l’utente scrive comandi testuali
+- il sistema risponde con output testuale</p>
+<p>Non è un programma specifico.
+È un <strong>modo di lavorare</strong>.</p>
+<h3 id="cose-il-terminale">Cos’è il terminale<a class="headerlink" href="#cose-il-terminale" title="Permanent link">&para;</a></h3>
+<p>Il <strong>terminale</strong> è un’applicazione che:
+- fornisce una finestra
+- riceve input da tastiera
+- mostra output testuale</p>
+<p>Esempi:
+- GNOME Terminal
+- iTerm2
+- Windows Terminal</p>
+<p>Il terminale <strong>non interpreta i comandi</strong>.</p>
+<hr />
+<h2 id="la-shell">La Shell<a class="headerlink" href="#la-shell" title="Permanent link">&para;</a></h2>
+<p>La <strong>shell</strong> è il programma che:
+- legge i comandi
+- li interpreta
+- li esegue</p>
+<p>È il <strong>cuore operativo della CLI</strong>.</p>
+<h2 id="cosa-fa-una-shell">Cosa fa una shell<a class="headerlink" href="#cosa-fa-una-shell" title="Permanent link">&para;</a></h2>
+<p>Una shell:</p>
+<ul>
+<li>interpreta il testo digitato</li>
+<li>espande variabili</li>
+<li>gestisce redirection e pipe</li>
+<li>avvia processi</li>
+<li>restituisce un exit code</li>
+</ul>
+<p>Quando scrivi un comando, <strong>non stai parlando direttamente al sistema</strong>, ma alla shell.</p>
+<h2 id="shell-comuni">Shell comuni<a class="headerlink" href="#shell-comuni" title="Permanent link">&para;</a></h2>
+<p>Alcuni esempi:</p>
+<ul>
+<li><code>sh</code> – shell storica</li>
+<li><code>bash</code> – la più diffusa</li>
+<li><code>zsh</code> – moderna e avanzata</li>
+<li><code>fish</code> – orientata all’usabilità</li>
+</ul>
+<p>Nel corso useremo <strong>bash</strong> come riferimento concettuale.</p>
+<h2 id="prompt">Prompt<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h2>
+<p>Il <strong>prompt</strong> è la parte di testo che la shell mostra per indicare che è pronta a ricevere un comando. In pratica è un “segnale di attesa” e, spesso, contiene informazioni utili sul contesto in cui stai lavorando.</p>
+<p>Di solito può includere:</p>
+<ul>
+<li><strong>utente</strong> corrente</li>
+<li><strong>nome della macchina</strong> (host)</li>
+<li><strong>cartella</strong> in cui ti trovi (directory corrente)</li>
+<li>un <strong>simbolo finale</strong> che indica il tipo di utente</li>
+</ul>
+<p><strong>Esempio:</strong>
+<pre class="highlight"><code class="language-bash">user@machine:~$</code></pre></p>
+<p>Come si legge:</p>
+<ul>
+<li><code>user</code> = nome utente</li>
+<li><code>machine</code> = computer/server su cui stai lavorando</li>
+<li><code>~</code> = home directory dell’utente (es. <code>/home/user</code>)</li>
+<li><code>$</code> = utente normale<br />
+  (<code>#</code> di solito indica l’utente <strong>root</strong>/amministratore)</li>
+</ul>
+<p>Il prompt può cambiare a seconda della shell e della configurazione, e può mostrare anche altre informazioni (ad esempio il ramo Git o lo stato di un ambiente virtuale).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Indice"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02-filesystem/" class="btn btn-neutral float-right" title="Filesystem e permessi">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/itsfantastici/docs" class="fa fa-code-fork" style="color: #fcfcfc"> itsfantastici/docs</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02-filesystem/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

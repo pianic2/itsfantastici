@@ -7,6 +7,7 @@ title: Moduli del corso
 Il corso *Database SQL* è strutturato in **moduli progressivi**.
 
 Ogni modulo:
+
 - introduce nuovi concetti
 - risolve problemi che emergono dal progetto
 - estende ciò che è stato costruito nei moduli precedenti
@@ -30,6 +31,7 @@ Non esistono moduli indipendenti: **il corso è cumulativo**.
 Costruisce il **modello mentale corretto**.
 
 Contenuti chiave:
+
 - cos’è un database
 - modello relazionale
 - entità, relazioni e vincoli
@@ -44,6 +46,7 @@ Contenuti chiave:
 Introduce la **lettura e interrogazione avanzata dei dati**.
 
 Contenuti chiave:
+
 - JOIN
 - aggregazioni
 - GROUP BY e HAVING
@@ -58,6 +61,7 @@ Contenuti chiave:
 Si concentra su **qualità e prestazioni**.
 
 Contenuti chiave:
+
 - indici
 - EXPLAIN
 - vincoli utili
@@ -72,6 +76,7 @@ Contenuti chiave:
 Affronta il passaggio **da progetto didattico a sistema reale**.
 
 Contenuti chiave:
+
 - transazioni
 - concorrenza
 - differenze SQLite / MySQL

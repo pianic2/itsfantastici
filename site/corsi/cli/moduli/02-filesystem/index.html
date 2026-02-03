@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="painic" /><link rel="canonical" href="https://docs.itsfantastici.it/corsi/cli/moduli/02-filesystem/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Filesystem e permessi - ITS Fantastici — Documentazione</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Filesystem e permessi";
+        var mkdocs_page_input_path = "corsi/cli/moduli/02-filesystem.md";
+        var mkdocs_page_url = "/corsi/cli/moduli/02-filesystem/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> ITS Fantastici — Documentazione
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../esempio-lezione/">Esempio lezione</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Corsi</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Indice corsi</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >CLI - Command Line Interface</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Indice moduli</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >Moduli</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../">Indice</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../01-fondamenti/">Fondamenti della CLI</a>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" href="#">Filesystem e permessi</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#filesystem">Filesystem</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#muoversi-nel-filesystem">Muoversi nel filesystem</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#creare-spostare-ed-eliminare-file">Creare, spostare ed eliminare file</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#perche-il-contesto-e-fondamentale-la-regola-che-evita-errori">Perché il contesto è fondamentale (la regola che evita errori)</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../markdown/">MarkDown</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../makedocs/">MakeDocs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Database SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../corso-database-sql/">Home corso</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Progetto</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/progetto/">Introduzione</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/progetto/problema/">Problema iniziale</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/progetto/requisiti/">Requisiti</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/progetto/modello-dati/">Modello dati</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >Moduli</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../corso-database-sql/moduli/">Indice moduli</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 01 — Fondamenti</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/lezione-01/">Lezione 01 — Introduzione ai database</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/lezione-02/">Lezione 02 — Primo contatto con SQL</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/lezione-03/">Lezione 03 — Relazioni e JOIN</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/01-fondamenti/glossary/">Glossario</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" >Soluzioni</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 02 — Query SQL</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/02-query-sql/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/02-query-sql/lezione-04/">Lezione 04 — Aggregazioni e GROUP BY</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/02-query-sql/lezione-05/">Lezione 05 — VIEW e query riutilizzabili</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/02-query-sql/lezione-06/">Lezione 06 — UPSERT e gestione conflitti</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 03 — Schema e performance</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/03-schema-performance/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/03-schema-performance/lezione-07/">Lezione 07 — Indici ed EXPLAIN</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/03-schema-performance/lezione-08/">Lezione 08 — Vincoli, soft delete e migrazioni</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Modulo 04 — Migrazione e produzione</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/04-migrazione-produzione/">Indice</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/04-migrazione-produzione/lezione-09/">Lezione 09 — Transazioni e consistenza</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../corso-database-sql/moduli/04-migrazione-produzione/lezione-10/">Lezione 10 — Da SQLite a MySQL</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../corso-database-sql/changelog/">Changelog</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Community</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../community/">Introduzione</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../community/linee-guida/">Linee guida</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../community/workflow/">Workflow di contribuzione</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">ITS Fantastici — Documentazione</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Corsi</li>
+          <li class="breadcrumb-item">CLI - Command Line Interface</li>
+          <li class="breadcrumb-item">Moduli</li>
+      <li class="breadcrumb-item active">Filesystem e permessi</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/itsfantastici/docs/corsi/cli/moduli/02-filesystem.md">Edit on itsfantastici/docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="filesystem-e-permessi">Filesystem e Permessi<a class="headerlink" href="#filesystem-e-permessi" title="Permanent link">&para;</a></h1>
+<p>In questo modulo costruisci le basi per orientarti nel filesystem da riga di comando: capire <em>dove sei</em>, <em>cosa stai toccando</em> e <em>cosa succede</em> quando esegui un comando.</p>
+<p>Quasi tutti i comandi della CLI lavorano su <strong>file e directory</strong>. Senza una mappa mentale della struttura e dei percorsi, i comandi si riducono a copia/incolla e gli errori diventano inevitabili.</p>
+<p>Obiettivo: leggere e usare correttamente <strong>path</strong>, <strong>gerarchia</strong> e <strong>contesto di lavoro</strong> prima di passare ai permessi.</p>
+<h2 id="filesystem">Filesystem<a class="headerlink" href="#filesystem" title="Permanent link">&para;</a></h2>
+<h3 id="cose-il-filesystem">Cos’è il filesystem<a class="headerlink" href="#cose-il-filesystem" title="Permanent link">&para;</a></h3>
+<p>Il <strong>filesystem</strong> è il modello logico con cui il sistema operativo:</p>
+<ul>
+<li>organizza i dati</li>
+<li>li rende accessibili</li>
+<li>gestisce permessi e proprietà</li>
+</ul>
+<p>In sistemi UNIX-like il filesystem è:</p>
+<ul>
+<li><strong>gerarchico</strong></li>
+<li><strong>unificato</strong></li>
+<li><strong>radicato in <code>/</code></strong></li>
+</ul>
+<hr />
+<h3 id="file-e-directory">File e directory<a class="headerlink" href="#file-e-directory" title="Permanent link">&para;</a></h3>
+<p>In UNIX:</p>
+<ul>
+<li>una <strong>directory</strong> è un <em>file speciale</em> che contiene un elenco di <strong>nomi → inode</strong> (cioè “etichette” che puntano ad altri file o directory)</li>
+<li>un <strong>file</strong> è, in sostanza, una <strong>sequenza di byte</strong> (testo, immagini, binari, ecc.)</li>
+<li>le <strong>estensioni</strong> (<code>.txt</code>, <code>.png</code>, <code>.pdf</code>) sono solo una <strong>convenzione</strong>: aiutano le persone e alcuni programmi, ma <strong>non sono obbligatorie</strong> né decisive</li>
+</ul>
+<p>Quindi il “tipo” di un file non dipende dal nome, ma da:</p>
+<ol>
+<li><strong>Contenuto</strong> (formato reale)<br />
+  Molti file hanno una <em>firma</em> interna (“magic number”). Per verificarlo si usa:
+  <pre class="highlight"><code class="language-bash">file documento</code></pre></li>
+<li>
+<p><strong>Metadati del filesystem</strong> (permessi, proprietario, timestamp, ecc.)  </p>
+</li>
+<li>
+<p><strong>Permessi di esecuzione</strong>  </p>
+</li>
+</ol>
+<p>Conclusione: in UNIX <strong>il nome è solo un nome</strong>; ciò che conta è <strong>cosa contiene</strong> il file e <strong>cosa ti è permesso farci</strong>.</p>
+<hr />
+<h3 id="gerarchia-standard">Gerarchia standard<a class="headerlink" href="#gerarchia-standard" title="Permanent link">&para;</a></h3>
+<p>Tutto parte dalla directory radice e si ramifica in ulteriori directories:</p>
+<pre class="highlight"><code class="language-text">/
+├── bin   # comandi essenziali
+├── etc   # file di configurazione
+├── home  # directory degli utenti
+├── var   # dati variabili (log, cache)
+└── tmp   # file temporanei</code></pre>
+<p>Non è una convenzione estetica:<br />
+<strong>ogni directory ha una funzione precisa</strong>.</p>
+<h3 id="path-percorsi">Path (percorsi)<a class="headerlink" href="#path-percorsi" title="Permanent link">&para;</a></h3>
+<p>Un <strong>path</strong> identifica un file o una directory.</p>
+<ul>
+<li>
+<p><strong>Path assoluto</strong>: parte da <code>/</code>
+  <pre class="highlight"><code class="language-text">/home/user/file.txt</code></pre></p>
+</li>
+<li>
+<p><strong>Path relativo</strong>: parte dalla directory corrente
+  <pre class="highlight"><code class="language-text">./file.txt</code></pre></p>
+</li>
+</ul>
+<p>Un modo utile per pensarci:</p>
+<ul>
+<li>l’assoluto è “coordinate globali”</li>
+<li>il relativo è “coordinate locali” (dipendono da dove ti trovi)</li>
+</ul>
+<hr />
+<h3 id="i-riferimenti-speciali">I riferimenti speciali: <code>.</code>, <code>..</code>, <code>~</code><a class="headerlink" href="#i-riferimenti-speciali" title="Permanent link">&para;</a></h3>
+<p>Nella maggior parte delle shell UNIX, questi simboli sono fondamentali:</p>
+<ul>
+<li><code>.</code> = directory corrente</li>
+<li><code>..</code> = directory padre</li>
+<li><code>~</code> = home dell’utente</li>
+</ul>
+<hr />
+<h3 id="working-directory-il-contesto">Working directory (il “contesto”)<a class="headerlink" href="#working-directory-il-contesto" title="Permanent link">&para;</a></h3>
+<p>La <strong>working directory</strong> (directory di lavoro) è il posto in cui il sistema considera che tu sia “in questo momento”.</p>
+<p>È fondamentale perché molti comandi:</p>
+<ul>
+<li>leggono file “relativi” al punto in cui sei</li>
+<li>creano nuovi file “qui” se non specifichi un path</li>
+<li>possono fare danni se eseguiti nella cartella sbagliata</li>
+</ul>
+<p>Comandi base:</p>
+<pre class="highlight"><code class="language-bash">pwd     # stampa dove sei
+ls      # mostra cosa c’è nella cartella
+cd ...  # cambia cartella</code></pre>
+<p>Regola pratica:</p>
+<blockquote>
+<p>prima di un’operazione delicata (es. cancellazioni), esegui sempre <code>pwd</code> e <code>ls</code>.</p>
+</blockquote>
+<hr />
+<h2 id="muoversi-nel-filesystem">Muoversi nel filesystem<a class="headerlink" href="#muoversi-nel-filesystem" title="Permanent link">&para;</a></h2>
+<h3 id="il-prompt-della-shell-dove-scrivi-i-comandi">Il prompt della shell (dove scrivi i comandi)<a class="headerlink" href="#il-prompt-della-shell-dove-scrivi-i-comandi" title="Permanent link">&para;</a></h3>
+<p>Quando apri il Terminale vedi una riga simile a:</p>
+<pre class="highlight"><code class="language-text">utente@macbook:~/progetti $</code></pre>
+<p>Quella parte finale (<code>$</code> oppure <code>#</code>) è il <strong>prompt</strong>: indica che la shell è pronta a ricevere un comando.</p>
+<ul>
+<li><code>~</code> di solito significa “sei nella home”</li>
+<li>se vedi <code>#</code> spesso sei <strong>root</strong> (massimi permessi) → più rischioso</li>
+</ul>
+<p>La cosa più importante da capire è: <strong>ogni comando che scrivi viene eseguito “da” una directory corrente</strong> (working directory). Per orientarti usi soprattutto <code>pwd</code>, <code>ls</code>, <code>cd</code>.</p>
+<hr />
+<h3 id="navigazione-essenziale-pwd-ls-cd">Navigazione essenziale: <code>pwd</code>, <code>ls</code>, <code>cd</code><a class="headerlink" href="#navigazione-essenziale-pwd-ls-cd" title="Permanent link">&para;</a></h3>
+<h4 id="pwd-dove-sono"><code>pwd</code> — “dove sono?”<a class="headerlink" href="#pwd-dove-sono" title="Permanent link">&para;</a></h4>
+<p><code>pwd</code> (<em>print working directory</em>) stampa il <strong>percorso assoluto</strong> della directory in cui ti trovi.</p>
+<pre class="highlight"><code class="language-bash">pwd
+# /Users/pianic2/itsfantastici</code></pre>
+<p>È il comando da usare quando non sei sicuro del contesto (prima di operazioni delicate).</p>
+<hr />
+<h4 id="ls-cosa-ce-qui"><code>ls</code> — “cosa c’è qui?”<a class="headerlink" href="#ls-cosa-ce-qui" title="Permanent link">&para;</a></h4>
+<p><code>ls</code> (<em>abbreviazione per : list</em>) elenca file e directory nella cartella corrente (o in un path che gli passi).</p>
+<pre class="highlight"><code class="language-bash">ls
+ls docs/</code></pre>
+<p>Opzioni comuni:</p>
+<pre class="highlight"><code class="language-bash">ls -l   # lista “lunga”: permessi, proprietario, dimensione, data
+ls -a   # include i file nascosti (quelli che iniziano con .)
+ls -la  # combinazione molto usata</code></pre>
+<p><code>ls -la</code> è utile perché mostra:</p>
+<ul>
+<li>file “nascosti” (iniziano con <code>.</code>)</li>
+<li>permessi e proprietario (li vedremo nella parte sui permessi)</li>
+</ul>
+<hr />
+<h4 id="cd-vai-in-unaltra-cartella"><code>cd</code> — “vai in un’altra cartella”<a class="headerlink" href="#cd-vai-in-unaltra-cartella" title="Permanent link">&para;</a></h4>
+<p><code>cd</code> (<em>change directory</em>) cambia la directory corrente.</p>
+<pre class="highlight"><code class="language-bash">cd /          # vai alla root
+cd ~          # vai alla home
+cd ..         # vai alla cartella padre
+cd -          # torna alla cartella precedente
+cd docs/      # path relativo
+cd /var/log   # path assoluto</code></pre>
+<p>Note pratiche:</p>
+<ul>
+<li><code>cd</code> senza argomenti ti porta in <code>~</code> (home)</li>
+<li>i path <strong>relativi</strong> dipendono da dove sei (controlla con <code>pwd</code>)</li>
+<li>usa <strong>TAB</strong> per completare nomi di file/cartelle ed evitare errori</li>
+</ul>
+<hr />
+<h3 id="globbing-selezionare-file-con-pattern">Globbing (selezionare file con pattern)<a class="headerlink" href="#globbing-selezionare-file-con-pattern" title="Permanent link">&para;</a></h3>
+<p>La shell espande automaticamente alcuni pattern:</p>
+<ul>
+<li><code>*</code> = qualsiasi sequenza di caratteri</li>
+<li><code>?</code> = un singolo carattere</li>
+</ul>
+<p>Esempi:</p>
+<pre class="highlight"><code class="language-bash">ls *.md
+ls lezione-0?.md</code></pre>
+<p>Se un nome contiene spazi, usa le virgolette:</p>
+<pre class="highlight"><code class="language-bash">ls "File con spazi.txt"</code></pre>
+<h2 id="creare-spostare-ed-eliminare-file">Creare, spostare ed eliminare file<a class="headerlink" href="#creare-spostare-ed-eliminare-file" title="Permanent link">&para;</a></h2>
+<p>In questa sezione vedi le operazioni fondamentali su file e directory:</p>
+<ul>
+<li><strong>creare</strong>: <code>mkdir</code>, <code>touch</code></li>
+<li><strong>copiare</strong>: <code>cp</code></li>
+<li><strong>spostare / rinominare</strong>: <code>mv</code></li>
+<li><strong>eliminare</strong> (con attenzione): <code>rm</code>, <code>rmdir</code></li>
+</ul>
+<hr />
+<h3 id="operazioni-essenziali-mkdir-touch-cp-mv-rm">Operazioni essenziali: <code>mkdir</code>, <code>touch</code>, <code>cp</code>, <code>mv</code>, <code>rm</code><a class="headerlink" href="#operazioni-essenziali-mkdir-touch-cp-mv-rm" title="Permanent link">&para;</a></h3>
+<h4 id="mkdir-crea-una-directory"><code>mkdir</code> — “crea una directory”<a class="headerlink" href="#mkdir-crea-una-directory" title="Permanent link">&para;</a></h4>
+<p><code>mkdir</code> (<em>make directory</em>) crea una nuova cartella.</p>
+<pre class="highlight"><code class="language-bash">mkdir appunti</code></pre>
+<p>Se vuoi creare <strong>più livelli</strong> in un colpo solo (e non avere errori se qualche cartella esiste già), usa <code>-p</code>:</p>
+<pre class="highlight"><code class="language-bash">mkdir -p corsi/cli/moduli</code></pre>
+<hr />
+<h4 id="touch-crea-un-file-vuoto-o-aggiorna-il-timestamp"><code>touch</code> — “crea un file vuoto (o aggiorna il timestamp)”<a class="headerlink" href="#touch-crea-un-file-vuoto-o-aggiorna-il-timestamp" title="Permanent link">&para;</a></h4>
+<p><code>touch</code> crea un file vuoto se non esiste; se esiste, aggiorna data/ora di modifica.</p>
+<pre class="highlight"><code class="language-bash">touch note.md</code></pre>
+<hr />
+<h4 id="cp-copia"><code>cp</code> — “copia”<a class="headerlink" href="#cp-copia" title="Permanent link">&para;</a></h4>
+<p><code>cp</code> (<em>copy</em>) copia file (e, con opzioni, directory).</p>
+<p>Copiare un file (crea <code>copia.txt</code> oppure lo sovrascrive se esiste):</p>
+<pre class="highlight"><code class="language-bash">cp sorgente.txt copia.txt</code></pre>
+<p>Copiare una directory richiede <code>-r</code> (<em>recursive</em>):</p>
+<pre class="highlight"><code class="language-bash">cp -r cartella cartella-backup</code></pre>
+<p>Regola pratica: prima di una modifica “rischiosa”, fare una copia è spesso il modo più rapido per recuperare da un errore.</p>
+<hr />
+<h4 id="mv-sposta-o-rinomina"><code>mv</code> — “sposta o rinomina”<a class="headerlink" href="#mv-sposta-o-rinomina" title="Permanent link">&para;</a></h4>
+<p>In UNIX, spostare e rinominare sono la stessa operazione: <code>mv</code> (<em>move</em>).</p>
+<p>Rinominare un file:</p>
+<pre class="highlight"><code class="language-bash">mv vecchio.txt nuovo.txt</code></pre>
+<p>Spostare un file in una directory (eventualmente cambiandogli nome):</p>
+<pre class="highlight"><code class="language-bash">mv note.md appunti/note.md</code></pre>
+<p>Se la destinazione esiste già, <code>mv</code> può <strong>sovrascrivere</strong>. Per ridurre il rischio, usa la modalità interattiva:</p>
+<pre class="highlight"><code class="language-bash">mv -i sorgente.txt destinazione.txt</code></pre>
+<hr />
+<h4 id="rm-rmdir-elimina-attenzione"><code>rm</code> / <code>rmdir</code> — “elimina (attenzione)”<a class="headerlink" href="#rm-rmdir-elimina-attenzione" title="Permanent link">&para;</a></h4>
+<p>Eliminare è l’operazione più delicata: <strong>di default non c’è cestino</strong>.</p>
+<p>Eliminare un file:</p>
+<pre class="highlight"><code class="language-bash">rm file.txt</code></pre>
+<p>Eliminare una directory <strong>vuota</strong>:</p>
+<pre class="highlight"><code class="language-bash">rmdir cartella-vuota</code></pre>
+<p>Eliminare una directory <strong>con contenuto</strong> (attenzione: rimuove tutto) richiede <code>-r</code>:</p>
+<pre class="highlight"><code class="language-bash">rm -r cartella</code></pre>
+<p>Modalità “interattiva” (chiede conferma):</p>
+<pre class="highlight"><code class="language-bash">rm -i file.txt
+rm -ri cartella</code></pre>
+<p>Regola di sicurezza:</p>
+<blockquote>
+<p>prima fai una <code>ls</code> del path che vuoi colpire, poi esegui <code>rm</code>.</p>
+</blockquote>
+<p>Esempio:</p>
+<pre class="highlight"><code class="language-bash">ls cartella
+rm -r cartella</code></pre>
+<hr />
+<h2 id="perche-il-contesto-e-fondamentale-la-regola-che-evita-errori">Perché il contesto è fondamentale (la regola che evita errori)<a class="headerlink" href="#perche-il-contesto-e-fondamentale-la-regola-che-evita-errori" title="Permanent link">&para;</a></h2>
+<p>Due comandi identici possono avere effetti completamente diversi a seconda di:</p>
+<ul>
+<li>dove sei (<code>pwd</code>)</li>
+<li>su quali file stai puntando (path relativo vs assoluto)</li>
+<li>quali pattern stai espandendo (<code>*</code>, <code>?</code>)</li>
+</ul>
+<p>Esempio: questi due comandi NON sono equivalenti.</p>
+<pre class="highlight"><code class="language-bash">rm -r build
+rm -r ./build</code></pre>
+<p>Il secondo rende esplicito che ti riferisci alla cartella <code>build</code> nella directory corrente.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01-fondamenti/" class="btn btn-neutral float-left" title="Fondamenti della CLI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../markdown/" class="btn btn-neutral float-right" title="MarkDown">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/itsfantastici/docs" class="fa fa-code-fork" style="color: #fcfcfc"> itsfantastici/docs</a>
+        </span>
+    
+    
+      <span><a href="../01-fondamenti/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../markdown/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

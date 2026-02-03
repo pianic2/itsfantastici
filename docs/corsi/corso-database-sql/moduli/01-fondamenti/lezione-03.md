@@ -137,26 +137,22 @@ Progettare e interrogare un database relazionale che permetta di gestire:
 
 ### Parte 1 — Creazione delle tabelle
 
-1. Crea una tabella `students` con i seguenti campi:
+#### Crea una tabella `students` con i seguenti campi:
+  - `id` (chiave primaria, autoincrement)
+  - `name` (testo, obbligatorio)
+  - `surname` (testo, facoltativo)
+  - `email` (testo, obbligatorio)
 
-   - `id` (chiave primaria, autoincrement)
-   - `name` (testo, obbligatorio)
-   - `surname` (testo, facoltativo)
-   - `email` (testo, obbligatorio)
+#### Crea una tabella `classes` con i seguenti campi:
+  - `id` (chiave primaria, autoincrement)
+  - `name` (testo, obbligatorio e univoco)
+  - `hours` (numero, obbligatorio)
+  - `cfu` (numero, facoltativo)
 
-2. Crea una tabella `classes` con i seguenti campi:
-
-   - `id` (chiave primaria, autoincrement)
-   - `name` (testo, obbligatorio e univoco)
-   - `hours` (numero, obbligatorio)
-   - `cfu` (numero, facoltativo)
-
-3. Crea una tabella `students_classes` che rappresenti la relazione
-   **molti-a-molti** tra studenti e corsi, contenente:
-
-   - `id` (chiave primaria)
-   - `students_id` (chiave esterna)
-   - `classes_id` (chiave esterna)
+#### Crea una tabella `students_classes` che rappresenti la relazione molti-a-molti tra studenti e corsi, contenente:
+  - `id` (chiave primaria)
+  - `students_id` (chiave esterna)
+  - `classes_id` (chiave esterna)
 
 ---
 
@@ -184,7 +180,11 @@ Scrivi una query che mostri:
 - cognome dello studente
 - nome del corso a cui è iscritto
 
+---
 
+### Soluzione
+
+Ecco la soluzione fornita: [soluzione](soluzioni/esercizio-03-01.md)
 ---
 
 ## Soluzione community

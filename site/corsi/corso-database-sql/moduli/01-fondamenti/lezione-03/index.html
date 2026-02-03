@@ -262,39 +262,26 @@ Serve una query che <strong>combini</strong> tabelle in modo coerente.</p>
 </ul>
 <hr />
 <h3 id="parte-1-creazione-delle-tabelle">Parte 1 — Creazione delle tabelle<a class="headerlink" href="#parte-1-creazione-delle-tabelle" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Crea una tabella <code>students</code> con i seguenti campi:</p>
-</li>
-<li>
-<p><code>id</code> (chiave primaria, autoincrement)</p>
-</li>
+<h4 id="crea-una-tabella-students-con-i-seguenti-campi">Crea una tabella <code>students</code> con i seguenti campi:<a class="headerlink" href="#crea-una-tabella-students-con-i-seguenti-campi" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>id</code> (chiave primaria, autoincrement)</li>
 <li><code>name</code> (testo, obbligatorio)</li>
 <li><code>surname</code> (testo, facoltativo)</li>
-<li>
-<p><code>email</code> (testo, obbligatorio)</p>
-</li>
-<li>
-<p>Crea una tabella <code>classes</code> con i seguenti campi:</p>
-</li>
-<li>
-<p><code>id</code> (chiave primaria, autoincrement)</p>
-</li>
+<li><code>email</code> (testo, obbligatorio)</li>
+</ul>
+<h4 id="crea-una-tabella-classes-con-i-seguenti-campi">Crea una tabella <code>classes</code> con i seguenti campi:<a class="headerlink" href="#crea-una-tabella-classes-con-i-seguenti-campi" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>id</code> (chiave primaria, autoincrement)</li>
 <li><code>name</code> (testo, obbligatorio e univoco)</li>
 <li><code>hours</code> (numero, obbligatorio)</li>
-<li>
-<p><code>cfu</code> (numero, facoltativo)</p>
-</li>
-<li>
-<p>Crea una tabella <code>students_classes</code> che rappresenti la relazione
-   <strong>molti-a-molti</strong> tra studenti e corsi, contenente:</p>
-</li>
-<li>
-<p><code>id</code> (chiave primaria)</p>
-</li>
+<li><code>cfu</code> (numero, facoltativo)</li>
+</ul>
+<h4 id="crea-una-tabella-students_classes-che-rappresenti-la-relazione-molti-a-molti-tra-studenti-e-corsi-contenente">Crea una tabella <code>students_classes</code> che rappresenti la relazione molti-a-molti tra studenti e corsi, contenente:<a class="headerlink" href="#crea-una-tabella-students_classes-che-rappresenti-la-relazione-molti-a-molti-tra-studenti-e-corsi-contenente" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>id</code> (chiave primaria)</li>
 <li><code>students_id</code> (chiave esterna)</li>
 <li><code>classes_id</code> (chiave esterna)</li>
-</ol>
+</ul>
 <hr />
 <h3 id="parte-2-inserimento-dei-dati">Parte 2 — Inserimento dei dati<a class="headerlink" href="#parte-2-inserimento-dei-dati" title="Permanent link">&para;</a></h3>
 <p>Inserisci:</p>
@@ -315,6 +302,8 @@ Serve una query che <strong>combini</strong> tabelle in modo coerente.</p>
 <li>nome del corso a cui è iscritto</li>
 </ul>
 <hr />
+<h3 id="soluzione">Soluzione<a class="headerlink" href="#soluzione" title="Permanent link">&para;</a></h3>
+<h2 id="ecco-la-soluzione-fornita-soluzione">Ecco la soluzione fornita: <a href="../soluzioni/esercizio-03-01/">soluzione</a><a class="headerlink" href="#ecco-la-soluzione-fornita-soluzione" title="Permanent link">&para;</a></h2>
 <h2 id="soluzione-community">Soluzione community<a class="headerlink" href="#soluzione-community" title="Permanent link">&para;</a></h2>
 <p>Best practice emerse:</p>
 <ul>

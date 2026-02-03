@@ -17,6 +17,7 @@ Ogni lezione:
 ## Partecipazione della community
 
 Gli studenti possono:
+
 - proporre esercizi
 - migliorare spiegazioni
 - suggerire soluzioni alternative

@@ -47,12 +47,13 @@ nav:
 
   - Corsi:
       - Indice corsi: corsi/index.md
+
       - CLI - Command Line Interface: 
-          - Indice moduli: corsi/cli/index.md
+          - Home Corso: corsi/cli/index.md
           - Moduli:
-              - Indice: corsi/cli/moduli/index.md
-              - Fondamenti della CLI: corsi/cli/moduli/01-fondamenti.md
-              - Filesystem e permessi: corsi/cli/moduli/02-filesystem.md
+              - Indice Moduli: corsi/cli/moduli/index.md
+              - Modulo 01 - Fondamenti della CLI: corsi/cli/moduli/01-fondamenti.md
+              - Modulo 02 - Filesystem e permessi: corsi/cli/moduli/02-filesystem.md
  
       - MarkDown: corsi/markdown/index.md
  
@@ -93,8 +94,6 @@ nav:
                   - Indice: corsi/corso-database-sql/moduli/04-migrazione-produzione/index.md
                   - Lezione 09 — Transazioni e consistenza: corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-09.md
                   - Lezione 10 — Da SQLite a MySQL: corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-10.md
-
-          - Changelog: corsi/corso-database-sql/changelog.md
 
   - Community:
     - Introduzione: community/index.md

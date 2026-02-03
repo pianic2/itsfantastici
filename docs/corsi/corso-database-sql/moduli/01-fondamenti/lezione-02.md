@@ -218,8 +218,6 @@ SET email = 'alice@newmail.com'
 WHERE id = 1;
 ```
 
-
-
 ---
 
 ### Cancellazione dei dati (DELETE)

@@ -128,6 +128,7 @@ Cosa succede:
 
 ### Obiettivo
 Progettare e interrogare un database relazionale che permetta di gestire:
+
 - studenti
 - corsi (classi)
 - iscrizioni degli studenti ai corsi
@@ -137,12 +138,14 @@ Progettare e interrogare un database relazionale che permetta di gestire:
 ### Parte 1 — Creazione delle tabelle
 
 1. Crea una tabella `students` con i seguenti campi:
+
    - `id` (chiave primaria, autoincrement)
    - `name` (testo, obbligatorio)
    - `surname` (testo, facoltativo)
    - `email` (testo, obbligatorio)
 
 2. Crea una tabella `classes` con i seguenti campi:
+
    - `id` (chiave primaria, autoincrement)
    - `name` (testo, obbligatorio e univoco)
    - `hours` (numero, obbligatorio)
@@ -150,6 +153,7 @@ Progettare e interrogare un database relazionale che permetta di gestire:
 
 3. Crea una tabella `students_classes` che rappresenti la relazione
    **molti-a-molti** tra studenti e corsi, contenente:
+
    - `id` (chiave primaria)
    - `students_id` (chiave esterna)
    - `classes_id` (chiave esterna)
@@ -159,6 +163,7 @@ Progettare e interrogare un database relazionale che permetta di gestire:
 ### Parte 2 — Inserimento dei dati
 
 Inserisci:
+
 - almeno **7 studenti**
 - almeno **3 corsi**
 - associa gli studenti ai corsi tramite la tabella `students_classes`
@@ -174,6 +179,7 @@ Mostra il contenuto di tutte le tabelle tramite query `SELECT`.
 ### Parte 4 — Join tra tabelle
 
 Scrivi una query che mostri:
+
 - nome dello studente
 - cognome dello studente
 - nome del corso a cui è iscritto

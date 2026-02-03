@@ -394,84 +394,180 @@ I tipi indicano:</p>
 <hr />
 <h2 id="esempi">Esempi<a class="headerlink" href="#esempi" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>Partiamo con SQLite (semplice e locale), ma scriviamo SQL standard quando possibile.</p>
+<p>Usiamo <strong>SQLite</strong> (semplice e locale), ma cerchiamo di scrivere SQL <strong>standard</strong> e portabile quando possibile.</p>
 </blockquote>
 <h3 id="inserimento-dei-dati-insert">Inserimento dei dati (INSERT)<a class="headerlink" href="#inserimento-dei-dati-insert" title="Permanent link">&para;</a></h3>
-<p>Il comando di inserimento dei dati è composto dalle seguenti parti:</p>
+<p><code>INSERT</code> serve a creare nuove righe in una tabella. La forma più comune è:</p>
 <ul>
-<li><code>INSERT INTO &lt;table&gt; (&lt;fields&gt;)</code> specifica la tabella per inserire i dati</li>
-<li><code>VALUES (&lt;values&gt;)</code> valori da inserire</li>
+<li><code>INSERT INTO &lt;table&gt; (&lt;colonne&gt;)</code> indica tabella e colonne da valorizzare</li>
+<li><code>VALUES (&lt;valori&gt;)</code> indica i valori (nello <strong>stesso ordine</strong> delle colonne)</li>
 </ul>
+<p>Esempio: inseriamo un utente.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;alice@example.com&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p>Il database:</p>
 <ul>
-<li>assegna automaticamente la primary key</li>
-<li>verifica i vincoli</li>
+<li>assegna automaticamente la <strong>primary key</strong> (se <code>id</code> è autoincrement)</li>
+<li>controlla i <strong>vincoli</strong> (es. <code>NOT NULL</code>, <code>UNIQUE</code>, <code>CHECK</code>)</li>
+<li>controlla le <strong>foreign key</strong> (se abilitate/attive)</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p">)</span>
+<p>Esempio: inseriamo un post collegato a un utente.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p">)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Primo post&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Contenuto di esempio&#39;</span><span class="p">);</span>
 </code></pre></div>
-Se <code>user_id = 1</code> non esiste → <strong>errore</strong>.
-Questa è integrità referenziale.</p>
-<p>Per inserire più righe in un’unica istruzione, puoi usare una lista di valori separati da virgole. È più efficiente e mantiene i dati coerenti.</p>
+<p>Se <code>user_id = 1</code> <strong>non esiste</strong> nella tabella <code>users</code> → errore di <strong>integrità referenziale</strong> (vincolo FK).</p>
+<h4 id="inserire-piu-righe-in-una-sola-query">Inserire più righe in una sola query<a class="headerlink" href="#inserire-piu-righe-in-una-sola-query" title="Permanent link">&para;</a></h4>
+<p>È più efficiente e riduce il numero di query.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">born_year</span><span class="p">,</span><span class="w"> </span><span class="n">born_month</span><span class="p">,</span><span class="w"> </span><span class="n">born_day</span><span class="p">)</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">VALUES</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bob@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1999</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;rob&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;rob@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1999</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">),</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;carlo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;carlo@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">),</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;dina&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dina@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1997</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;elena&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;elena@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">),</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;franco&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;franco@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1995</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">),</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;bob@example.com&#39;</span><span class="p">,</span><span class="w">   </span><span class="mi">1999</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;rob&#39;</span><span class="p">,</span><span class="w">   </span><span class="s1">&#39;rob@example.com&#39;</span><span class="p">,</span><span class="w">   </span><span class="mi">1999</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">),</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;carlo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;carlo@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">),</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;dina&#39;</span><span class="p">,</span><span class="w">  </span><span class="s1">&#39;dina@example.com&#39;</span><span class="p">,</span><span class="w">  </span><span class="mi">1997</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">  </span><span class="mi">5</span><span class="p">),</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;elena&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;elena@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="mi">9</span><span class="p">),</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;franco&#39;</span><span class="p">,</span><span class="s1">&#39;franco@example.com&#39;</span><span class="p">,</span><span class="mi">1995</span><span class="p">,</span><span class="w">  </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">),</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;giada&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;giada@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">),</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;luca&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;luca@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1999</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;luca&#39;</span><span class="p">,</span><span class="w">  </span><span class="s1">&#39;luca@example.com&#39;</span><span class="p">,</span><span class="w">  </span><span class="mi">1999</span><span class="p">,</span><span class="w">  </span><span class="mi">4</span><span class="p">,</span><span class="w">  </span><span class="mi">2</span><span class="p">);</span>
 </code></pre></div>
+<blockquote>
+<p>Suggerimento: se stai inserendo dati “critici”, considera l’uso di <strong>transazioni</strong> (<code>BEGIN</code> / <code>COMMIT</code>) per rendere l’operazione atomica.</p>
+</blockquote>
 <hr />
 <h3 id="lettura-dei-dati-select">Lettura dei dati (SELECT)<a class="headerlink" href="#lettura-dei-dati-select" title="Permanent link">&para;</a></h3>
-<p>Il comando di lettura dei dati è composto dalle seguenti parti:</p>
+<p><code>SELECT</code> serve a leggere dati. Una query tipica è composta da:</p>
 <ul>
-<li><code>SELECT &lt;fields&gt;</code> indica quali fields selezionare</li>
-<li><code>FROM &lt;table&gt;</code> indica su quale tabella cercare i dati</li>
-<li><code>WHERE &lt;filter conditions&gt;</code> impone filtri alla selezione usando la logica booleana</li>
-<li><code>ORDERED BY &lt;field&gt; &lt;order(DESC | ASC)&gt;</code> ordina i dati per i valori di una specifica colonna</li>
-<li><code>LIMIT &lt;int value&gt;</code> se specificato indica quante entries mostrare per ogni pagina</li>
-<li><code>OFFSET &lt;int value&gt; &lt;order(DESC | ASC)&gt;</code> indica da quale entry mostrare in modo esclusivo (mostra dal <code>n+1</code> esimo elemento). </li>
+<li><code>SELECT &lt;colonne&gt;</code> quali colonne vuoi vedere (oppure <code>*</code> per tutte)</li>
+<li><code>FROM &lt;tabella&gt;</code> da dove leggere</li>
+<li><code>WHERE &lt;condizioni&gt;</code> filtri (opzionale)</li>
+<li><code>ORDER BY &lt;colonna&gt; ASC|DESC</code> ordinamento (opzionale)</li>
+<li><code>LIMIT &lt;n&gt;</code> massimo numero di righe (opzionale)</li>
+<li><code>OFFSET &lt;n&gt;</code> salta le prime <code>n</code> righe (opzionale, utile per paginazione)</li>
 </ul>
 <blockquote>
-<p>I selettori <code>LIMIT</code> e <code>OFFSET</code> saranno in seguito usati per la paginazione.</p>
+<p>Nota: la sintassi corretta è <strong><code>ORDER BY</code></strong>, non <code>ORDERED BY</code>.</p>
 </blockquote>
-<p>Iniziamo creando una query che seleziona e mostra tutte le entries all'interno della tabella users.</p>
+<h4 id="selezionare-tutte-le-righe">Selezionare tutte le righe<a class="headerlink" href="#selezionare-tutte-le-righe" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
 </code></pre></div>
-<p>Proviamo ora a mostrare titolo e contenuto di tutti i posts che sono relazionati all'utente con valore di <code>user_id = 1</code>, ordinati per titolo in ordine alfabetico.</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">SELECT</span><span class="w"> </span>
+<h4 id="selezionare-colonne-specifiche-e-usare-alias-as">Selezionare colonne specifiche e usare alias (<code>AS</code>)<a class="headerlink" href="#selezionare-colonne-specifiche-e-usare-alias-as" title="Permanent link">&para;</a></h4>
+<p>Mostriamo <code>title</code> e <code>content</code> rinominato come <code>description</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">SELECT</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="n">title</span><span class="p">,</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="n">content</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;description&quot;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">ORDERED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="n">content</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">description</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span><span class="p">;</span>
 </code></pre></div>
-In SQL esiste l'alias <code>AS</code> per visualizzare una colonna con un nome più leggibile nel risultato della query.</p>
-<p>La query non modifica i dati: <strong>li interroga</strong>.</p>
+<p><code>AS</code> è utile per rendere più leggibile l’output (o per nomi calcolati).</p>
+<h4 id="filtrare-con-where-logica-booleana">Filtrare con WHERE (logica booleana)<a class="headerlink" href="#filtrare-con-where-logica-booleana" title="Permanent link">&para;</a></h4>
+<p>Esempio: tutti i post dell’utente con <code>user_id = 1</code>, ordinati alfabeticamente per titolo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">SELECT</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="n">title</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="n">content</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">description</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<p>Operatori utili in <code>WHERE</code>:</p>
+<ul>
+<li>confronti: <code>=</code>, <code>!=</code> (o <code>&lt;&gt;</code>), <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></li>
+<li>combinazioni: <code>AND</code>, <code>OR</code>, <code>NOT</code></li>
+<li>insiemi: <code>IN (...)</code></li>
+<li>pattern: <code>LIKE</code> con <code>%</code> (qualsiasi sequenza) e <code>_</code> (un carattere)</li>
+<li>intervalli: <code>BETWEEN ... AND ...</code></li>
+<li>valori mancanti: <code>IS NULL</code> / <code>IS NOT NULL</code> (attenzione: <code>= NULL</code> non funziona)</li>
+</ul>
+<p>Esempi rapidi:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- utenti nati dal 1999 in poi</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">born_year</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">born_year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1999</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1">-- utenti con username in una lista</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">username</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bob&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;luca&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1">-- utenti con email su un dominio</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">email</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%@example.com&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="c1">-- utenti senza anno di nascita (se la colonna può essere NULL)</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">username</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">born_year</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="limit-e-offset-paginazione">LIMIT e OFFSET (paginazione)<a class="headerlink" href="#limit-e-offset-paginazione" title="Permanent link">&para;</a></h4>
+<p>Mostriamo 5 utenti per pagina, saltando i primi 10:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">email</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">ASC</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">OFFSET</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>In paginazione, <code>ORDER BY</code> è importante per avere risultati stabili e ripetibili.</p>
+</blockquote>
 <hr />
 <h3 id="modifica-dei-dati-update">Modifica dei dati (UPDATE)<a class="headerlink" href="#modifica-dei-dati-update" title="Permanent link">&para;</a></h3>
-<p>Il comando di modifica dei dati è composto dalle seguenti parti:</p>
+<p><code>UPDATE</code> serve a <strong>modificare una o più righe</strong> esistenti.</p>
+<p>Struttura:</p>
 <ul>
-<li><code>UPDATE &lt;table&gt;</code> indica in quale tabella eseguire la modifica</li>
-<li><code>SET &lt;assegnations&gt;</code> uno o più campi e rispettivi valori da modificare</li>
-<li><code>WHERE &lt;filter conditions&gt;</code> una o più condizioni booleane che indicano a quali entries applicare la modifica.
-Senza <code>WHERE</code> → modificheresti <strong>tutte le righe</strong>.
-Questo è uno degli errori più comuni.</li>
+<li><code>UPDATE &lt;table&gt;</code> tabella da aggiornare</li>
+<li><code>SET &lt;assegnazioni&gt;</code> colonne da cambiare (<code>colonna = valore</code>)</li>
+<li><code>WHERE &lt;condizioni&gt;</code> quali righe aggiornare (quasi sempre necessario)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">users</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">SET</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;alice@newmail.com&#39;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<blockquote>
+<p>Senza <code>WHERE</code> aggiorni <strong>tutte</strong> le righe della tabella: è uno degli errori più comuni e pericolosi.</p>
+</blockquote>
+<h4 id="aggiornare-una-singola-riga">Aggiornare una singola riga<a class="headerlink" href="#aggiornare-una-singola-riga" title="Permanent link">&para;</a></h4>
+<p>Esempio: cambiamo l’email dell’utente con <code>id = 1</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">SET</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;alice@newmail.com&#39;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
+<h4 id="aggiornare-piu-colonne-nella-stessa-query">Aggiornare più colonne nella stessa query<a class="headerlink" href="#aggiornare-piu-colonne-nella-stessa-query" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">SET</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;alice_2&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;alice2@example.com&#39;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="aggiornare-piu-righe-in-modo-controllato">Aggiornare più righe (in modo controllato)<a class="headerlink" href="#aggiornare-piu-righe-in-modo-controllato" title="Permanent link">&para;</a></h4>
+<p>Esempio: cambiamo il dominio email di tutti gli utenti che hanno <code>@example.com</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">SET</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">REPLACE</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;@newdomain.com&#39;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%@example.com&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p><code>%</code> indica “qualsiasi sequenza di caratteri”.</p>
+<h4 id="buone-pratiche">Buone pratiche<a class="headerlink" href="#buone-pratiche" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Prima di un <code>UPDATE</code>, esegui una <code>SELECT</code> con lo stesso <code>WHERE</code> per vedere quante righe verranno coinvolte:
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div></li>
+<li>Usa <code>WHERE</code> <strong>specifici</strong> (PK, email univoche, combinazioni precise di condizioni).</li>
+<li>Se possibile, lavora in <strong>transazione</strong> quando aggiorni dati importanti (per poter annullare in caso di errore).</li>
+<li>Aggiorna solo i campi necessari.</li>
+</ul>
+<blockquote>
+<p><code>UPDATE</code> <strong>modifica</strong> i dati: trattalo come un’operazione potenzialmente irreversibile senza backup o transazioni.</p>
+</blockquote>
 <hr />
 <h3 id="cancellazione-dei-dati-delete">Cancellazione dei dati (DELETE)<a class="headerlink" href="#cancellazione-dei-dati-delete" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<p>Il comando di cancellazione dei dati serve a rimuovere una o più righe da una tabella.</p>
+<p>È composto dalle seguenti parti:</p>
+<ul>
+<li><code>DELETE FROM &lt;table&gt;</code> indica da quale tabella eliminare i record</li>
+<li><code>WHERE &lt;filter conditions&gt;</code> specifica quali righe cancellare (quasi sempre necessario)</li>
+</ul>
+<blockquote>
+<p>Senza <code>WHERE</code> cancelli <strong>tutte</strong> le righe della tabella: è un errore molto comune.</p>
+</blockquote>
+<p>Esempio: cancelliamo il post con <code>id = 1</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
 <p>Anche qui: senza <code>WHERE</code> → distruzione totale.</p>
 <hr />

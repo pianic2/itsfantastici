@@ -126,13 +126,16 @@ La query più comune è `SELECT`.
 
 ## Esempi
 
-> Partiamo con SQLite (semplice e locale), ma scriviamo SQL standard quando possibile.
+> Usiamo **SQLite** (semplice e locale), ma cerchiamo di scrivere SQL **standard** e portabile quando possibile.
 
 ### Inserimento dei dati (INSERT)
-Il comando di inserimento dei dati è composto dalle seguenti parti:
 
-- `INSERT INTO <table> (<fields>)` specifica la tabella per inserire i dati
-- `VALUES (<values>)` valori da inserire
+`INSERT` serve a creare nuove righe in una tabella. La forma più comune è:
+
+- `INSERT INTO <table> (<colonne>)` indica tabella e colonne da valorizzare
+- `VALUES (<valori>)` indica i valori (nello **stesso ordine** delle colonne)
+
+Esempio: inseriamo un utente.
 
 ```sql
 INSERT INTO users (username, email)
@@ -141,76 +144,149 @@ VALUES ('alice', 'alice@example.com');
 
 Il database:
 
-* assegna automaticamente la primary key
-* verifica i vincoli
+- assegna automaticamente la **primary key** (se `id` è autoincrement)
+- controlla i **vincoli** (es. `NOT NULL`, `UNIQUE`, `CHECK`)
+- controlla le **foreign key** (se abilitate/attive)
 
+Esempio: inseriamo un post collegato a un utente.
 
 ```sql
 INSERT INTO posts (user_id, title, content)
 VALUES (1, 'Primo post', 'Contenuto di esempio');
 ```
-Se `user_id = 1` non esiste → **errore**.
-Questa è integrità referenziale.
 
-Per inserire più righe in un’unica istruzione, puoi usare una lista di valori separati da virgole. È più efficiente e mantiene i dati coerenti.
+Se `user_id = 1` **non esiste** nella tabella `users` → errore di **integrità referenziale** (vincolo FK).
+
+#### Inserire più righe in una sola query
+
+È più efficiente e riduce il numero di query.
 
 ```sql
 INSERT INTO users (username, email, born_year, born_month, born_day)
 VALUES
-  ('bob', 'bob@example.com', 1999, 10, 1),
-  ('rob', 'rob@example.com', 1999, 1, 10),
-  ('carlo', 'carlo@example.com', 2000, 7, 22),
-  ('dina', 'dina@example.com', 1997, 11, 5),
-  ('elena', 'elena@example.com', 2001, 1, 9),
-  ('franco', 'franco@example.com', 1995, 9, 30),
+  ('bob',   'bob@example.com',   1999, 10,  1),
+  ('rob',   'rob@example.com',   1999,  1, 10),
+  ('carlo', 'carlo@example.com', 2000,  7, 22),
+  ('dina',  'dina@example.com',  1997, 11,  5),
+  ('elena', 'elena@example.com', 2001,  1,  9),
+  ('franco','franco@example.com',1995,  9, 30),
   ('giada', 'giada@example.com', 1996, 12, 14),
-  ('luca', 'luca@example.com', 1999, 4, 2);
+  ('luca',  'luca@example.com',  1999,  4,  2);
 ```
+
+> Suggerimento: se stai inserendo dati “critici”, considera l’uso di **transazioni** (`BEGIN` / `COMMIT`) per rendere l’operazione atomica.
 
 ---
 
 ### Lettura dei dati (SELECT)
-Il comando di lettura dei dati è composto dalle seguenti parti:
 
-- `SELECT <fields>` indica quali fields selezionare
-- `FROM <table>` indica su quale tabella cercare i dati
-- `WHERE <filter conditions>` impone filtri alla selezione usando la logica booleana
-- `ORDERED BY <field> <order(DESC | ASC)>` ordina i dati per i valori di una specifica colonna
-- `LIMIT <int value>` se specificato indica quante entries mostrare per ogni pagina
-- `OFFSET <int value> <order(DESC | ASC)>` indica da quale entry mostrare in modo esclusivo (mostra dal `n+1` esimo elemento). 
+`SELECT` serve a leggere dati. Una query tipica è composta da:
 
-> I selettori `LIMIT` e `OFFSET` saranno in seguito usati per la paginazione.
+- `SELECT <colonne>` quali colonne vuoi vedere (oppure `*` per tutte)
+- `FROM <tabella>` da dove leggere
+- `WHERE <condizioni>` filtri (opzionale)
+- `ORDER BY <colonna> ASC|DESC` ordinamento (opzionale)
+- `LIMIT <n>` massimo numero di righe (opzionale)
+- `OFFSET <n>` salta le prime `n` righe (opzionale, utile per paginazione)
 
-Iniziamo creando una query che seleziona e mostra tutte le entries all'interno della tabella users.
+> Nota: la sintassi corretta è **`ORDER BY`**, non `ORDERED BY`.
+
+#### Selezionare tutte le righe
 
 ```sql
 SELECT * FROM users;
 ```
 
-Proviamo ora a mostrare titolo e contenuto di tutti i posts che sono relazionati all'utente con valore di `user_id = 1`, ordinati per titolo in ordine alfabetico.
+#### Selezionare colonne specifiche e usare alias (`AS`)
+
+Mostriamo `title` e `content` rinominato come `description`:
 
 ```sql
-SELECT 
+SELECT
   title,
-  content AS "description"
-  FROM posts
-WHERE user_id = 1
-ORDERED BY title ASC;
+  content AS description
+FROM posts;
 ```
-In SQL esiste l'alias `AS` per visualizzare una colonna con un nome più leggibile nel risultato della query.
 
-La query non modifica i dati: **li interroga**.
+`AS` è utile per rendere più leggibile l’output (o per nomi calcolati).
+
+#### Filtrare con WHERE (logica booleana)
+
+Esempio: tutti i post dell’utente con `user_id = 1`, ordinati alfabeticamente per titolo.
+
+```sql
+SELECT
+  title,
+  content AS description
+FROM posts
+WHERE user_id = 1
+ORDER BY title ASC;
+```
+
+Operatori utili in `WHERE`:
+
+- confronti: `=`, `!=` (o `<>`), `<`, `<=`, `>`, `>=`
+- combinazioni: `AND`, `OR`, `NOT`
+- insiemi: `IN (...)`
+- pattern: `LIKE` con `%` (qualsiasi sequenza) e `_` (un carattere)
+- intervalli: `BETWEEN ... AND ...`
+- valori mancanti: `IS NULL` / `IS NOT NULL` (attenzione: `= NULL` non funziona)
+
+Esempi rapidi:
+
+```sql
+-- utenti nati dal 1999 in poi
+SELECT username, born_year
+FROM users
+WHERE born_year >= 1999;
+
+-- utenti con username in una lista
+SELECT id, username
+FROM users
+WHERE username IN ('alice', 'bob', 'luca');
+
+-- utenti con email su un dominio
+SELECT id, email
+FROM users
+WHERE email LIKE '%@example.com';
+
+-- utenti senza anno di nascita (se la colonna può essere NULL)
+SELECT id, username
+FROM users
+WHERE born_year IS NULL;
+```
+
+#### LIMIT e OFFSET (paginazione)
+
+Mostriamo 5 utenti per pagina, saltando i primi 10:
+
+```sql
+SELECT id, username, email
+FROM users
+ORDER BY id ASC
+LIMIT 5
+OFFSET 10;
+```
+
+> In paginazione, `ORDER BY` è importante per avere risultati stabili e ripetibili.
 
 ---
 
 ### Modifica dei dati (UPDATE)
-Il comando di modifica dei dati è composto dalle seguenti parti:
 
-- `UPDATE <table>` indica in quale tabella eseguire la modifica
-- `SET <assegnations>` uno o più campi e rispettivi valori da modificare
-- `WHERE <filter conditions>` una o più condizioni booleane che indicano a quali entries applicare la modifica.
-Senza `WHERE` → modificheresti **tutte le righe**.
-Questo è uno degli errori più comuni.
+`UPDATE` serve a **modificare una o più righe** esistenti.
+
+Struttura:
+
+- `UPDATE <table>` tabella da aggiornare
+- `SET <assegnazioni>` colonne da cambiare (`colonna = valore`)
+- `WHERE <condizioni>` quali righe aggiornare (quasi sempre necessario)
+
+> Senza `WHERE` aggiorni **tutte** le righe della tabella: è uno degli errori più comuni e pericolosi.
+
+#### Aggiornare una singola riga
+
+Esempio: cambiamo l’email dell’utente con `id = 1`.
 
 ```sql
 UPDATE users
@@ -218,9 +294,55 @@ SET email = 'alice@newmail.com'
 WHERE id = 1;
 ```
 
+#### Aggiornare più colonne nella stessa query
+
+```sql
+UPDATE users
+SET
+  username = 'alice_2',
+  email = 'alice2@example.com'
+WHERE id = 1;
+```
+
+#### Aggiornare più righe (in modo controllato)
+
+Esempio: cambiamo il dominio email di tutti gli utenti che hanno `@example.com`.
+
+```sql
+UPDATE users
+SET email = REPLACE(email, '@example.com', '@newdomain.com')
+WHERE email LIKE '%@example.com';
+```
+
+`%` indica “qualsiasi sequenza di caratteri”.
+
+#### Buone pratiche
+
+- Prima di un `UPDATE`, esegui una `SELECT` con lo stesso `WHERE` per vedere quante righe verranno coinvolte:
+  ```sql
+  SELECT *
+  FROM users
+  WHERE id = 1;
+  ```
+- Usa `WHERE` **specifici** (PK, email univoche, combinazioni precise di condizioni).
+- Se possibile, lavora in **transazione** quando aggiorni dati importanti (per poter annullare in caso di errore).
+- Aggiorna solo i campi necessari.
+
+> `UPDATE` **modifica** i dati: trattalo come un’operazione potenzialmente irreversibile senza backup o transazioni.
+
 ---
 
 ### Cancellazione dei dati (DELETE)
+Il comando di cancellazione dei dati serve a rimuovere una o più righe da una tabella.
+
+È composto dalle seguenti parti:
+
+- `DELETE FROM <table>` indica da quale tabella eliminare i record
+- `WHERE <filter conditions>` specifica quali righe cancellare (quasi sempre necessario)
+
+> Senza `WHERE` cancelli **tutte** le righe della tabella: è un errore molto comune.
+
+Esempio: cancelliamo il post con `id = 1`.
 
 ```sql
 DELETE FROM posts

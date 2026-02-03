@@ -63,6 +63,13 @@ Include:
 
 ---
 
+## Tipo di dato
+Categoria che definisce quali valori sono ammessi in una colonna e come vengono memorizzati.
+
+Esempi comuni: `INTEGER`, `TEXT`, `REAL`.
+
+---
+
 ## Entità
 Concetto astratto che rappresenta qualcosa di rilevante nel dominio del problema.
 
@@ -74,6 +81,23 @@ Un’entità diventa una tabella quando viene implementata in un database relazi
 Collegamento logico tra due entità.
 
 Nel database relazionale è implementata tramite foreign key o tabelle di collegamento.
+
+---
+
+## Cardinalità
+Descrive quante istanze di un’entità possono essere associate a un’altra.
+
+Forme principali:
+- 1:1 (uno a uno)
+- 1:N (uno a molti)
+- N:M (molti a molti)
+
+---
+
+## Tabella ponte (junction table)
+Tabella usata per rappresentare una relazione N:M tra due entità.
+
+Contiene tipicamente due foreign key, una per ciascuna tabella collegata.
 
 ---
 
@@ -93,6 +117,11 @@ Campo che fa riferimento alla primary key di un’altra tabella.
 Serve a:
 - creare relazioni
 - garantire integrità referenziale
+
+---
+
+## Integrità referenziale
+Proprietà che assicura che ogni foreign key punti a un record esistente nella tabella referenziata.
 
 ---
 
@@ -131,6 +160,41 @@ SQL è dichiarativo: descrive *cosa* ottenere, non *come* ottenerlo.
 
 ---
 
+## DDL (Data Definition Language)
+Famiglia di comandi SQL che definisce o modifica la struttura del database.
+
+Esempi: `CREATE`, `ALTER`, `DROP`.
+
+---
+
+## DML (Data Manipulation Language)
+Famiglia di comandi SQL che inserisce, aggiorna o elimina dati.
+
+Esempi: `INSERT`, `UPDATE`, `DELETE`.
+
+---
+
+## DQL (Data Query Language)
+Famiglia di comandi SQL che legge i dati.
+
+Esempio: `SELECT`.
+
+---
+
+## TCL (Transaction Control Language)
+Famiglia di comandi SQL che gestisce le transazioni.
+
+Esempi: `BEGIN`, `COMMIT`, `ROLLBACK`, `SAVEPOINT`.
+
+---
+
+## DCL (Data Control Language)
+Famiglia di comandi SQL che gestisce permessi e ruoli.
+
+Esempi: `GRANT`, `REVOKE`.
+
+---
+
 ## Query
 Richiesta inviata al database per leggere o modificare dati.
 
@@ -138,6 +202,95 @@ Una query può essere:
 - di lettura (`SELECT`)
 - di modifica (`INSERT`, `UPDATE`, `DELETE`)
 - di definizione (`CREATE`, `ALTER`, `DROP`)
+
+---
+
+## SELECT
+Comando SQL che legge dati da una o più tabelle.
+
+È spesso combinato con clausole come `WHERE`, `ORDER BY`, `LIMIT`.
+
+---
+
+## INSERT
+Comando SQL che inserisce nuove righe in una tabella.
+
+---
+
+## UPDATE
+Comando SQL che modifica righe esistenti in una tabella.
+
+---
+
+## DELETE
+Comando SQL che rimuove righe da una tabella.
+
+---
+
+## WHERE
+Clausola che filtra le righe in una query in base a condizioni logiche.
+
+---
+
+## ORDER BY
+Clausola che ordina i risultati di una query per una o più colonne.
+
+---
+
+## LIMIT
+Clausola che limita il numero massimo di righe restituite.
+
+---
+
+## OFFSET
+Clausola che salta un certo numero di righe prima di restituire i risultati.
+
+---
+
+## JOIN
+Operazione che combina righe di due o più tabelle usando una condizione di collegamento.
+
+---
+
+## INNER JOIN
+Tipo di `JOIN` che restituisce solo le righe con corrispondenza in entrambe le tabelle.
+
+---
+
+## LEFT JOIN
+Tipo di `JOIN` che restituisce tutte le righe della tabella di sinistra, anche senza corrispondenza a destra.
+
+---
+
+## Alias
+Nome temporaneo dato a una tabella o a una colonna per rendere una query più leggibile.
+
+---
+
+## Aggregazione
+Operazione che sintetizza più righe in un unico risultato (es. somme, conteggi, medie).
+
+---
+
+## GROUP BY
+Clausola che raggruppa le righe con valori uguali per applicare funzioni di aggregazione.
+
+---
+
+## COUNT
+Funzione di aggregazione che conta il numero di righe (o valori non `NULL`).
+
+---
+
+## NULL
+Valore speciale che indica “assenza di valore” in una colonna.
+
+Si verifica con `IS NULL` o `IS NOT NULL`.
+
+---
+
+## Autoincremento
+Meccanismo che assegna automaticamente un valore numerico crescente a una primary key.
 
 ---
 

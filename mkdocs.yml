@@ -43,9 +43,11 @@ theme:
 
 nav:
   - Home: index.md
+  - Esempio lezione: esempio-lezione.md
 
   - Corsi:
       - Indice corsi: corsi/index.md
+      - Makedocs: corsi/makedocs/index.md
 
       - Database SQL:
           - Home corso: corsi/corso-database-sql/index.md
@@ -57,12 +59,15 @@ nav:
               - Modello dati: corsi/corso-database-sql/progetto/modello-dati.md
 
           - Moduli:
+              - Indice moduli: corsi/corso-database-sql/moduli/index.md
               - Modulo 01 — Fondamenti:
                   - Indice: corsi/corso-database-sql/moduli/01-fondamenti/index.md
                   - Lezione 01 — Introduzione ai database: corsi/corso-database-sql/moduli/01-fondamenti/lezione-01.md
                   - Lezione 02 — Primo contatto con SQL: corsi/corso-database-sql/moduli/01-fondamenti/lezione-02.md
                   - Lezione 03 — Relazioni e JOIN: corsi/corso-database-sql/moduli/01-fondamenti/lezione-03.md
                   - Glossario: corsi/corso-database-sql/moduli/01-fondamenti/glossary.md
+                  - Soluzioni:
+                      - Esercizio 03-01: corsi/corso-database-sql/moduli/01-fondamenti/soluzioni/esercizio-03-01.md
 
               - Modulo 02 — Query SQL:
                   - Indice: corsi/corso-database-sql/moduli/02-query-sql/index.md
@@ -80,12 +85,13 @@ nav:
                   - Lezione 09 — Transazioni e consistenza: corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-09.md
                   - Lezione 10 — Da SQLite a MySQL: corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-10.md
 
-          - Community:
-              - Introduzione: corsi/corso-database-sql/community/index.md
-              - Linee guida: corsi/corso-database-sql/community/linee-guida.md
-              - Workflow di contribuzione: corsi/corso-database-sql/community/workflow.md
-
           - Changelog: corsi/corso-database-sql/changelog.md
+
+  - Community:
+    - Introduzione: community/index.md
+    - Linee guida: community/linee-guida.md
+    - Workflow di contribuzione: community/workflow.md
+
 
 markdown_extensions:
   - admonition

@@ -9,6 +9,18 @@
          <lastmod>2026-02-03</lastmod>
     </url>
     <url>
+         <loc>https://docs.itsfantastici.it/community/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/community/linee-guida/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/community/workflow/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
          <loc>https://docs.itsfantastici.it/corsi/</loc>
          <lastmod>2026-02-03</lastmod>
     </url>
@@ -18,18 +30,6 @@
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/changelog/</loc>
-         <lastmod>2026-02-03</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/community/</loc>
-         <lastmod>2026-02-03</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/community/linee-guida/</loc>
-         <lastmod>2026-02-03</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/community/workflow/</loc>
          <lastmod>2026-02-03</lastmod>
     </url>
     <url>
@@ -66,6 +66,38 @@
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/02-query-sql/lezione-04/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/02-query-sql/lezione-05/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/02-query-sql/lezione-06/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/03-schema-performance/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/03-schema-performance/lezione-07/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/03-schema-performance/lezione-08/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/04-migrazione-produzione/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-09/</loc>
+         <lastmod>2026-02-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-10/</loc>
          <lastmod>2026-02-03</lastmod>
     </url>
     <url>

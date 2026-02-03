@@ -43,9 +43,15 @@
                 <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../esempio-lezione/">Esempio lezione</a>
+                </li>
+              </ul>
               <p class="caption"><span class="caption-text">Corsi</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../../../">Indice corsi</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../makedocs/">Makedocs</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" >Database SQL</a>
     <ul class="current">
@@ -65,6 +71,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" >Moduli</a>
     <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../">Indice moduli</a>
+                </li>
                 <li class="toctree-l3 current"><a class="reference internal current" >Modulo 01 — Fondamenti</a>
     <ul class="current">
                 <li class="toctree-l4 current"><a class="reference internal current" href="#">Indice</a>
@@ -77,6 +85,8 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="glossary/">Glossario</a>
                 </li>
+                <li class="toctree-l4"><a class="reference internal" >Soluzioni</a>
+                </li>
     </ul>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" >Modulo 02 — Query SQL</a>
@@ -85,47 +95,46 @@
                 </li>
                 <li class="toctree-l4"><a class="reference internal" href="../02-query-sql/lezione-04/">Lezione 04 — Aggregazioni e GROUP BY</a>
                 </li>
-                <li class="toctree-l4"><a class="" href="../02-query-sql/lezione-05.md">Lezione 05 — VIEW e query riutilizzabili</a>
+                <li class="toctree-l4"><a class="reference internal" href="../02-query-sql/lezione-05/">Lezione 05 — VIEW e query riutilizzabili</a>
                 </li>
-                <li class="toctree-l4"><a class="" href="../02-query-sql/lezione-06.md">Lezione 06 — UPSERT e gestione conflitti</a>
+                <li class="toctree-l4"><a class="reference internal" href="../02-query-sql/lezione-06/">Lezione 06 — UPSERT e gestione conflitti</a>
                 </li>
     </ul>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" >Modulo 03 — Schema e performance</a>
     <ul>
-                <li class="toctree-l4"><a class="" href="../03-schema-performance/index.md">Indice</a>
+                <li class="toctree-l4"><a class="reference internal" href="../03-schema-performance/">Indice</a>
                 </li>
-                <li class="toctree-l4"><a class="" href="../03-schema-performance/lezione-07.md">Lezione 07 — Indici ed EXPLAIN</a>
+                <li class="toctree-l4"><a class="reference internal" href="../03-schema-performance/lezione-07/">Lezione 07 — Indici ed EXPLAIN</a>
                 </li>
-                <li class="toctree-l4"><a class="" href="../03-schema-performance/lezione-08.md">Lezione 08 — Vincoli, soft delete e migrazioni</a>
+                <li class="toctree-l4"><a class="reference internal" href="../03-schema-performance/lezione-08/">Lezione 08 — Vincoli, soft delete e migrazioni</a>
                 </li>
     </ul>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" >Modulo 04 — Migrazione e produzione</a>
     <ul>
-                <li class="toctree-l4"><a class="" href="../04-migrazione-produzione/index.md">Indice</a>
+                <li class="toctree-l4"><a class="reference internal" href="../04-migrazione-produzione/">Indice</a>
                 </li>
-                <li class="toctree-l4"><a class="" href="../04-migrazione-produzione/lezione-09.md">Lezione 09 — Transazioni e consistenza</a>
+                <li class="toctree-l4"><a class="reference internal" href="../04-migrazione-produzione/lezione-09/">Lezione 09 — Transazioni e consistenza</a>
                 </li>
-                <li class="toctree-l4"><a class="" href="../04-migrazione-produzione/lezione-10.md">Lezione 10 — Da SQLite a MySQL</a>
-                </li>
-    </ul>
+                <li class="toctree-l4"><a class="reference internal" href="../04-migrazione-produzione/lezione-10/">Lezione 10 — Da SQLite a MySQL</a>
                 </li>
     </ul>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" >Community</a>
-    <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../community/">Introduzione</a>
-                </li>
-                <li class="toctree-l3"><a class="reference internal" href="../../community/linee-guida/">Linee guida</a>
-                </li>
-                <li class="toctree-l3"><a class="reference internal" href="../../community/workflow/">Workflow di contribuzione</a>
                 </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../changelog/">Changelog</a>
                 </li>
     </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Community</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../community/">Introduzione</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../community/linee-guida/">Linee guida</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../community/workflow/">Workflow di contribuzione</a>
                   </li>
               </ul>
       </div>
@@ -163,30 +172,25 @@ capire <em>cosa</em> stiamo costruendo prima di imparare <em>come</em> interroga
 <p>Tutto ciò che verrà fatto nei moduli successivi <strong>dipende direttamente</strong> da questo modulo.</p>
 <hr />
 <h2 id="perche-questo-modulo-e-fondamentale">Perché questo modulo è fondamentale<a class="headerlink" href="#perche-questo-modulo-e-fondamentale" title="Permanent link">&para;</a></h2>
-<p>Senza una comprensione chiara di:
-- entità
-- relazioni
-- vincoli
-- integrità dei dati</p>
-<p>qualsiasi utilizzo di SQL diventa:
-- fragile
-- difficile da mantenere
-- impossibile da scalare</p>
+<p>Senza una comprensione chiara di:</p>
+<ul>
+<li>entità</li>
+<li>relazioni</li>
+<li>vincoli</li>
+<li>integrità dei dati</li>
+</ul>
+<p>qualsiasi utilizzo di SQL diventa:</p>
+<ul>
+<li>fragile</li>
+<li>difficile da mantenere</li>
+<li>impossibile da scalare</li>
+</ul>
 <p>Questo modulo serve a <strong>prevenire errori strutturali</strong>, non a imparare comandi a memoria.</p>
 <hr />
 <h2 id="obiettivi-di-apprendimento">Obiettivi di apprendimento<a class="headerlink" href="#obiettivi-di-apprendimento" title="Permanent link">&para;</a></h2>
-<p>Al termine di questo modulo lo studente sarà in grado di:</p>
-<ul>
-<li>spiegare cos’è un database e perché è necessario</li>
-<li>distinguere database relazionali e non relazionali</li>
-<li>modellare entità e relazioni in modo corretto</li>
-<li>comprendere il ruolo di:</li>
-<li>primary key</li>
-<li>foreign key</li>
-<li>vincoli</li>
-<li>leggere, valutare e motivare un modello dati</li>
-<li>comprendere il ruolo di SQL come strumento, non come fine</li>
-</ul>
+<p>Al termine di questo modulo lo studente sarà in grado di spiegare cos’è un database e perché è necessario, distinguendo tra database relazionali e non relazionali.</p>
+<p>Saprà modellare correttamente entità e relazioni e comprenderà il ruolo di <strong>primary key</strong>, <strong>foreign key</strong> e dei principali vincoli per garantire l’integrità dei dati.</p>
+<p>Inoltre, sarà in grado di leggere e valutare un modello dati, motivando le scelte progettuali, e di inquadrare SQL come uno strumento operativo al servizio del modello, non come un fine in sé.</p>
 <hr />
 <h2 id="collegamento-con-il-progetto">Collegamento con il progetto<a class="headerlink" href="#collegamento-con-il-progetto" title="Permanent link">&para;</a></h2>
 <p>In questo modulo:</p>
@@ -201,59 +205,29 @@ capire <em>cosa</em> stiamo costruendo prima di imparare <em>come</em> interroga
 <h2 id="contenuti-del-modulo">Contenuti del modulo<a class="headerlink" href="#contenuti-del-modulo" title="Permanent link">&para;</a></h2>
 <h3 id="lezione-01-introduzione-ai-database">Lezione 01 — Introduzione ai database<a class="headerlink" href="#lezione-01-introduzione-ai-database" title="Permanent link">&para;</a></h3>
 <ul>
-<li>problema: comprendere cos’è un database e perché serve oltre ai file</li>
-<li>teoria:</li>
-<li>cos’è un database</li>
-<li>perché i file non bastano</li>
-<li>modello relazionale</li>
-<li>entità, relazioni e vincoli</li>
-<li>definizione del modello concettuale del progetto</li>
-<li>esempi pratici:</li>
-<li>confronto tra file e database</li>
-<li>esempio di entità e relazioni del progetto</li>
-<li>esercizi:</li>
-<li>identificare entità e relazioni dal problema</li>
-<li>definire i vincoli principali</li>
-<li>soluzione community e best practice</li>
+<li><strong>Problema</strong> — Comprendere cos’è un database e perché serve rispetto alla gestione tramite file.</li>
+<li><strong>Teoria</strong> — Cos’è un database; perché i file non bastano; modello relazionale; entità, relazioni e vincoli; definizione del modello concettuale del progetto.</li>
+<li><strong>Esempi pratici</strong> — inizializzare un nuovo database da zero; creare le prime tabelle.</li>
 </ul>
 <p>👉 <a href="lezione-01/">Vai alla lezione</a></p>
 <hr />
 <h3 id="lezione-02-primo-contatto-con-sql">Lezione 02 — Primo contatto con SQL<a class="headerlink" href="#lezione-02-primo-contatto-con-sql" title="Permanent link">&para;</a></h3>
 <ul>
-<li>problema: passare dal modello concettuale a uno schema reale interrogabile</li>
-<li>teoria:</li>
-<li>cos’è SQL e perché è dichiarativo</li>
-<li>schema del database</li>
-<li>tipi di dato (DB-agnostic)</li>
-<li>operazioni CRUD</li>
-<li>esempi pratici:</li>
-<li><code>CREATE</code> per tabelle del progetto</li>
-<li><code>INSERT</code> di dati di esempio</li>
-<li><code>SELECT</code> mirate</li>
-<li><code>UPDATE</code> e <code>DELETE</code> con <code>WHERE</code></li>
-<li>esercizi:</li>
-<li>definire lo schema completo del progetto</li>
-<li>scrivere query CRUD con vincoli corretti</li>
-<li>verificare errori di integrità referenziale</li>
-<li>soluzione community e best practice</li>
+<li><strong>Problema</strong> — Passare dal modello concettuale a uno schema reale interrogabile.</li>
+<li><strong>Teoria</strong> — Cos’è SQL e perché è dichiarativo; schema del database; tipi di dato (DB-agnostic); operazioni CRUD.</li>
+<li><strong>Esempi pratici</strong> — <code>CREATE</code> per tabelle del progetto; <code>INSERT</code> di dati di esempio; <code>SELECT</code> mirate; <code>UPDATE</code> e <code>DELETE</code> con <code>WHERE</code>.</li>
+<li><strong>Esercizi</strong> — Definire lo schema completo del progetto; scrivere query CRUD con vincoli corretti; verificare errori di integrità referenziale.</li>
+<li><strong>Soluzione community e best practice</strong>.</li>
 </ul>
 <p>👉 <a href="lezione-02/">Vai alla lezione</a></p>
 <hr />
 <h3 id="lezione-03-relazioni-e-join">Lezione 03 — Relazioni e JOIN<a class="headerlink" href="#lezione-03-relazioni-e-join" title="Permanent link">&para;</a></h3>
 <ul>
-<li>problema: perché servono le JOIN</li>
-<li>teoria:</li>
-<li><code>INNER JOIN</code> e <code>LEFT JOIN</code></li>
-<li>alias e naming</li>
-<li>esempi pratici:</li>
-<li>post con autore</li>
-<li>commenti con autore e post</li>
-<li>post anche senza commenti (<code>LEFT JOIN</code> + <code>COUNT</code>)</li>
-<li>esercizi:</li>
-<li>post + autore</li>
-<li>commenti dettagliati</li>
-<li>post senza commenti</li>
-<li>soluzione community e best practice</li>
+<li><strong>Problema</strong> — Perché servono le JOIN.</li>
+<li><strong>Teoria</strong> — <code>INNER JOIN</code> e <code>LEFT JOIN</code>; alias e naming.</li>
+<li><strong>Esempi pratici</strong> — Post con autore; commenti con autore e post; post anche senza commenti (<code>LEFT JOIN</code> + <code>COUNT</code>).</li>
+<li><strong>Esercizi</strong> — Post + autore; commenti dettagliati; post senza commenti.</li>
+<li><strong>Soluzione community e best practice</strong>.</li>
 </ul>
 <p>👉 <a href="lezione-03/">Vai alla lezione</a></p>
 <hr />
@@ -291,7 +265,7 @@ capire <em>cosa</em> stiamo costruendo prima di imparare <em>come</em> interroga
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../progetto/modello-dati/" class="btn btn-neutral float-left" title="Modello dati"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../" class="btn btn-neutral float-left" title="Indice moduli"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="lezione-01/" class="btn btn-neutral float-right" title="Lezione 01 — Introduzione ai database">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -319,7 +293,7 @@ capire <em>cosa</em> stiamo costruendo prima di imparare <em>come</em> interroga
         </span>
     
     
-      <span><a href="../../progetto/modello-dati/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="lezione-01/" style="color: #fcfcfc">Next &raquo;</a></span>

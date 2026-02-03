@@ -186,12 +186,3 @@ Scrivi una query che mostri:
 
 Ecco la soluzione fornita: [soluzione](soluzioni/esercizio-03-01.md)
 ---
-
-## Soluzione community
-
-Best practice emerse:
-
-- alias sempre
-- `JOIN ... ON ...` leggibile (niente magia)
-- `LEFT JOIN` quando vuoi mantenere “tutto” e arricchire
-- per query con conteggi: `LEFT JOIN` + `COUNT(c.id)` (non `COUNT(*)`)

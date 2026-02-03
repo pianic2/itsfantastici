@@ -5,7 +5,7 @@ i concetti fondamentali di SQL visti a lezione.
 
 ---
 
-## 1️⃣ Creazione delle tabelle
+## 1 Creazione delle tabelle
 
 ### Tabella `students`
 Rappresenta gli studenti.
@@ -38,7 +38,7 @@ Questa tabella contiene:
 
 ---
 
-## 2️⃣ Inserimento dei dati
+## 2 Inserimento dei dati
 
 Abbiamo usato `INSERT INTO ... VALUES` per:
 - popolare la tabella `students`
@@ -49,7 +49,7 @@ Ogni riga in `students_classes` rappresenta **un’iscrizione di uno studente a 
 
 ---
 
-## 3️⃣ Visualizzazione delle tabelle
+## 3 Visualizzazione delle tabelle
 Per verificare i dati abbiamo usato:
 
 ```sql
@@ -66,7 +66,7 @@ Questo passaggio è fondamentale per:
 
 ---
 
-## 4️⃣ Join tra tabelle
+## 4 Join tra tabelle
 
 Per ottenere informazioni leggibili abbiamo usato una query con `JOIN`.
 

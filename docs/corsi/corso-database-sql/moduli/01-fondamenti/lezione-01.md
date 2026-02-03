@@ -90,41 +90,58 @@ Esempio concettuale:
 
 ### Chiavi e vincoli
 
+Quando progettiamo una tabella, non basta decidere “quali colonne mettere”. Dobbiamo anche stabilire **quali regole** rendono i dati affidabili e collegabili tra loro. In un database relazionale queste regole si esprimono soprattutto attraverso:
+
+- **chiavi** (primary key e foreign key)
+- **vincoli** (constraints).
+
+L’obiettivo è sempre lo stesso: evitare dati “sporchi” o incoerenti e rendere le relazioni tra tabelle solide.
+
 #### Primary Key (PK)
-- identifica univocamente ogni riga
-- non può essere `NULL`
-- non può duplicarsi
 
-Serve per:
+La **Primary Key** è la colonna (o l’insieme di colonne) che identifica in modo **univoco** ogni riga della tabella. In pratica è “il documento di identità” del record: due righe non possono avere la stessa PK e la PK non può mancare.
 
-- distinguere i record
-- creare relazioni
+La Primary Key è fondamentale per due motivi:
+
+1. ti permette di recuperare e modificare una riga in modo preciso;
+2. permette alle altre tabelle di riferirsi a quella riga quando si creano relazioni.
+
+---
 
 #### Foreign Key (FK)
-- riferimento a una PK di un’altra tabella
-- impone coerenza tra tabelle
 
-#### Vincoli
-Regole applicate dal database:
+La **Foreign Key** è un vincolo che dice: “questa colonna contiene un valore che deve esistere come PK in un’altra tabella”. Serve a rappresentare relazioni e, soprattutto, a far rispettare la coerenza.
 
-- `PRIMARY KEY`
-- `FOREIGN KEY`
-- `UNIQUE`
-- `NOT NULL`
+Esempio: se nella tabella `posts` hai `user_id`, quel valore deve corrispondere a un `users.id` realmente presente. Se provi a inserire un post con `user_id = 999` ma l’utente 999 non esiste, il database può rifiutare l’operazione. In questo modo eviti record “orfani” (post senza utente).
 
-Obiettivo: **integrità dei dati**.
+---
+
+#### Vincoli (constraints)
+
+I **vincoli** sono regole applicate direttamente dal database per impedire stati non validi. L’idea è spostare la “responsabilità” della correttezza dei dati dal codice applicativo al database, così i controlli sono automatici e coerenti per ogni inserimento/modifica.
+
+I vincoli più comuni che incontreremo sono:
+
+- `PRIMARY KEY`: garantisce identificazione univoca della riga.
+- `FOREIGN KEY`: garantisce che i riferimenti tra tabelle siano validi.
+- `UNIQUE`: impedisce duplicati in una colonna (o combinazione di colonne), ad esempio per `email`.
+- `NOT NULL`: impone che un valore sia sempre presente, ad esempio per `username`.
+
+In sintesi: **chiavi + vincoli** servono a mantenere l’**integrità dei dati**, cioè dati corretti, consistenti e collegati in modo affidabile.
 
 ---
 ### Relazioni tra tabelle (logica in SQL)
 
 In un database relazionale, una *relazione* tra due “entità” non è un collegamento “magico”: viene rappresentata **tramite valori** e **vincoli**.
 
-1. **Prima ragioniamo a livello logico (modello)**
+**Prima ragioniamo a livello logico (modello)**
+
   - identifichiamo le entità (es. `users`, `posts`, `comments`)
   - decidiamo le cardinalità (1:1, 1:N, N:M)
   - scegliamo quali dati identificano un record (**Primary Key**)
 
-2. **Poi traduciamo il modello in SQL (implementazione)**
+**Poi traduciamo il modello in SQL (implementazione)**
+
   - usiamo **Primary Key (PK)** per identificare univocamente le righe
   - usiamo **Foreign Key (FK)** per “puntare” a una PK di un’altra tabella
   - applichiamo vincoli per evitare stati incoerenti (es. FK che punta a un record inesistente)
@@ -153,7 +170,7 @@ Qui `user_id` è anche PK: garantisce **un solo profilo per utente**.
 
 #### One-to-Many (1:N)
 **Idea logica:** un record di A può essere associato a molti record di B, ma ogni record di B appartiene a un solo record di A.  
-**In SQL:** la FK sta nella tabella “molti”.
+**In SQL:** la FK sta nella tabella “molti” (tabella B).
 
 Esempio (un utente può avere molti post):
 
@@ -172,7 +189,7 @@ CREATE TABLE posts (
 
 #### Many-to-Many (N:M)
 **Idea logica:** molti record di A possono essere associati a molti record di B.  
-**In SQL:** non si mette una FK “diretta” da una parte all’altra: si crea una **tabella ponte** (junction table) con **due FK**.
+**In SQL:** non si mette una FK “diretta” da una parte all’altra: si crea una **tabella ponte** (junction table o pivot table) con **due FK**.
 
 Esempio (utenti che mettono “like” ai post):
 
@@ -199,31 +216,35 @@ CREATE TABLE post_likes (
 
 ### Esempio: creare un nuovo database sqlite
 
-Per aggiornare gli indici dei pacchetti e installare SQLite su Ubuntu:
+Iniziamo con una procedura corretta per creare (o aprire) un database SQLite.
+
+Su Ubuntu installa SQLite aggiornando prima l’indice dei pacchetti:
 
 ```bash
 sudo apt update
 sudo apt install -y sqlite3
 ```
 
-Dopo l’installazione puoi verificare la versione:
+Verifica che l’installazione sia andata a buon fine controllando la versione:
 
 ```bash
 sqlite3 --version
 ```
 
+Crea/apri un database eseguendo `sqlite3` indicando il nome del file:
+
 ```bash
 sqlite3 nome_database.db
 ```
 
-Il file `nome_database.db` verrà creato nella cartella corrente se non esiste.  
-All’interno della shell di SQLite puoi verificare con:
+Se `nome_database.db` non esiste, SQLite lo crea automaticamente **nella cartella corrente** (puoi verificarla con `pwd` prima di lanciare il comando).  
+Dentro la shell di SQLite controlla quali database sono “agganciati” e il relativo percorso:
 
 ```sql
 .databases
 ```
 
-Per uscire:
+Per uscire dalla shell:
 
 ```sql
 .exit
@@ -231,7 +252,7 @@ Per uscire:
 
 ### Esempio: struttura dati del progetto
 
-Nel nostro progetto iniziale gestiremo:
+Come illustato nel nostro [progetto iniziale](../../progetto/index.md) gestiremo le seguenti tabelle:
 
 - utenti
 - post
@@ -253,7 +274,7 @@ CREATE TABLE users (
 Qui:
 
 * `id` identifica univocamente l’utente
-* `UNIQUE` e `NOT NULL` sono **vincoli**
+* `UNIQUE` e `NOT NULL` sono [**vincoli**](#vincoli-constraints)
 * il database impedisce stati invalidi
 
 
@@ -285,3 +306,4 @@ CREATE TABLE comments (
   FOREIGN KEY (post_id) REFERENCES posts(id)
 );
 ```
+

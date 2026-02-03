@@ -98,5 +98,5 @@ Al termine di tutti i moduli, lo studente avrà:
 
 - [Home corso](../index.md)
 - [Progetto](../progetto/index.md)
-- [Community](../community/index.md)
+- [Community](../../../community/index.md)
 - [Changelog](../changelog.md)

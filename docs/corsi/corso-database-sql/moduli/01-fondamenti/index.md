@@ -16,12 +16,14 @@ Tutto ciò che verrà fatto nei moduli successivi **dipende direttamente** da qu
 ## Perché questo modulo è fondamentale
 
 Senza una comprensione chiara di:
+
 - entità
 - relazioni
 - vincoli
 - integrità dei dati
 
 qualsiasi utilizzo di SQL diventa:
+
 - fragile
 - difficile da mantenere
 - impossibile da scalare
@@ -32,17 +34,11 @@ Questo modulo serve a **prevenire errori strutturali**, non a imparare comandi a
 
 ## Obiettivi di apprendimento
 
-Al termine di questo modulo lo studente sarà in grado di:
+Al termine di questo modulo lo studente sarà in grado di spiegare cos’è un database e perché è necessario, distinguendo tra database relazionali e non relazionali.
 
-- spiegare cos’è un database e perché è necessario
-- distinguere database relazionali e non relazionali
-- modellare entità e relazioni in modo corretto
-- comprendere il ruolo di:
-  - primary key
-  - foreign key
-  - vincoli
-- leggere, valutare e motivare un modello dati
-- comprendere il ruolo di SQL come strumento, non come fine
+Saprà modellare correttamente entità e relazioni e comprenderà il ruolo di **primary key**, **foreign key** e dei principali vincoli per garantire l’integrità dei dati.
+
+Inoltre, sarà in grado di leggere e valutare un modello dati, motivando le scelte progettuali, e di inquadrare SQL come uno strumento operativo al servizio del modello, non come un fine in sé.
 
 ---
 
@@ -62,61 +58,28 @@ Il progetto nasce qui e **non verrà mai resettato**.
 ## Contenuti del modulo
 
 ### Lezione 01 — Introduzione ai database
-- problema: comprendere cos’è un database e perché serve oltre ai file
-- teoria:
-  - cos’è un database
-  - perché i file non bastano
-  - modello relazionale
-  - entità, relazioni e vincoli
-  - definizione del modello concettuale del progetto
-- esempi pratici:
-  - confronto tra file e database
-  - esempio di entità e relazioni del progetto
-- esercizi:
-  - identificare entità e relazioni dal problema
-  - definire i vincoli principali
-- soluzione community e best practice
+- **Problema** — Comprendere cos’è un database e perché serve rispetto alla gestione tramite file.
+- **Teoria** — Cos’è un database; perché i file non bastano; modello relazionale; entità, relazioni e vincoli; definizione del modello concettuale del progetto.
+- **Esempi pratici** — inizializzare un nuovo database da zero; creare le prime tabelle.
+
 
 👉 [Vai alla lezione](lezione-01.md)
 
 ---
 
 ### Lezione 02 — Primo contatto con SQL
-- problema: passare dal modello concettuale a uno schema reale interrogabile
-- teoria:
-  - cos’è SQL e perché è dichiarativo
-  - schema del database
-  - tipi di dato (DB-agnostic)
-  - operazioni CRUD
-- esempi pratici:
-  - `CREATE` per tabelle del progetto
-  - `INSERT` di dati di esempio
-  - `SELECT` mirate
-  - `UPDATE` e `DELETE` con `WHERE`
-- esercizi:
-  - definire lo schema completo del progetto
-  - scrivere query CRUD con vincoli corretti
-  - verificare errori di integrità referenziale
-- soluzione community e best practice
+- **Problema** — Passare dal modello concettuale a uno schema reale interrogabile.
+- **Teoria** — Cos’è SQL e perché è dichiarativo; schema del database; tipi di dato (DB-agnostic); operazioni CRUD.
+- **Esempi pratici** — Operazioni CRUD.
 
 👉 [Vai alla lezione](lezione-02.md)
 
 ---
-
 ### Lezione 03 — Relazioni e JOIN
-- problema: perché servono le JOIN
-- teoria:
-  - `INNER JOIN` e `LEFT JOIN`
-  - alias e naming
-- esempi pratici:
-  - post con autore
-  - commenti con autore e post
-  - post anche senza commenti (`LEFT JOIN` + `COUNT`)
-- esercizi:
-  - post + autore
-  - commenti dettagliati
-  - post senza commenti
-- soluzione community e best practice
+- **Problema** — Leggere dati distribuiti su più tabelle (post + autore, commenti + post, ecc.).
+- **Teoria** — JOIN tramite chiavi (FK → PK); differenza tra `INNER JOIN` e `LEFT JOIN`; alias e naming.
+- **Esempi pratici** — Post con autore (`JOIN users`); commenti con autore e post; post anche senza commenti (`LEFT JOIN` + `COUNT`).
+- **Esercizi** — Progettare un database con **studenti**, **corsi** e **iscrizioni** (relazione molti-a-molti); creare tabelle, inserire dati, verificare con `SELECT`, e fare una query con JOIN per mostrare studente + corso.
 
 👉 [Vai alla lezione](lezione-03.md)
 
@@ -156,3 +119,4 @@ Questo modulo serve a **costruire fondamenta solide**.
 - [Lezione 03](lezione-03.md)
 - [Glossario](glossary.md)
 - [Moduli](../index.md)
+

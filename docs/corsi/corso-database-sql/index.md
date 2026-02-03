@@ -72,5 +72,5 @@ Ogni modifica passa tramite Pull Request e viene approvata secondo la regola **5
 
 - [Progetto](progetto/problema.md)
 - [Moduli](moduli/index.md)
-- [Linee guida community](community/linee-guida.md)
+- [Linee guida community](../../community/linee-guida.md)
 - [Changelog](changelog.md)

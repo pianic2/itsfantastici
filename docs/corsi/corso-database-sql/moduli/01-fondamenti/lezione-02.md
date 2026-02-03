@@ -35,11 +35,52 @@ SQL **non è un linguaggio di programmazione generale**, ma un linguaggio dichia
 
 ### SQL: linguaggio dichiarativo
 
-SQL è dichiarativo: descrive *cosa* vuoi ottenere, non *come* ottenerlo.
-In pratica lo useremo per:
+SQL è un linguaggio **dichiarativo**: quando scrivi una query descrivi **il risultato che vuoi** (quali righe/colonne), non i passaggi operativi per ottenerlo.
 
-- **DDL** (schema): `CREATE`, `ALTER`, `DROP`
-- **DML** (dati): `INSERT`, `SELECT`, `UPDATE`, `DELETE`
+Questo significa che:
+
+- tu specifichi **vincoli e condizioni** (`WHERE`, `JOIN`, `GROUP BY`, `ORDER BY`)
+- il database decide **come** eseguire la richiesta nel modo più efficiente (piano di esecuzione: indici, ordine delle operazioni, strategie di join)
+
+In altre parole, non dici “scorri tutte le righe una per una”, ma “dammi le righe che rispettano queste condizioni”.
+
+Esempio (tu descrivi il risultato):
+
+```sql
+SELECT id, username
+FROM users
+WHERE born_year >= 1999
+ORDER BY username;
+```
+
+Il DB stabilisce il “come” (se usare un indice, in che ordine leggere i dati, ecc.).
+
+#### Famiglie di comandi che useremo
+
+Nelle lezioni useremo e nomineremo queste famiglie di comandi SQL (in base al DB, alcune classificazioni possono variare):
+
+- **DDL (Data Definition Language)**: definisce o modifica la **struttura** del database (schema)  
+  Comandi tipici: `CREATE`, `ALTER`, `DROP`, `TRUNCATE`  
+
+- **DML (Data Manipulation Language)**: inserisce, aggiorna o elimina i **dati**  
+  Comandi tipici: `INSERT`, `UPDATE`, `DELETE`, `MERGE` (non sempre disponibile)  
+
+- **DQL (Data Query Language)**: interroga/legge i **dati** (spesso considerata parte della DML)  
+  Comandi tipici: `SELECT` (+ `WHERE`, `JOIN`, `GROUP BY`, `HAVING`, `ORDER BY`, `LIMIT`)  
+
+- **TCL (Transaction Control Language)**: controlla le **transazioni** (atomicità/rollback)  
+  Comandi tipici: `BEGIN`/`START TRANSACTION`, `COMMIT`, `ROLLBACK`, `SAVEPOINT`  
+
+- **DCL (Data Control Language)**: gestisce **permessi e sicurezza** (utenti/ruoli)  
+  Comandi tipici: `GRANT`, `REVOKE`  
+
+Regola pratica: 
+- **DDL = struttura**,
+- **DQL/DML = dati**,
+- **TCL = coerenza delle operazioni**,
+- **DCL = accessi**.  
+
+> In genere: prima si crea lo schema (DDL), poi si lavora/interroga sui dati (DQL/DML), eventualmente dentro transazioni (TCL).
 
 ---
 
@@ -67,6 +108,7 @@ I tipi indicano:
 - quali operazioni sono possibili
 
 I tipi di dato in DB-agnostic sono:
+
 - INTEGER
 - TEXT
 
@@ -126,7 +168,7 @@ La query più comune è `SELECT`.
 
 ## Esempi
 
-> Usiamo **SQLite** (semplice e locale), ma cerchiamo di scrivere SQL **standard** e portabile quando possibile.
+Usiamo **SQLite** (semplice e locale), ma cerchiamo di scrivere SQL **standard** e portabile quando possibile.
 
 ### Inserimento dei dati (INSERT)
 
@@ -351,43 +393,3 @@ WHERE id = 1;
 
 Anche qui: senza `WHERE` → distruzione totale.
 
----
-
-## Esercizi
-
-### Esercizio 1 — Traduzione del modello
-
-Prendi il modello dati definito nel progetto e:
-
-* individua tutte le entità
-* scrivi le `CREATE TABLE` corrispondenti
-* specifica PK, FK e vincoli
-
-Obiettivo: passare dal **concetto alla struttura**.
-
----
-
-### Esercizio 2 — CRUD controllato
-
-Scrivi le query per:
-
-1. inserire un nuovo utente
-2. inserire due post dello stesso utente
-3. recuperare tutti i post di un utente
-4. aggiornare il titolo di un post
-5. cancellare un commento
-
-Motiva ogni `WHERE`.
-
----
-
-### Esercizio 3 — Errori intenzionali
-
-Prova a:
-
-* inserire due utenti con la stessa email
-* inserire un post con `user_id` inesistente
-
-Osserva e spiega **perché il database rifiuta l’operazione**.
-
----

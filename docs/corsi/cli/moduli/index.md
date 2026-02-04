@@ -53,6 +53,19 @@ Contenuti chiave:
 
 👉 [Vai al modulo](./02-filesystem.md)
 
+---
+
+## Modulo 03 — Permessi e utenti
+Spiega **sicurezza e proprietà** dei file.
+
+Contenuti chiave:
+
+- modello UNIX (user / group / others)
+- permessi (r, w, x)
+- ownership
+- cenni su privilegi e sicurezza
+
+👉 [Vai al modulo](./03-permessi-e-utenti.md)
 
 ---
 

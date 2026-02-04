@@ -8,10 +8,10 @@ site_dir: site
 
 repo_name: itsfantastici/docs
 repo_url: https://github.com/itsfantastici/docs
-edit_uri: ./
+edit_uri: edit/main/docs/
 
 theme:
-  name: readthedocs
+  name: material
   language: it
 
   features:
@@ -19,6 +19,7 @@ theme:
     - navigation.sections
     - navigation.top
     - navigation.tracking
+    - navigation.footer
     - toc.follow
     - search.suggest
     - search.highlight
@@ -26,14 +27,12 @@ theme:
     - content.code.annotate
 
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
+    - scheme: default
       toggle:
         icon: material/weather-night
         name: Dark mode
 
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
       toggle:
         icon: material/weather-sunny
         name: Light mode
@@ -54,6 +53,7 @@ nav:
               - Indice Moduli: corsi/cli/moduli/index.md
               - Modulo 01 - Fondamenti della CLI: corsi/cli/moduli/01-fondamenti.md
               - Modulo 02 - Filesystem e permessi: corsi/cli/moduli/02-filesystem.md
+              - Modulo 03 - Permessi e utenti: corsi/cli/moduli/03-permessi-e-utenti.md
  
       - MarkDown: corsi/markdown/index.md
  
@@ -61,6 +61,7 @@ nav:
 
       - Database SQL:
           - Home corso: corsi/corso-database-sql/index.md
+          - Changelog: corsi/corso-database-sql/changelog.md
 
           - Progetto:
               - Introduzione: corsi/corso-database-sql/progetto/index.md
@@ -94,6 +95,40 @@ nav:
                   - Indice: corsi/corso-database-sql/moduli/04-migrazione-produzione/index.md
                   - Lezione 09 — Transazioni e consistenza: corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-09.md
                   - Lezione 10 — Da SQLite a MySQL: corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-10.md
+
+      - Git:
+            - Introduzione: corsi/git/index.md
+
+            - Progetto:
+                - Introduzione: corsi/git/progetto/index.md
+                - Problema: corsi/git/progetto/problema.md
+                - Requisiti: corsi/git/progetto/requisiti.md
+
+            - Moduli:
+                - Indice moduli: corsi/git/moduli/index.md
+           
+                - Modulo 01 — Version Control & Modello Mentale:
+                    - Cos’è il versionamento: corsi/git/moduli/01-fondamenti/01-introduzione.md
+                    - Modello mentale di Git: corsi/git/moduli/01-fondamenti/02-modello-mentale.md
+             
+                - Modulo 02 — Git Locale & Workflow:
+                    - Installazione e setup: corsi/git/moduli/02-workflow-locale/01-installazione-setup.md
+                    - Workflow quotidiano: corsi/git/moduli/02-workflow-locale/02-workflow-quotidiano.md
+                    - Commit e storia: corsi/git/moduli/02-workflow-locale/03-commit-e-storia.md
+                    - Correggere errori: corsi/git/moduli/02-workflow-locale/04-undo-e-recovery.md
+             
+                - Modulo 03 — Branching e Collaborazione:
+                    - Branch: corsi/git/moduli/03-branching-collaborazione/01-branch.md
+                    - Merge e conflitti: corsi/git/moduli/03-branching-collaborazione/02-merge-conflitti.md
+                    - Rebase: corsi/git/moduli/03-branching-collaborazione/03-rebase.md
+                    - Repository remoti: corsi/git/moduli/03-branching-collaborazione/04-remoti.md
+                    - Pull Request: corsi/git/moduli/03-branching-collaborazione/05-pull-request.md
+                    - Sicurezza e .gitignore: corsi/git/moduli/03-branching-collaborazione/06-gitignore-sicurezza.md
+            
+                - Modulo 04 — Debug ed esercizi:
+                    - Debug con Git: corsi/git/moduli/04-debug-esercizi/01-debug.md
+                    - Errori comuni: corsi/git/moduli/04-debug-esercizi/02-errori-comuni.md
+                    - Esercizi: corsi/git/moduli/04-debug-esercizi/03-esercizi.md
 
   - Community:
     - Introduzione: community/index.md

@@ -2,142 +2,226 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.itsfantastici.it/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/esempio-lezione/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/community/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/community/linee-guida/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/community/workflow/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/cli/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/cli/moduli/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/cli/moduli/01-fondamenti/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/cli/moduli/02-filesystem/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/cli/moduli/03-permessi-e-utenti/</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/changelog/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/01-fondamenti/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/01-fondamenti/glossary/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/01-fondamenti/lezione-01/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/01-fondamenti/lezione-02/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/01-fondamenti/lezione-03/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/01-fondamenti/soluzioni/esercizio-03-01/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/02-query-sql/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/02-query-sql/lezione-04/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/02-query-sql/lezione-05/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/02-query-sql/lezione-06/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/03-schema-performance/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/03-schema-performance/lezione-07/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/03-schema-performance/lezione-08/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/04-migrazione-produzione/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-09/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/moduli/04-migrazione-produzione/lezione-10/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/progetto/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/progetto/modello-dati/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/progetto/problema/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/corso-database-sql/progetto/requisiti/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/01-fondamenti/01-introduzione/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/01-fondamenti/02-modello-mentale/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/02-workflow-locale/01-installazione-setup/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/02-workflow-locale/02-workflow-quotidiano/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/02-workflow-locale/03-commit-e-storia/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/02-workflow-locale/04-undo-e-recovery/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/03-branching-collaborazione/01-branch/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/03-branching-collaborazione/02-merge-conflitti/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/03-branching-collaborazione/03-rebase/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/03-branching-collaborazione/04-remoti/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/03-branching-collaborazione/05-pull-request/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/03-branching-collaborazione/06-gitignore-sicurezza/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/04-debug-esercizi/01-debug/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/04-debug-esercizi/02-errori-comuni/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/moduli/04-debug-esercizi/03-esercizi/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/progetto/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/progetto/problema/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.itsfantastici.it/corsi/git/progetto/requisiti/</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/makedocs/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://docs.itsfantastici.it/corsi/markdown/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
 </urlset>

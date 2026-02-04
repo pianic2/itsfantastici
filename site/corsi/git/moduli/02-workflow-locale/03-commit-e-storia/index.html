@@ -2608,10 +2608,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#leggere-lo-storico" class="md-nav__link">
+  <a href="#leggere-lo-storico-git-log" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Leggere lo storico
+        Leggere lo storico git log
       
     </span>
   </a>
@@ -2619,10 +2619,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#capire-cosa-stai-per-committare" class="md-nav__link">
+  <a href="#capire-cosa-stai-per-committare-git-diff" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Capire cosa stai per committare
+        Capire cosa stai per committare git diff
       
     </span>
   </a>
@@ -3350,10 +3350,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#leggere-lo-storico" class="md-nav__link">
+  <a href="#leggere-lo-storico-git-log" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Leggere lo storico
+        Leggere lo storico git log
       
     </span>
   </a>
@@ -3361,10 +3361,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#capire-cosa-stai-per-committare" class="md-nav__link">
+  <a href="#capire-cosa-stai-per-committare-git-diff" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Capire cosa stai per committare
+        Capire cosa stai per committare git diff
       
     </span>
   </a>
@@ -3467,22 +3467,61 @@
 </ul>
 <hr />
 <h2 id="esempi">Esempi<a class="headerlink" href="#esempi" title="Permanent link">&para;</a></h2>
-<h3 id="leggere-lo-storico">Leggere lo storico<a class="headerlink" href="#leggere-lo-storico" title="Permanent link">&para;</a></h3>
+<h3 id="leggere-lo-storico-git-log">Leggere lo storico <code>git log</code><a class="headerlink" href="#leggere-lo-storico-git-log" title="Permanent link">&para;</a></h3>
+<p>Per capire <em>cosa è successo</em> nel progetto, il comando base è:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>log
 </code></pre></div>
-<p>Versione più leggibile (storia come grafo):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--decorate<span class="w"> </span>--graph
+<p>Ogni commit è una “tessera” della storia e contiene sempre alcune informazioni chiave:</p>
+<ul>
+<li><strong>chi</strong> ha fatto la modifica (<strong>Author</strong>)</li>
+<li><strong>quando</strong> è stata fatta (<strong>Date</strong>)</li>
+<li><strong>perché / cosa</strong> è cambiato (il <strong>messaggio di commit</strong>)</li>
+</ul>
+<p>Un output tipico (semplificato) assomiglia a questo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">Author: &lt;username&gt; &lt;utente@example.com&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="go">Date:   &lt;date&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="go">&lt;testo del commit&gt;</span>
 </code></pre></div>
-<h3 id="capire-cosa-stai-per-committare">Capire cosa stai per committare<a class="headerlink" href="#capire-cosa-stai-per-committare" title="Permanent link">&para;</a></h3>
-<p>Modifiche non in staging:</p>
+<blockquote>
+<p><strong>Suggerimento pratico</strong>: quando lo storico è lungo, l’obiettivo non è “leggerlo tutto”, ma <strong>scorrere e trovare rapidamente</strong> i punti in cui sono state introdotte modifiche importanti.</p>
+</blockquote>
+<hr />
+<h3 id="capire-cosa-stai-per-committare-git-diff">Capire cosa stai per committare <code>git diff</code><a class="headerlink" href="#capire-cosa-stai-per-committare-git-diff" title="Permanent link">&para;</a></h3>
+<p>Prima di fare un commit, conviene controllare <em>esattamente</em> quali modifiche stai includendo. Qui entra in gioco <code>git diff</code>, che ti aiuta a distinguere tra:</p>
+<ul>
+<li><strong>unstaged</strong>: modifiche presenti nei file, ma <strong>non ancora aggiunte</strong> allo staging</li>
+<li><strong>staged</strong>: modifiche <strong>già pronte</strong> per finire nel prossimo commit</li>
+</ul>
+<p><strong>Modifiche non in staging (working directory vs staging):</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>diff
 </code></pre></div>
-<p>Modifiche già selezionate (staged):</p>
+<p>Usalo per rispondere alla domanda: <strong>“cosa ho modificato, ma non ho ancora deciso di committare?”</strong></p>
+<p><strong>Modifiche già selezionate (staging vs ultimo commit):</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>diff<span class="w"> </span>--staged
 </code></pre></div>
+<p>Usalo per rispondere alla domanda: <strong>“cosa finirà nel commit se lo faccio adesso?”</strong></p>
+<p>Regola pratica: prima di committare, controlla sempre <code>git diff --staged</code> per evitare di includere cambiamenti <strong>non intenzionali</strong>.</p>
+<hr />
 <h3 id="esempio-di-commit-buono">Esempio di commit “buono”<a class="headerlink" href="#esempio-di-commit-buono" title="Permanent link">&para;</a></h3>
+<p>Un commit “buono” di solito è:</p>
+<ul>
+<li><strong>piccolo</strong> (fa una cosa principale)</li>
+<li><strong>coerente</strong> (tutte le modifiche vanno nella stessa direzione)</li>
+<li><strong>spiegato bene</strong> (il messaggio dice l’<strong>intento</strong>, non solo l’azione)</li>
+</ul>
+<p>Esempio:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Aggiunge validazione input nel comando add&quot;</span>
+</code></pre></div>
+<p>Perché funziona:</p>
+<ul>
+<li>il messaggio spiega <strong>cosa cambia</strong> (<em>validazione input</em>)</li>
+<li>chiarisce <strong>dove</strong> (<em>nel comando add</em>)</li>
+<li>rende più facile capire lo storico e individuare regressioni o bug in futuro</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Aggiunge validazione input nel comando add&quot;</span>
 </code></pre></div>
 <p>Il messaggio descrive l’intento, non il comando.</p>
 <hr />

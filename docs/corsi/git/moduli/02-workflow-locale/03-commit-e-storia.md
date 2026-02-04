@@ -49,14 +49,21 @@ Questa distinzione è ciò che ti permette uno storico pulito.
 ---
 
 ## Esempi
+### Leggere lo storico `git log`
 
-### Leggere lo storico
+Per capire *cosa è successo* nel progetto, il comando base è:
 
 ```bash
 git log
 ```
 
-Ci aspettiamo un output del genere::
+Ogni commit è una “tessera” della storia e contiene sempre alcune informazioni chiave:
+
+- **chi** ha fatto la modifica (**Author**)
+- **quando** è stata fatta (**Date**)
+- **perché / cosa** è cambiato (il **messaggio di commit**)
+
+Un output tipico (semplificato) assomiglia a questo:
 
 ```output
 Author: <username> <utente@example.com>
@@ -65,21 +72,57 @@ Date:   <date>
 <testo del commit>
 ```
 
-### Capire cosa stai per committare
+> **Suggerimento pratico**: quando lo storico è lungo, l’obiettivo non è “leggerlo tutto”, ma **scorrere e trovare rapidamente** i punti in cui sono state introdotte modifiche importanti.
 
-Modifiche non in staging:
+---
+
+### Capire cosa stai per committare `git diff`
+
+Prima di fare un commit, conviene controllare *esattamente* quali modifiche stai includendo. Qui entra in gioco `git diff`, che ti aiuta a distinguere tra:
+
+- **unstaged**: modifiche presenti nei file, ma **non ancora aggiunte** allo staging
+- **staged**: modifiche **già pronte** per finire nel prossimo commit
+
+**Modifiche non in staging (working directory vs staging):**
 
 ```bash
 git diff
 ```
 
-Modifiche già selezionate (staged):
+Usalo per rispondere alla domanda: **“cosa ho modificato, ma non ho ancora deciso di committare?”**
+
+**Modifiche già selezionate (staging vs ultimo commit):**
 
 ```bash
 git diff --staged
 ```
 
+Usalo per rispondere alla domanda: **“cosa finirà nel commit se lo faccio adesso?”**
+
+Regola pratica: prima di committare, controlla sempre `git diff --staged` per evitare di includere cambiamenti **non intenzionali**.
+
+---
+
 ### Esempio di commit “buono”
+
+Un commit “buono” di solito è:
+
+- **piccolo** (fa una cosa principale)
+- **coerente** (tutte le modifiche vanno nella stessa direzione)
+- **spiegato bene** (il messaggio dice l’**intento**, non solo l’azione)
+
+Esempio:
+
+```bash
+git add .
+git commit -m "Aggiunge validazione input nel comando add"
+```
+
+Perché funziona:
+
+- il messaggio spiega **cosa cambia** (*validazione input*)
+- chiarisce **dove** (*nel comando add*)
+- rende più facile capire lo storico e individuare regressioni o bug in futuro
 
 ```bash
 git add .

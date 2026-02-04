@@ -298,7 +298,7 @@ mv -i sorgente.txt destinazione.txt
 
 ---
 
-#### `rm` / `rmdir` — “elimina (attenzione)”
+#### `rm` / `rmdir` — “elimina o rimuovi un file o una cartella (attenzione)”
 Eliminare è l’operazione più delicata: **di default non c’è cestino**.
 
 Eliminare un file:

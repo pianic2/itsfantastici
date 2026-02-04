@@ -2590,16 +2590,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#osservare-lo-stato-del-repository" class="md-nav__link">
+  <a href="#osservare-lo-stato-del-repository-git-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Osservare lo stato del repository
+        Osservare lo stato del repository git status
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Osservare lo stato del repository">
+    <nav class="md-nav" aria-label="Osservare lo stato del repository git status">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esempio-di-output-e-cosa-significa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esempio di output (e cosa significa)
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#file-tracciati-e-non-tracciati" class="md-nav__link">
@@ -2618,41 +2629,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#commit" class="md-nav__link">
+  <a href="#commit-in-breve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Commit
+        Commit (in breve)
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Commit">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creare-un-commit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creare un commit
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#il-messaggio-di-commit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Il messaggio di commit
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3410,16 +3393,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#osservare-lo-stato-del-repository" class="md-nav__link">
+  <a href="#osservare-lo-stato-del-repository-git-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Osservare lo stato del repository
+        Osservare lo stato del repository git status
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Osservare lo stato del repository">
+    <nav class="md-nav" aria-label="Osservare lo stato del repository git status">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esempio-di-output-e-cosa-significa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esempio di output (e cosa significa)
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#file-tracciati-e-non-tracciati" class="md-nav__link">
@@ -3438,41 +3432,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#commit" class="md-nav__link">
+  <a href="#commit-in-breve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Commit
+        Commit (in breve)
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Commit">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creare-un-commit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creare un commit
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#il-messaggio-di-commit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Il messaggio di commit
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3610,7 +3576,7 @@ Lo stai solo dichiarando candidato al prossimo commit.</p>
 <li>mantenere uno storico pulito nel tempo</li>
 </ul>
 <hr />
-<h2 id="osservare-lo-stato-del-repository">Osservare lo stato del repository<a class="headerlink" href="#osservare-lo-stato-del-repository" title="Permanent link">&para;</a></h2>
+<h2 id="osservare-lo-stato-del-repository-git-status">Osservare lo stato del repository <code>git status</code><a class="headerlink" href="#osservare-lo-stato-del-repository-git-status" title="Permanent link">&para;</a></h2>
 <p>Prima di agire, Git va <strong>osservato</strong>.</p>
 <p>Lo stato di un repository risponde sempre alle stesse domande:</p>
 <ul>
@@ -3630,6 +3596,43 @@ Lo stai solo dichiarando candidato al prossimo commit.</p>
 <p>Serve solo a capire <strong>dove ti trovi</strong> prima di decidere cosa fare.</p>
 <p>Usalo spesso: è la tua bussola.</p>
 <hr />
+<h3 id="esempio-di-output-e-cosa-significa">Esempio di output (e cosa significa)<a class="headerlink" href="#esempio-di-output-e-cosa-significa" title="Permanent link">&para;</a></h3>
+<p>Immagina di avere:</p>
+<ul>
+<li>modificato <code>index.html</code></li>
+<li>creato un nuovo file <code>app.js</code> (non ancora tracciato)</li>
+</ul>
+<p>Eseguendo <code>git status</code> potresti vedere:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>On branch main
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>No commits yet
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Changes not staged for commit:
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>                modified:   index.html
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>Untracked files:
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>                app.js
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre></div>
+<p>Come leggerlo:</p>
+<ul>
+<li><code>On branch main</code>: sei sul branch corrente (qui <code>main</code>).</li>
+<li><code>No commits yet</code>: il repository è nuovo, non hai ancora creato commit.</li>
+<li><code>Changes not staged for commit</code>: file <strong>modificati</strong> ma <strong>non ancora selezionati</strong> per il prossimo commit (sono solo nel <em>working directory</em>).<ul>
+<li><code>modified: index.html</code>: <code>index.html</code> è cambiato rispetto all’ultimo snapshot.</li>
+</ul>
+</li>
+<li><code>Untracked files</code>: file <strong>nuovi</strong>, Git li vede sul filesystem ma <strong>non li sta tracciando</strong>.<ul>
+<li><code>app.js</code>: esiste, ma non entrerà in nessun commit finché non fai <code>git add app.js</code>.</li>
+</ul>
+</li>
+<li><code>no changes added to commit</code>: al momento <strong>non c’è nulla nello staging</strong> pronto da committare.</li>
+</ul>
+<hr />
 <h3 id="file-tracciati-e-non-tracciati">File tracciati e non tracciati<a class="headerlink" href="#file-tracciati-e-non-tracciati" title="Permanent link">&para;</a></h3>
 <p>Git non assume nulla.</p>
 <p>All’inizio:</p>
@@ -3644,43 +3647,16 @@ Lo stai solo dichiarando candidato al prossimo commit.</p>
 <li>non finirà mai in un commit per errore</li>
 </ul>
 <p>Lo vedi chiaramente con:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>status
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>status
 </code></pre></div>
 <p>Questo comportamento è intenzionale: <strong>il controllo resta sempre tuo</strong>.</p>
-<hr />
-<h2 id="commit">Commit<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h2>
-<h3 id="creare-un-commit">Creare un commit<a class="headerlink" href="#creare-un-commit" title="Permanent link">&para;</a></h3>
-<p>Un commit è una decisione formalizzata.</p>
-<p>Quando sei soddisfatto di ciò che hai messo nello staging, crei un commit:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Descrizione chiara del cambiamento&quot;</span>
+<h2 id="commit-in-breve">Commit (in breve)<a class="headerlink" href="#commit-in-breve" title="Permanent link">&para;</a></h2>
+<p>Dopo aver selezionato i cambiamenti con <code>git add</code>, puoi <strong>salvare uno stato stabile</strong> con un commit:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Messaggio chiaro&quot;</span>
 </code></pre></div>
-<p>Nel momento del commit Git:</p>
-<ul>
-<li>crea uno snapshot completo</li>
-<li>registra autore e data</li>
-<li>collega lo stato allo storico precedente</li>
-<li>associa un messaggio descrittivo</li>
-</ul>
-<p>Da quel momento quello stato è:</p>
-<ul>
-<li>stabile</li>
-<li>recuperabile</li>
-<li>confrontabile</li>
-</ul>
-<p>Un commit non rappresenta <em>ciò che avevi sul disco</em>,
-ma <strong>ciò che aveva senso salvare</strong>.</p>
-<hr />
-<h3 id="il-messaggio-di-commit">Il messaggio di commit<a class="headerlink" href="#il-messaggio-di-commit" title="Permanent link">&para;</a></h3>
-<p>Il messaggio non è un dettaglio secondario.
-Fa parte del commit tanto quanto i file.</p>
-<p>Serve a:</p>
-<ul>
-<li>spiegare perché quel commit esiste</li>
-<li>rendere leggibile lo storico</li>
-<li>aiutare il debug futuro</li>
-</ul>
-<p>Un buon messaggio descrive l’intento, non il comando usato.</p>
-<hr />
+<p>Un commit crea uno snapshot coerente di ciò che hai messo nello staging e lo aggiunge allo storico, rendendolo <strong>recuperabile e confrontabile</strong>.</p>
+<p>Il messaggio serve a rendere lo storico leggibile: descrive <strong>l’intento del cambiamento</strong>.<br />
+Approfondiremo commit e messaggi nella lezione successiva.</p>
 <h2 id="ripetere-il-ciclo-checklist">Ripetere il ciclo (checklist)<a class="headerlink" href="#ripetere-il-ciclo-checklist" title="Permanent link">&para;</a></h2>
 <p>Il workflow quotidiano è sempre lo stesso:</p>
 <ul>

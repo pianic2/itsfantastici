@@ -121,7 +121,7 @@ Saper usare bene lo staging permette di:
 
 ---
 
-## Osservare lo stato del repository
+## Osservare lo stato del repository `git status`
 
 Prima di agire, Git va **osservato**.
 
@@ -149,6 +149,44 @@ Usalo spesso: è la tua bussola.
 
 ---
 
+### Esempio di output (e cosa significa)
+
+Immagina di avere:
+
+- modificato `index.html`
+- creato un nuovo file `app.js` (non ancora tracciato)
+
+Eseguendo `git status` potresti vedere:
+
+```text
+On branch main
+
+No commits yet
+
+Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+                modified:   index.html
+
+Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+                app.js
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Come leggerlo:
+
+- `On branch main`: sei sul branch corrente (qui `main`).
+- `No commits yet`: il repository è nuovo, non hai ancora creato commit.
+- `Changes not staged for commit`: file **modificati** ma **non ancora selezionati** per il prossimo commit (sono solo nel *working directory*).
+    - `modified: index.html`: `index.html` è cambiato rispetto all’ultimo snapshot.
+- `Untracked files`: file **nuovi**, Git li vede sul filesystem ma **non li sta tracciando**.
+    - `app.js`: esiste, ma non entrerà in nessun commit finché non fai `git add app.js`.
+- `no changes added to commit`: al momento **non c’è nulla nello staging** pronto da committare.
+
+---
+
 ### File tracciati e non tracciati
 
 Git non assume nulla.
@@ -172,50 +210,18 @@ git status
 
 Questo comportamento è intenzionale: **il controllo resta sempre tuo**.
 
----
-## Commit
-### Creare un commit
+## Commit (in breve)
 
-Un commit è una decisione formalizzata.
-
-Quando sei soddisfatto di ciò che hai messo nello staging, crei un commit:
+Dopo aver selezionato i cambiamenti con `git add`, puoi **salvare uno stato stabile** con un commit:
 
 ```bash
-git commit -m "Descrizione chiara del cambiamento"
+git commit -m "Messaggio chiaro"
 ```
 
-Nel momento del commit Git:
+Un commit crea uno snapshot coerente di ciò che hai messo nello staging e lo aggiunge allo storico, rendendolo **recuperabile e confrontabile**.
 
-* crea uno snapshot completo
-* registra autore e data
-* collega lo stato allo storico precedente
-* associa un messaggio descrittivo
-
-Da quel momento quello stato è:
-
-* stabile
-* recuperabile
-* confrontabile
-
-Un commit non rappresenta *ciò che avevi sul disco*,
-ma **ciò che aveva senso salvare**.
-
----
-
-### Il messaggio di commit
-
-Il messaggio non è un dettaglio secondario.
-Fa parte del commit tanto quanto i file.
-
-Serve a:
-
-* spiegare perché quel commit esiste
-* rendere leggibile lo storico
-* aiutare il debug futuro
-
-Un buon messaggio descrive l’intento, non il comando usato.
-
----
+Il messaggio serve a rendere lo storico leggibile: descrive **l’intento del cambiamento**.  
+Approfondiremo commit e messaggi nella lezione successiva.
 
 ## Ripetere il ciclo (checklist)
 

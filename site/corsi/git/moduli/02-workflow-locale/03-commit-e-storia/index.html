@@ -2558,10 +2558,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#commit-unita-logica" class="md-nav__link">
+  <a href="#commit-unita-logica-non-salvataggio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Commit = unità logica
+        Commit = unità logica (non “salvataggio”)
       
     </span>
   </a>
@@ -2569,10 +2569,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#staged-vs-unstaged" class="md-nav__link">
+  <a href="#staged-vs-unstaged-working-directory-e-staging-area" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Staged vs unstaged
+        Staged vs unstaged (working directory e staging area)
       
     </span>
   </a>
@@ -2580,13 +2580,41 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#diff-e-log" class="md-nav__link">
+  <a href="#diff-e-log-gli-strumenti-per-leggere-cosa-sta-succedendo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diff e log
+        Diff e log (gli strumenti per “leggere” cosa sta succedendo)
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Diff e log (gli strumenti per “leggere” cosa sta succedendo)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-diff-capire-cosa-e-cambiato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        git diff: capire cosa è cambiato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-log-leggere-lo-storico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        git log: leggere lo storico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3300,10 +3328,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#commit-unita-logica" class="md-nav__link">
+  <a href="#commit-unita-logica-non-salvataggio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Commit = unità logica
+        Commit = unità logica (non “salvataggio”)
       
     </span>
   </a>
@@ -3311,10 +3339,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#staged-vs-unstaged" class="md-nav__link">
+  <a href="#staged-vs-unstaged-working-directory-e-staging-area" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Staged vs unstaged
+        Staged vs unstaged (working directory e staging area)
       
     </span>
   </a>
@@ -3322,13 +3350,41 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#diff-e-log" class="md-nav__link">
+  <a href="#diff-e-log-gli-strumenti-per-leggere-cosa-sta-succedendo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diff e log
+        Diff e log (gli strumenti per “leggere” cosa sta succedendo)
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Diff e log (gli strumenti per “leggere” cosa sta succedendo)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-diff-capire-cosa-e-cambiato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        git diff: capire cosa è cambiato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-log-leggere-lo-storico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        git log: leggere lo storico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3441,29 +3497,87 @@
 <p>Se non sai leggere la storia, Git diventa solo “un posto dove spingi codice”, non uno strumento di controllo.</p>
 <hr />
 <h2 id="teoria">Teoria<a class="headerlink" href="#teoria" title="Permanent link">&para;</a></h2>
-<h3 id="commit-unita-logica">Commit = unità logica<a class="headerlink" href="#commit-unita-logica" title="Permanent link">&para;</a></h3>
-<p>Un commit non è “un salvataggio qualsiasi”. È una unità logica che dovrebbe rappresentare:</p>
+<h3 id="commit-unita-logica-non-salvataggio">Commit = unità logica (non “salvataggio”)<a class="headerlink" href="#commit-unita-logica-non-salvataggio" title="Permanent link">&para;</a></h3>
+<p>Un commit non è “uno snapshot a caso”: è una <strong>unità logica</strong> che racconta una modifica completa e comprensibile. Idealmente, un commit permette a chi legge lo storico (anche te tra 2 settimane) di capire:</p>
 <ul>
-<li>un obiettivo chiaro</li>
-<li>uno stato coerente del progetto</li>
-<li>una motivazione (spiegata dal messaggio)</li>
+<li><strong>che obiettivo</strong> introduce (feature/bugfix/refactor)</li>
+<li><strong>cosa cambia</strong> in modo coerente</li>
+<li><strong>perché</strong> è stato fatto (quando serve contesto)</li>
 </ul>
-<p>Regola pratica:</p>
-<blockquote>
-<p>un’idea = un commit</p>
-</blockquote>
-<h3 id="staged-vs-unstaged">Staged vs unstaged<a class="headerlink" href="#staged-vs-unstaged" title="Permanent link">&para;</a></h3>
-<p>Git ti fa lavorare su due livelli:</p>
+<p>Regole pratiche:</p>
 <ul>
-<li><strong>unstaged</strong>: modifiche presenti nei file, ma non selezionate per il prossimo commit</li>
-<li><strong>staged</strong>: modifiche selezionate (staging area) che entreranno nel prossimo commit</li>
+<li><strong>un’idea = un commit</strong> (atomicità)</li>
+<li>se una modifica contiene <em>due motivi diversi</em>, separala in due commit</li>
+<li>un commit dovrebbe lasciare il progetto in uno stato “sano” (test/build ok, se applicabile)</li>
 </ul>
-<p>Questa distinzione è ciò che ti permette uno storico pulito.</p>
-<h3 id="diff-e-log">Diff e log<a class="headerlink" href="#diff-e-log" title="Permanent link">&para;</a></h3>
+<p><strong>Messaggio di commit</strong>
+Un buon messaggio non descrive <em>il comando</em>, descrive <em>l’intento</em>.</p>
 <ul>
-<li><code>git diff</code> mostra differenze tra working directory e staging</li>
-<li><code>git diff --staged</code> mostra differenze tra staging e ultimo commit</li>
-<li><code>git log</code> mostra la storia dei commit</li>
+<li>evita: <code>fix</code>, <code>update</code>, <code>changes</code></li>
+<li>preferisci: “Corregge X quando Y”, “Aggiunge validazione input in Z”, “Rimuove duplicazione in …”</li>
+</ul>
+<p>Struttura utile (facoltativa, ma efficace):</p>
+<ul>
+<li><strong>titolo breve</strong> (cosa fa)</li>
+<li><strong>dettagli</strong> (perché/come) nel corpo, se necessario</li>
+</ul>
+<hr />
+<h3 id="staged-vs-unstaged-working-directory-e-staging-area">Staged vs unstaged (working directory e staging area)<a class="headerlink" href="#staged-vs-unstaged-working-directory-e-staging-area" title="Permanent link">&para;</a></h3>
+<p>Git tiene separati due livelli di modifica:</p>
+<ul>
+<li><strong>unstaged (working directory)</strong>: modifiche presenti nei file, ma <strong>non ancora selezionate</strong> per il prossimo commit</li>
+<li><strong>staged (staging area / index)</strong>: modifiche <strong>selezionate</strong> che entreranno nel prossimo commit</li>
+</ul>
+<p>Perché è importante: lo staging ti permette di creare commit <strong>puliti e mirati</strong>, evitando “commit omnibus” con dentro cambiamenti non correlati.</p>
+<p>Operazioni tipiche:</p>
+<ul>
+<li>aggiungere allo staging:<ul>
+<li><code>git add &lt;file&gt;</code></li>
+<li><code>git add .</code> (tutto in blocco)</li>
+</ul>
+</li>
+<li>rimuovere dallo staging (senza perdere le modifiche):<ul>
+<li><code>git restore --staged &lt;file&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Selezionare solo parte di un file (consigliato quando un file contiene più modifiche)</strong>
+- <code>git add -p</code> (interactive patch): scegli <em>hunk</em> per <em>hunk</em> cosa va nel commit</p>
+<p>Questa pratica è una delle chiavi per uno storico leggibile.</p>
+<hr />
+<h3 id="diff-e-log-gli-strumenti-per-leggere-cosa-sta-succedendo">Diff e log (gli strumenti per “leggere” cosa sta succedendo)<a class="headerlink" href="#diff-e-log-gli-strumenti-per-leggere-cosa-sta-succedendo" title="Permanent link">&para;</a></h3>
+<h4 id="git-diff-capire-cosa-e-cambiato"><code>git diff</code>: capire cosa è cambiato<a class="headerlink" href="#git-diff-capire-cosa-e-cambiato" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><code>git diff</code><br />
+    mostra le differenze tra <strong>working directory</strong> (unstaged) e <strong>staging</strong></p>
+</li>
+<li>
+<p><code>git diff --staged</code> (o <code>--cached</code>)<br />
+    mostra le differenze tra <strong>staging</strong> e <strong>ultimo commit</strong><br />
+    → è la verifica più importante <strong>prima di committare</strong></p>
+</li>
+</ul>
+<p>Comandi utili aggiuntivi:</p>
+<ul>
+<li><code>git diff &lt;commit1&gt; &lt;commit2&gt;</code>: confronta due commit</li>
+<li><code>git diff &lt;commit&gt; -- &lt;path&gt;</code>: confronta un commit con lo stato attuale per un file/cartella</li>
+<li><code>git diff --stat</code>: riepilogo per file (meno rumore, utile per farsi un’idea rapida)</li>
+</ul>
+<h4 id="git-log-leggere-lo-storico"><code>git log</code>: leggere lo storico<a class="headerlink" href="#git-log-leggere-lo-storico" title="Permanent link">&para;</a></h4>
+<p><code>git log</code> mostra la sequenza dei commit. Varianti pratiche:</p>
+<ul>
+<li><code>git log --oneline</code>: vista compatta (hash breve + titolo)</li>
+<li><code>git log --graph --oneline --decorate</code>: utile per capire rami/merge</li>
+<li><code>git log -p</code>: mostra anche le patch (cosa è cambiato)</li>
+<li><code>git log -- &lt;path&gt;</code>: storico relativo a un file/cartella</li>
+<li><code>git show &lt;commit&gt;</code>: dettagli completi di un singolo commit</li>
+</ul>
+<p>Obiettivo: usare diff e log per rispondere rapidamente a domande tipiche:</p>
+<ul>
+<li>“cosa sto per committare?”</li>
+<li>“quando è stata introdotta questa modifica?”</li>
+<li>“quale commit ha cambiato questo file e perché?”</li>
 </ul>
 <hr />
 <h2 id="esempi">Esempi<a class="headerlink" href="#esempi" title="Permanent link">&para;</a></h2>

@@ -19,32 +19,89 @@ Se non sai leggere la storia, Git diventa solo “un posto dove spingi codice”
 
 ## Teoria
 
-### Commit = unità logica
+### Commit = unità logica (non “salvataggio”)
 
-Un commit non è “un salvataggio qualsiasi”. È una unità logica che dovrebbe rappresentare:
+Un commit non è “uno snapshot a caso”: è una **unità logica** che racconta una modifica completa e comprensibile. Idealmente, un commit permette a chi legge lo storico (anche te tra 2 settimane) di capire:
 
-- un obiettivo chiaro
-- uno stato coerente del progetto
-- una motivazione (spiegata dal messaggio)
+- **che obiettivo** introduce (feature/bugfix/refactor)
+- **cosa cambia** in modo coerente
+- **perché** è stato fatto (quando serve contesto)
 
-Regola pratica:
+Regole pratiche:
 
-> un’idea = un commit
+- **un’idea = un commit** (atomicità)
+- se una modifica contiene *due motivi diversi*, separala in due commit
+- un commit dovrebbe lasciare il progetto in uno stato “sano” (test/build ok, se applicabile)
 
-### Staged vs unstaged
+**Messaggio di commit**
+Un buon messaggio non descrive *il comando*, descrive *l’intento*.
 
-Git ti fa lavorare su due livelli:
+- evita: `fix`, `update`, `changes`
+- preferisci: “Corregge X quando Y”, “Aggiunge validazione input in Z”, “Rimuove duplicazione in …”
 
-- **unstaged**: modifiche presenti nei file, ma non selezionate per il prossimo commit
-- **staged**: modifiche selezionate (staging area) che entreranno nel prossimo commit
+Struttura utile (facoltativa, ma efficace):
 
-Questa distinzione è ciò che ti permette uno storico pulito.
+- **titolo breve** (cosa fa)
+- **dettagli** (perché/come) nel corpo, se necessario
 
-### Diff e log
+---
 
-- `git diff` mostra differenze tra working directory e staging
-- `git diff --staged` mostra differenze tra staging e ultimo commit
-- `git log` mostra la storia dei commit
+### Staged vs unstaged (working directory e staging area)
+
+Git tiene separati due livelli di modifica:
+
+- **unstaged (working directory)**: modifiche presenti nei file, ma **non ancora selezionate** per il prossimo commit
+- **staged (staging area / index)**: modifiche **selezionate** che entreranno nel prossimo commit
+
+Perché è importante: lo staging ti permette di creare commit **puliti e mirati**, evitando “commit omnibus” con dentro cambiamenti non correlati.
+
+Operazioni tipiche:
+
+- aggiungere allo staging:
+    - `git add <file>`
+    - `git add .` (tutto in blocco)
+- rimuovere dallo staging (senza perdere le modifiche):
+    - `git restore --staged <file>`
+
+**Selezionare solo parte di un file (consigliato quando un file contiene più modifiche)**
+- `git add -p` (interactive patch): scegli *hunk* per *hunk* cosa va nel commit
+
+Questa pratica è una delle chiavi per uno storico leggibile.
+
+---
+
+### Diff e log (gli strumenti per “leggere” cosa sta succedendo)
+
+#### `git diff`: capire cosa è cambiato
+
+- `git diff`  
+    mostra le differenze tra **working directory** (unstaged) e **staging**
+
+- `git diff --staged` (o `--cached`)  
+    mostra le differenze tra **staging** e **ultimo commit**  
+    → è la verifica più importante **prima di committare**
+
+Comandi utili aggiuntivi:
+
+- `git diff <commit1> <commit2>`: confronta due commit
+- `git diff <commit> -- <path>`: confronta un commit con lo stato attuale per un file/cartella
+- `git diff --stat`: riepilogo per file (meno rumore, utile per farsi un’idea rapida)
+
+#### `git log`: leggere lo storico
+
+`git log` mostra la sequenza dei commit. Varianti pratiche:
+
+- `git log --oneline`: vista compatta (hash breve + titolo)
+- `git log --graph --oneline --decorate`: utile per capire rami/merge
+- `git log -p`: mostra anche le patch (cosa è cambiato)
+- `git log -- <path>`: storico relativo a un file/cartella
+- `git show <commit>`: dettagli completi di un singolo commit
+
+Obiettivo: usare diff e log per rispondere rapidamente a domande tipiche:
+
+- “cosa sto per committare?”
+- “quando è stata introdotta questa modifica?”
+- “quale commit ha cambiato questo file e perché?”
 
 ---
 

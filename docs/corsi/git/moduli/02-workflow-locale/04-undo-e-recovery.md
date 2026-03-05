@@ -121,9 +121,3 @@ Alla fine di questa lezione sai:
 - annullare commit in modo sicuro e collaborativo (`git revert`)
 - usare `git reflog` come paracadute
 
----
-
-## Navigazione
-
-- Precedente: [Commit e storia](03-commit-e-storia.md)
-

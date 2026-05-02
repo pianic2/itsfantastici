@@ -1,1 +1,25 @@
-.venv/
+# Env
+.env
+.env.*
+!.env.example
+.venv
+
+# Python
+__pycache__/
+*.pyc
+*.sqlite3
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Build
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
